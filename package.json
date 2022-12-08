@@ -1,0 +1,49 @@
+{
+  "type": "module",
+  "name": "onlineacademy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js --ext *",
+    "start:prod": "SET NODE_ENV=production & nodemon server.js",
+    "debug": "ndb server.js"
+  },
+  "author": "onlineacademy",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-livereload": "^0.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-handlebars-sections": "^1.0.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.6.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "livereload": "^0.9.3",
+    "moment": "^2.29.4",
+    "mongoose": "^6.6.6",
+    "morgan": "^1.10.0",
+    "node-datetime": "^2.1.2",
+    "nodemailer": "^6.8.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.20",
+    "numeral": "^2.0.6",
+    "validator": "^13.7.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1"
+  }
+}

@@ -1,2 +1,1 @@
-# ATMClothing-BE
-ATM Clothing API Server
+# Online Academy

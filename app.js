@@ -12,6 +12,7 @@ import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
 
 import authRoutes from './routes/authRoutes.js';
+import settings from './routes/settingRoutes.js';
 
 const limiter = rateLimit({
   max: 1000,
@@ -56,7 +57,16 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+app.get('/favourite', (req, res) => {
+  res.render('favourite');
+});
+
+app.get('/profile', (req, res) => {
+  res.render('profile');
+});
+
 app.use('/auth', authRoutes);
+// app.use('/setting', settings);
 
 
 export default app;

@@ -24,7 +24,9 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password must not empty"],
-      select: false
+      select: false,
+      minlength: 6,
+      trim: true,
     },
     gender: {
       type: String,

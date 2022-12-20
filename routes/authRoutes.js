@@ -18,4 +18,9 @@ router.route('/login')
     res.render('auth/login');
   })
 
+// router.route('/viewVideo')
+// .get((req, res, next) => {
+//   res.render('/view/viewVideo');
+// })
+
 export default router;

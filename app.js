@@ -56,6 +56,10 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+app.get('/viewVideo', (req, res) => {
+  res.render('viewVideo');
+});
+
 app.use('/auth', authRoutes);
 
 

@@ -7,12 +7,17 @@ import cors from 'cors';
 import { engine } from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections'
 import numeral from 'numeral';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
 import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
 
+import AppError from './utils/appError.js';
+import globalErrorHandler from './controllers/errorController.js';
 import authRoutes from './routes/authRoutes.js';
 import settings from './routes/settingRoutes.js';
+import teacherRoutes from './routes/teacherRoutes.js';
 
 const limiter = rateLimit({
   max: 1000,
@@ -28,6 +33,10 @@ app.use(hpp());
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, '/public')));
 
 // LISTENER HANDLEBARS CHANGE
 const liveReloadServer = livereload.createServer();
@@ -67,6 +76,14 @@ app.get('/profile', (req, res) => {
 
 app.use('/auth', authRoutes);
 // app.use('/setting', settings);
+app.use('/teacher', teacherRoutes);
 
+// app.get('/teacher/addCourse', (req, res) => res.render('teacher/addCourse'))
+
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404))
+})
+
+app.use(globalErrorHandler)
 
 export default app;

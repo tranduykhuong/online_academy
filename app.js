@@ -69,6 +69,11 @@ app.get('/', (req, res) => {
 app.get('/favourite', (req, res) => {
   res.render('favourite');
 });
+app.get('/viewVideo', (req, res) => {
+  res.render('viewVideo');
+});
+
+app.use('/auth', authRoutes);
 
 app.get('/profile', (req, res) => {
   res.render('profile');

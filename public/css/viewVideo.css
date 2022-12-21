@@ -28,7 +28,7 @@
 
   .watch__header-left-icon{
     color: #fff;
-    /* font-weight: 500; */
+    /* font-weight: 600; */
     font-size: 20px;
   }
 
@@ -106,7 +106,7 @@
     background-color: var(--black-color);
     position: relative;
     width: 100%;
-    height: 533px;
+    height: 535px;
     cursor: pointer;
   }
 
@@ -124,7 +124,7 @@
     background: radial-gradient(#23bbad 60%, rgba(255, 255, 255, 1) 62%);
     border-radius: 50%;
     position: relative;
-    top: -79%;
+    top: -80%;
     display: block;
     margin: 100px auto;
     box-shadow: 0px 0px 25px 3px #23bbad;
@@ -183,7 +183,6 @@
     width: 23%;
     height: 100vh;
     overflow-y: scroll;
-    /* margin-top: 50px; */
   }
 
   .watch__body-category::-webkit-scrollbar {
@@ -202,12 +201,12 @@
     font-size: 18px;
     background-color: #fff;
     z-index: 3;
-    margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   .watch__body-category-wrap-chapter {
-    /* position: sticky; */
-    /* top: 110px; */
+    position: sticky;
+    top: 110px;
     z-index: 10;
   }
 
@@ -251,12 +250,19 @@
   }
 
   .watch__body-category-lesson {
+  }
+
+  .watch__body-category-lesson {
+    padding: 12px 20px 12px 32px;
     pointer-events: all;
   }
 
   .watch__body-category-lesson--bg {
-    pointer-events: none;
     background-color: rgba(0, 255, 255, 0.4);
+    pointer-events: none;
+  }
+  .watch__body-category-lesson--auto {
+    pointer-events: auto;
   }
 
   .watch__body-category-lesson:hover {
@@ -274,6 +280,7 @@
 
   .watch__body-category-lesson-link:hover{
     text-decoration: none;
+    cursor: pointer;
   }
 
   .watch__body-category-lesson-wrap-title {

@@ -1,0 +1,296 @@
+  p{
+    margin: 0;
+  }
+  h4{
+    font-size: 16px;
+  }
+  .watch {
+  }
+
+  /* Header */
+  .watch__header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    background-color: #000;
+    color: #fff;
+    z-index: 1000;
+  }
+
+  .watch__header-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .watch__header-left-icon{
+    color: #fff;
+    /* font-weight: 600; */
+    font-size: 20px;
+  }
+
+  .watch__header-logo-title {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .watch__header-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+  }
+
+  .watch__header-title {
+    margin-left: 14px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .watch__header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .watch__header-process {
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .watch__header-process-percent {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .watch__header-lecture {
+    margin-left: 16px;
+  }
+
+  .watch__header-number-lecture {
+    font-size: 16px;
+  }
+
+  /* body */
+  .watch__body {
+    display: flex;
+  }
+  /* trình chiếu */
+  .watch__body-slideshow {
+    padding-top: 50px;
+    width: 77%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  .watch__body-slideshow::-webkit-scrollbar {
+    width: 10px;
+  }
+  .watch__body-slideshow::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .watch__body-wrap-video {
+    width: 100%;
+    background-color: #000;
+  }
+
+  .watch__body-video {
+    background-color: var(--black-color);
+    position: relative;
+    width: 100%;
+    height: 535px;
+    cursor: pointer;
+  }
+
+  .watch__body-video-frame {
+    width: 950px;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    outline: none;
+  }
+
+  .play-btn {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(#23bbad 60%, rgba(255, 255, 255, 1) 62%);
+    border-radius: 50%;
+    position: relative;
+    top: -80%;
+    display: block;
+    margin: 100px auto;
+    box-shadow: 0px 0px 25px 3px #23bbad;
+    cursor: pointer;
+  }
+
+  .play-btn--hide {
+    display: none;
+  }
+  .play-btn--show {
+    display: block;
+  }
+
+  /* triangle */
+  .play-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    transform-origin: center center;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #fff;
+    z-index: 100;
+  }
+
+  /* thông tin bài giảng */
+  .watch__body-information {
+    padding: 0 84px;
+    margin-top: 50px;
+  }
+
+  .watch__body-title {
+    margin-bottom: 12px;
+  }
+
+  .watch__body-time-update {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 50px;
+    color: #797979;
+  }
+
+  .watch__body-information p {
+    display: block;
+    margin-bottom: 24px;
+    font-size: 18px;
+    color: #797979;
+  }
+
+  /* category */
+  .watch__body-category {
+    width: 23%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .watch__body-category::-webkit-scrollbar {
+    width: 10px;
+  }
+  .watch__body-category::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .watch__body-category-heading {
+    position: sticky;
+    top: 50px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #fff;
+    z-index: 3;
+    margin-bottom: 50px;
+  }
+
+  .watch__body-category-wrap-chapter {
+    position: sticky;
+    top: 110px;
+    z-index: 10;
+  }
+
+  .watch__body-category-chapter {
+    z-index: 2;
+    background-color: #f7f8fa;
+    color: #000;
+    padding: 4px 20px;
+  }
+
+  .watch__body-category-chapter:hover {
+    background-color: #edeff1;
+    cursor: pointer;
+  }
+
+  .watch__body-category-chapter-wrap-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .watch__body-category-chapter-title {
+    margin: 0;
+  }
+
+  .watch__body-category-chapter-icon--180deg {
+    transform: rotate(180deg);
+  }
+
+  .watch__body-category-chapter-wrap-compelete {
+  }
+
+  .show {
+    display: block;
+  }
+
+  .watch__body-category-wrap-lesson {
+    background-color: #fff;
+    display: none;
+  }
+
+  .watch__body-category-lesson {
+    padding: 12px 20px 12px 32px;
+    pointer-events: all;
+  }
+
+  .watch__body-category-lesson--bg {
+    background-color: rgba(0, 255, 255, 0.4);
+    pointer-events: none;
+  }
+  .watch__body-category-lesson--auto {
+    pointer-events: auto;
+  }
+
+  .watch__body-category-lesson:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .watch__body-category-lesson-wrap-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .watch__body-category-lesson-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 6px;
+    color: #777;
+  }
+
+  .watch__body-category-lesson-title {
+    margin: 0;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .watch__body-category-lesson-icon {
+    font-size: 14px;
+  }
+
+  .watch__body-category-lesson-time {
+    font-size: 14px;
+  }

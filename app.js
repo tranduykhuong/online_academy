@@ -16,8 +16,12 @@ import connectLiveReload from "connect-livereload";
 import AppError from './utils/appError.js';
 import globalErrorHandler from './controllers/errorController.js';
 import authRoutes from './routes/authRoutes.js';
-import settings from './routes/settingRoutes.js';
+import settings from './routes/profileRoutes.js';
 import teacherRoutes from './routes/teacherRoutes.js';
+import profileRoutes from './routes/profileRoutes.js';
+import favoriteRoutes from './routes/favoriteRoutes.js';
+import viewVideoRoutes from './routes/viewVideoRoutes.js';
+import courseDetailRoutes from './routes/courseDetailRoutes.js';
 
 const limiter = rateLimit({
   max: 1000,
@@ -66,22 +70,12 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.get('/favourite', (req, res) => {
-  res.render('favourite');
-});
-app.get('/viewVideo', (req, res) => {
-  res.render('viewVideo');
-});
-
 app.use('/auth', authRoutes);
-
-app.get('/profile', (req, res) => {
-  res.render('profile');
-});
-
-app.use('/auth', authRoutes);
-// app.use('/setting', settings);
+app.use('/profile', profileRoutes);
+app.use('/favorite' , favoriteRoutes);
 app.use('/teacher', teacherRoutes);
+app.use('/viewVideo', viewVideoRoutes);
+app.use('/courseDetail', courseDetailRoutes);
 
 // app.get('/teacher/addCourse', (req, res) => res.render('teacher/addCourse'))
 

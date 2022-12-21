@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,400&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+        <link rel="stylesheet" href="/css/viewVideo.css" type="text/css">
+  </head>
+  <body>
+    <div class="watch">
+      <div class="watch__header">
+        <div class="watch__header-left">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__header-left-icon bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          {{!-- <i class="watch__header-left-icon bi bi-chevron-left"></i> --}}
+          {{!-- <i class="fa-solid fa-chevron-left"></i> --}}
+          <i class="fa fa-user " aria-hidden="true"></i>
+
+          <div class="watch__header-logo-title">
+            <img class="watch__header-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEJZgRq5x9Jzp7Ln-MU-VMLKdBrxmdHyfWgA&usqp=CAU" alt="logo" />
+            <p class="watch__header-title">Lập trình JavaScrip cơ bản</p>
+          </div>
+        </div>
+        <div class="watch__header-right">
+          <div class="watch__header-process">
+            <p class="watch__header-process-percent">49%</p>
+          </div>
+          <div class="watch__header-lecture">
+            <p class="watch__header-number-lecture">
+              <strong>133/206</strong> bài học
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="watch__body">
+        <div class="watch__body-slideshow">
+          <div class="watch__body-wrap-video">
+            <div class="watch__body-video">
+              <!-- <iframe class="watch__body-video-frame" src="https://youtube.com/embed/LpgoBaULw30" style="border:none;" frameborder="0" allowfullscreen ng-show="showvideo"></iframe> -->
+              <video
+                onclick="playVideo1()"
+                class="watch__body-video-frame"
+                id="player"
+                playsinline
+                controls
+                preload="auto"
+                poster="/Screenshot 2022-09-28 184909.png"
+              >
+                <source src="../../public/video/cachhoatdongcuathungrac.mp4" type="video/mp4" />
+                <!-- <track
+                  kind="captions"
+                  label="English captions"
+                  src="/path/to/captions.vtt"
+                  srclang="en"
+                  default
+                /> -->
+              </video>
+              <div onclick="playVideo()" class="play-btn" href="#"></div>
+            </div>
+          </div>
+          <div class="watch__body-information">
+            <h1 class="watch__body-title">Review, sửa một số lỗi</h1>
+
+            <span class="watch__body-time-update"
+              >Cập nhật tháng 2 năm 2022</span
+            >
+            <p>
+              Tham gia nhóm Học lập trình tại F8 trên Facebook để cùng nhau trao
+              đổi trong quá trình học tập ❤️
+            </p>
+            <p>
+              Các bạn subscribe kênh Youtube F8 Official để nhận thông báo khi
+              có các bài học mới nhé ❤️
+            </p>
+            <p>Made with ❤️ · Powered by F8</p>
+          </div>
+        </div>
+
+        <div class="watch__body-category">
+          <div class="watch__body-category-heading">Nội dung khóa học</div>
+          <div class="watch__body-category-wrap-chapter">
+            <section class="watch__body-category-chapter">
+              <div class="watch__body-category-chapter-wrap-title">
+                <h4 class="watch__body-category-chapter-title">
+                  1. Giới thiệu
+                </h4>
+                {{!-- <i
+                  class="watch__body-category-chapter-icon fa-solid fa-chevron-down"
+                ></i> --}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__body-category-chapter-icon bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+              <div class="watch__body-category-chapter-wrap-compelete">
+                3/3 | 07:28
+              </div>
+            </section>
+            <div class="watch__body-category-wrap-lesson" id="a">
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="watch__body-category-wrap-chapter">
+            <section class="watch__body-category-chapter">
+              <div class="watch__body-category-chapter-wrap-title">
+                <h4 class="watch__body-category-chapter-title">
+                  1. Giới thiệu
+                </h4>
+                {{!-- <i
+                  class="watch__body-category-chapter-icon fa-solid fa-chevron-down"
+                ></i> --}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__body-category-chapter-icon bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+              <div class="watch__body-category-chapter-wrap-compelete">
+                3/3 | 07:28
+              </div>
+            </section>
+            <div class="watch__body-category-wrap-lesson" id="a">
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="watch__body-category-wrap-chapter">
+            <section class="watch__body-category-chapter">
+              <div class="watch__body-category-chapter-wrap-title">
+                <h4 class="watch__body-category-chapter-title">
+                  1. Giới thiệu
+                </h4>
+                {{!-- <i
+                  class="watch__body-category-chapter-icon fa-solid fa-chevron-down"
+                ></i> --}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__body-category-chapter-icon bi bi-chevron-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+              <div class="watch__body-category-chapter-wrap-compelete">
+                3/3 | 07:28
+              </div>
+            </section>
+            <div class="watch__body-category-wrap-lesson" id="a">
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+              <div class="watch__body-category-lesson">
+                <div class="watch__body-category-lesson-wrap-title">
+                  <h4 class="watch__body-category-lesson-title">
+                    1. Lời khuyên trước khóa học
+                  </h4>
+                  <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <i
+                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                ></i>
+                <span class="watch__body-category-lesson-time">04:20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const video = document.getElementById("player");
+      const btnVideo = document.querySelector(".play-btn");
+
+      const playVideo = () => {
+        if (video.paused) {
+          video.play();
+          btnVideo.classList.remove("play-btn--show");
+          btnVideo.classList.add("play-btn--hide");
+        }
+      };
+      const playVideo1 = () => {
+        if (video.paused) {
+          btnVideo.classList.remove("play-btn--show");
+          btnVideo.classList.add("play-btn--hide");
+        } else {
+          btnVideo.classList.remove("play-btn--hide");
+          btnVideo.classList.add("play-btn--show");
+        }
+      };
+
+      const chapters = document.querySelectorAll(
+        ".watch__body-category-chapter"
+      );
+      const wrap_lessons = document.querySelectorAll(
+        ".watch__body-category-wrap-lesson"
+      );
+      const rotate = document.querySelectorAll(
+        ".watch__body-category-chapter-icon"
+      );
+      const lessons = document.querySelectorAll(".watch__body-category-lesson");
+
+      chapters.forEach((chapter, index) => {
+        chapter.onclick = () => {
+          rotate[index].classList.toggle(
+            "watch__body-category-chapter-icon--180deg"
+          );
+          if (wrap_lessons[index].style.display === "block") {
+            wrap_lessons[index].style.display = "none";
+          } else {
+            wrap_lessons[index].style.display = "block";
+            lessons.forEach((lesson, idx) => {
+              lesson.onclick = () => {
+                lesson.style.pointerEvents = "none";
+                if (idx === 0 || idx === lessons.length - 1) {
+                  lesson.classList.add("watch__body-category-lesson--bg");
+                } else {
+                  lessons[idx - 1].classList.remove(
+                    "watch__body-category-lesson--bg"
+                  );
+                  lessons[idx - 1].classList.add(
+                    "watch__body-category-lesson--auto"
+                  );
+                  lesson.classList.add("watch__body-category-lesson--bg");
+                  // lesson[lessons.length - 1 - idx].remove('watch__body-category-lesson--bg');
+                }
+              };
+            });
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

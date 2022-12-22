@@ -28,7 +28,7 @@
 
   .watch__header-left-icon{
     color: #fff;
-    /* font-weight: 600; */
+    /* font-weight: 500; */
     font-size: 20px;
   }
 
@@ -106,7 +106,7 @@
     background-color: var(--black-color);
     position: relative;
     width: 100%;
-    height: 535px;
+    height: 533px;
     cursor: pointer;
   }
 
@@ -124,7 +124,7 @@
     background: radial-gradient(#23bbad 60%, rgba(255, 255, 255, 1) 62%);
     border-radius: 50%;
     position: relative;
-    top: -80%;
+    top: -79%;
     display: block;
     margin: 100px auto;
     box-shadow: 0px 0px 25px 3px #23bbad;

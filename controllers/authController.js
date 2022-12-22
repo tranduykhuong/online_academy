@@ -44,6 +44,7 @@ export default {
      password: req.body.password,
     });
 
+<<<<<<< HEAD
     req.session.user = user;
 
     if (cookies?.jwt) {
@@ -219,3 +220,11 @@ export default {
    });
  }),
 };
+=======
+  login: catchAsync(async (req, res, next) => {
+    res.render('auth/login', {
+      layout: 'layoutEmpty'
+    })
+  })
+}
+>>>>>>> 5be8012 (merge final)

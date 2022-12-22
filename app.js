@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.use('/auth', authRoutes);
+app.use('/', authRoutes);
 app.use('/profile', profileRoutes);
 app.use('/favorite' , favoriteRoutes);
 app.use('/teacher', teacherRoutes);

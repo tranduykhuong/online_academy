@@ -18,6 +18,8 @@ export default {
   }),
 
   login: catchAsync(async (req, res, next) => {
-
+    res.render('auth/login', {
+      layout: 'layoutEmpty'
+    })
   })
 }

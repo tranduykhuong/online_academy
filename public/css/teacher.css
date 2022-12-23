@@ -1,0 +1,59 @@
+.h100p {
+  height: 100px !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.title {
+  padding: 16px;
+}
+
+.bg-black {
+  background-color: black !important;
+}
+
+.btn-add-section {
+  margin-top: 10px;
+}
+
+#customFile .custom-file-input:lang(en)::after {
+  content: "Select file...";
+}
+
+#customFile .custom-file-input:lang(en)::before {
+  content: "Click me";
+}
+
+/*when a value is selected, this class removes the content */
+.custom-file-input.selected:lang(en)::after {
+  content: "" !important;
+}
+
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-input {
+  white-space: nowrap;
+}
+
+.mw-200p {
+  max-width: 200px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.courseLink:hover {
+  color: lightseagreen !important;
+}
+
+.line-height-16 {
+  line-height: 16px;
+}
+
+.bg-lightseagreen {
+  background-color: lightseagreen !important;
+}

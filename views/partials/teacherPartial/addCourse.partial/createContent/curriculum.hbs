@@ -1,0 +1,97 @@
+<style>
+  .file-input {
+    width: 100%;
+  }
+  .file-preview {
+    border-radius: 0;
+    margin: 0;
+  }
+  .file-caption-name {
+    border-radius: 0;
+  }
+  .fileinput-upload {
+    display: none;
+  }
+  .file-drop-zone {
+    display: flex;
+    justify-content: center;
+  }
+  .btn-file {
+    border-radius: 0;
+  }
+</style>
+<script>
+  const cnt = [1, 2, 3]
+
+  function add() {
+    event.preventDefault();
+    console.log(cnt)
+    cnt.push(0);
+  }
+</script>
+
+<form>
+  <h3 class="p-5 border-bottom">Chương trình giảng dạy</h3>
+  <div class="col px-5 py-4">
+    <p class="mb-2">Bắt đầu kết hợp khóa học của bạn bằng cách tạo các phần, bài giảng và thực hành (các câu đố, bài tập
+      mã hóa và bài tập).
+    </p>
+    <p class="mb-5">Nếu bạn có ý định cung cấp khóa học của mình miễn phí, tổng thời lượng nội dung video phải dưới 2
+      giờ.
+    </p>
+
+    <div class="row">
+      <div class="col">
+        <div class="card rounded-0 border-dark">
+          <div class="input-group input-group-prepend">
+            <span class="input-group-text rounded-0 text-dark border-top-0 border-bottom-0 text-center"
+              id="basic-addon1">
+              Chương 1
+            </span>
+            <input type="text" class="form-control rounded-0 border-top-0 border-bottom-0" placeholder="Tiêu đề"
+              aria-label="title" aria-describedby="basic-addon1">
+            <button class="btn btn-light rounded-0" type="button" data-toggle="collapse" data-target=".multi-collapse"
+              aria-expanded="false" aria-controls="collapseCard">
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="card-body container multi-collapse collapse border-top border-dark" id="collapseCard">
+            <div class="card mb-2">
+              <div class="input-group">
+                <div class="input-group input-group-prepend">
+                  <span class="input-group-text rounded-0 text-dark border-bottom-0" id="basic-addon1">Bài 1</span>
+                  <input type="text" class="form-control rounded-0 border-bottom-0" placeholder="Nhập tiêu đề bài 1"
+                    aria-label="title" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                  <input type="file" width="100%" id="fuVideo" name="fuVideo">
+                </div>
+              </div>
+
+            </div>
+            <button class="btn btn-light border-dark rounded-0 pull-right ml-2">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              Thêm bài</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-light border-dark rounded-0 mt-3" onclick="add()">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Thêm chương
+        </button>
+        <button type="button" class="btn btn-outline-success rounded-0 mt-3">Đánh dấu hoàn thành khóa học</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Tiếp tục</button>
+      </div>
+    </div>
+  </div>
+
+</form>

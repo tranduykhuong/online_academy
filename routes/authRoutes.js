@@ -1,6 +1,4 @@
 import express from 'express';
-import bcrypt from 'bcryptjs';
-import moment from 'moment';
 
 import authController from '../controllers/authController.js';
 
@@ -13,9 +11,7 @@ router.route('/signup')
   .post(authController.signup)
   .delete()
 
-router.route('/login')
-  .get((req, res, next) => {
-    res.render('auth/login');
-  })
+router.route('/login') 
+  .get(authController.login);
 
 export default router;

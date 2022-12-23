@@ -1,0 +1,90 @@
+{{#section 'js'}}
+
+{{/section}}
+
+<form>
+  <h3 class="p-5 border-bottom">Thông tin khóa học</h3>
+  <div class="col px-5 py-4">
+
+    <div class="form-group">
+      <label for="validationNameCourse" class="font-weight-bolder">Tên khóa học</label>
+      <input type="text" class="form-control border-dark p-4 rounded-0" id="validationNameCourse"
+        placeholder="Nhập tên khóa học" required>
+      <div class="invalid-feedback">
+        Vui lòng nhập tên khóa học!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="shortDescription" class="font-weight-bolder">Mô tả ngắn gọn</label>
+      <textarea class="h100p w100 form-control border-dark p-4 rounded-0" id="shortDescription"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="" class="font-weight-bolder">Mô tả chi tiết</label>
+      <textarea class="border-dark p-4 rounded-0" id="myTextarea"></textarea>
+    </div>
+
+    <div class="form-group row">
+      <div class="form-group col">
+        <label for="tuition" class="font-weight-bolder">Chọn level</label>
+        <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="promotionTuition" class="font-weight-bolder">Chọn Category</label>
+        <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="font-weight-bolder">Ảnh khóa học</label>
+      <div class="row">
+        <div class="col-6">
+          <img class="w-100 h-100"
+            src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg"
+            alt="">
+        </div>
+        <div class="col-6">
+          <p>Tải lên hình ảnh khóa học của bạn ở đây. Nó phải đáp ứng các tiêu chuẩn chất lượng hình ảnh khóa học của
+            chúng tôi để được chấp nhận. Hướng dẫn quan trọng: <strong>750x422 pixel; .jpg, .jpeg hoặc .png</strong>.
+            Không có văn
+            bản trên hình ảnh.</p>
+          <div class="custom-file border-dark rounded-0">
+            <input type="file" class="custom-file-input border-dark rounded-0" id="inputGroupFile01">
+            <label class="custom-file-label border-dark rounded-0" for="inputGroupFile01">Choose file</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="font-weight-bolder">Video demo khóa học</label>
+      <div class="row">
+        <div class="col-6">
+          <img class="w-100 h-100"
+            src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg"
+            alt="">
+        </div>
+        <div class="col-6">
+          <p>Học sinh xem video quảng cáo được làm tốt có khả năng đăng ký khóa học của bạn hơn 5 lần. Chúng tôi đã thấy
+            rằng thống kê lên tới 10 lần cho các video đặc biệt tuyệt vời.</p>
+          <div class="custom-file border-dark rounded-0">
+            <input type="file" class="custom-file-input border-dark rounded-0" id="inputGroupFile01">
+            <label class="custom-file-label border-dark rounded-0" for="inputGroupFile01">Choose file</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Tiếp tục</button>
+  </div>
+</form>

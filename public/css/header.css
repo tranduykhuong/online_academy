@@ -40,9 +40,22 @@ header {
     display: flex;
   }
 
+  .header-left__item .header-left__item--link{
+    text-decoration: none;
+  }
+
+  .header-left__item--link .left-item--title{
+    font-size: 18.72px;
+    margin-bottom: 0;
+  }
+
   .header-left__item:first-child {
     width: 30%;
     flex: 1;
+  }
+
+  .icon__category{
+   font-size: 18.72px !important;
   }
 
   .header-left__item:nth-child(2) {
@@ -96,7 +109,7 @@ header {
   }
 
   .category__option-option--level1 {
-    width: 80%;
+    width: 96%;
     font-size: 19px;
     height: 35px;
     display: flex;
@@ -133,9 +146,9 @@ header {
     padding-left: 0;
     z-index: 1;
     top: -2%;
-    right: -160%;
+    right: -157%;
     background-color: rgb(255, 255, 255);
-    width: 250px;
+    width: 261px;
     list-style: none;
     border: 1px solid black;
     display: none;
@@ -155,7 +168,7 @@ header {
     align-items: center;
     display: flex;
     height: 35px;
-    width: 85%;
+    width: 97%;
     justify-content: space-between;
   }
 
@@ -194,22 +207,22 @@ header {
 
   .option__level2-item:nth-child(1)::after {
     content: "";
-    border-width: 17px 13px;
+    border-width: 18px 16px;
     border-style: solid;
     border-color: transparent transparent transparent transparent;
     position: absolute;
-    right: -29px;
-    top: 0;
+    right: -28px;
+    top: -1px;
   }
 
   .option__level2-item:nth-child(2)::after {
     content: "";
-    border-width: 17px 13px;
+    border-width: 18px 16px;
     border-style: solid;
     border-color: transparent transparent transparent transparent;
     position: absolute;
-    right: -27px;
-    top: 2px;
+    right: -28px;
+    top: 0;
   }
 
   .category__option-option--level3 {
@@ -217,7 +230,7 @@ header {
     padding-left: 0;
     z-index: 1;
     top: -3%;
-    right: -92%;
+    right: -82%;
     background-color: rgb(255, 255, 255);
     width: 200px;
     list-style: none;
@@ -230,7 +243,7 @@ header {
     padding-left: 0;
     z-index: 1;
     top: -103%;
-    right: -92%;
+    right: -82%;
     background-color: rgb(255, 255, 255);
     width: 200px;
     list-style: none;
@@ -253,13 +266,24 @@ header {
     width: 85%;
   }
 
-  .option-link {
+  .option__level3-item .option-link {
     text-decoration: none;
     color: black;
+    font-size: 17.1px;
+    padding-left: 0 !important;
   }
 
-  .option__level3-item:hover a {
+  .option__level3-item:hover .option-link {
     color: green;
+  }
+
+  .category__option .category__option-span{
+    font-size: 19px;
+    font-weight: 400;
+  }
+
+  .category__option .category__option-h4{
+    font-size: 19px;
   }
 
   .search-blank {
@@ -312,6 +336,14 @@ header {
     height: 100%;
     justify-content: end;
     display: flex;
+  }
+
+  .header-right__item .left-item--title{
+    font-size: 18.72px;
+  }
+
+  .my-courses .icon__right{
+    font-size: 18.72px !important;
   }
 
   .header-right__item:nth-child(2) {
@@ -487,10 +519,10 @@ header {
     padding-left: 0;
     z-index: 1;
     top: 91%;
-    right: 26%;
+    right: 5%;
     background-color: rgb(255, 255, 255);
     border-radius: 2px;
-    width: 220px;
+    width: 244px;
     list-style: none;
     box-shadow: -6px 9px 10px #c7c4c4;
     border-right: 1px solid gray;
@@ -503,7 +535,7 @@ header {
     border-style: solid;
     border-color: transparent;
     position: absolute;
-    right: 22px;
+    right: 57px;
     top: -15px;
     background-color: transparent;
   }
@@ -520,16 +552,15 @@ header {
     width: 55px;
     height: 55px;
     display: block;
-    margin-right: 20px;
+    margin-right: 35px;
     padding-left: 15px;
     padding-top: 10px;
   }
 
-  .heading__logo img {
+  .heading__logo .logo__title {
     border-radius: 100%;
-    display: block;
-    width: 100%;
-    height: 100%;
+    width: 55px;
+    height: 55px;
   }
 
   .blank {
@@ -540,8 +571,10 @@ header {
     margin: 0 auto;
   }
 
-  .heading__text h3 {
+  .heading__text .heading__text-title {
     font-weight: 600;
+    margin-bottom: 0;
+    font-size: 19px !important;
   }
 
   .list__option-choice {
@@ -550,7 +583,7 @@ header {
     height: 100%;
   }
 
-  .list__option-choice ul {
+  .list__option-choice .list-kk {
     margin-top: 9px;
     list-style: none;
     padding: 0;
@@ -562,7 +595,7 @@ header {
     display: flex;
     width: 100%;
     height: 40px;
-    padding-left: 25px;
+    padding-left: 0;
     align-items: center;
   }
 
@@ -578,23 +611,25 @@ header {
     color: green;
   }
 
-  .list__option-link {
+  .list__option-item .list__option-link {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
     text-decoration: none;
+    padding-left: 30px;
   }
 
   .list__option-link i {
     color: #212121;
     margin-right: 15px;
+    margin-bottom: 5px;
   }
 
-  .list__option-link span {
+  .list__option-link .item__span {
     font-size: 18px;
     color: black;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .tmp-icon {

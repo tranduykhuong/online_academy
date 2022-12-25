@@ -408,9 +408,9 @@ ul ul a {
 /* Content course */
 
 .content__course {
-    width: 22%;
-    position: fixed;
-    top: 60px;
+    width: 21%;
+    position: absolute;
+    top: 75px;
     right: 100px;
     background-color: white;
     box-shadow: 0 8px 8px 0 rgba(103, 151, 255, .11), 0 12px 18px 0 rgba(103, 151, 255, .11);

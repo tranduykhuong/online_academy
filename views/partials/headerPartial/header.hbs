@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/header.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <body>
     <header>
       <div class="header-container">
@@ -6,32 +7,32 @@
           <ul>
             <li class="header-left__item">
               <div class="header-logo__container">
-                <img src="./images/LogoApp.png" alt="" class="logo-img" />
+                <img src="/img/logo.png" alt="" class="logo-img" />
               </div>
             </li>
             <li class="header-left__item">
-              <i class="fa-solid fa-bars icon__item icon__category"></i>
+              <i class="bi bi-list icon__item icon__category"></i>
               <a href="" class="header-left__item--link">
-                <h3>Danh mục</h3>
+                <h3 class="left-item--title">Danh mục</h3>
               </a>
-              <i class="fa-solid fa-caret-down icon__item icon__category"></i>
+              <i class="bi bi-caret-down-fill icon__item icon__category"></i>
 
               <div class="category__option">
                 <div class="category__option-option--level1">
-                  <span>IT</span>
-                  <i class="fa-solid fa-caret-right icon_lv1"></i>
+                  <span class="category__option-span">IT</span>
+                  <i class="bi bi-caret-right-fill icon_lv1"></i>
                   <!-- Level 2 Option -->
                   <div class="category__option-option--level2">
                     <ul>
                       <li class="option__level2-item">
-                        <span>Lập trình Web</span>
-                        <i class="fa-solid fa-caret-right icon_lv2"></i>
+                        <span class="category__option-span">Lập trình Web</span>
+                        <i class="bi bi-caret-right-fill icon_lv2"></i>
 
-                        <!-- Level 3 Option -1 -->
+                        <!-- Level 3 Option -1 -->  
                         <div class="category__option-option--level3">
-                          <ul>
+                          <ul option__ul>
                             <li class="option__level3-item">
-                              <h4>Popular topics</h4>
+                              <h4 class="category__option-h4">Popular topics</h4>
                             </li>
                             <li class="option__level3-item">
                               <a href="" class="option-link"> ReactJS </a>
@@ -47,13 +48,13 @@
                       </li>
 
                       <li class="option__level2-item">
-                        <span>Lập trình ứng di động</span>
-                        <i class="fa-solid fa-caret-right icon_lv2"></i>
+                        <span class="category__option-span">Lập trình ứng di động</span>
+                        <i class="bi bi-caret-right-fill icon_lv2"></i>
                         <!-- Level 3 Option -2 -->
                         <div class="category__option-option--level31">
-                          <ul>
+                          <ul class="option__ul">
                             <li class="option__level3-item">
-                              <h4>Popular topics</h4>
+                              <h4 class="category__option-h4">Popular topics</h4>
                             </li>
                             <li class="option__level3-item">
                               <a href="" class="option-link"> Android </a>
@@ -74,7 +75,7 @@
             </li>
             <li class="header-left__item">
               <div class="search-blank">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="bi bi-search"></i>
                 <input type="text" placeholder="Tìm kiếm khóa học" />
               </div>
             </li>
@@ -84,55 +85,55 @@
           <ul>
             <li class="header-right__item">
               <div class="my-courses">
-                <i class="fa-solid fa-play"></i>
-                <h3>Khóa học của tôi</h3>
+                <i class="bi bi-play-fill icon__category" ></i>
+                <h3 class="left-item--title">Khóa học của tôi</h3>
               </div>
             </li>
             <li class="header-right__item">
               <a href="" class="header-right__link">
-                <i class="fa-solid fa-cart-shopping icon__right"></i>
+                <i class="bi bi-cart-fill icon__right"></i>
               </a>
             </li>
             <li class="header-right__item">
               <div class="header-right__avatar header-right__user">
-                <img src="./images/meome.jpg" alt="" class="avatar" />
+                <img src="/img/meome.jpg" alt="" class="avatar" />
 
                 <div class="list__option">
                   <div class="list__option-heading">
                     <div class="heading__logo">
-                      <img src="./images/meome.jpg" alt="" />
+                      <img src="/img/meome.jpg" alt="" class="logo__title"/>
                     </div>
                     <div class="heading__text">
-                      <h3>AndyKoi</h3>
+                      <h3 class="heading__text-title">AndyKoi</h3>
                     </div>
                   </div>
                   <div class="blank"></div>
                   <div class="list__option-choice">
-                    <ul>
+                    <ul class="list-kk">
                       <li class="list__option-item">
                         <a href="" class="list__option-link">
-                          <i class="fa-solid fa-user tmp-icon"></i>
-                          <span>Thông tin cá nhân</span>
+                          <i class="bi bi-person-circle tmp-icon"></i>
+                          <span class="item__span">Thông tin cá nhân</span>
                         </a>
                       </li>
                       <li class="list__option-item">
                         <a href="" class="list__option-link">
-                          <i class="fa-solid fa-heart tmp-icon"></i>
-                          <span>Danh sách yêu thích</span>
+                          <i class="bi bi-heart-fill tmp-icon"></i>
+                          <span class="item__span">Danh sách yêu thích</span>
                         </a>
                       </li>
                       <li class="list__option-item">
                         <a href="" class="list__option-link">
-                          <i class="fa-solid fa-person-chalkboard tmp-icon"></i>
-                          <span>Trở thành giảng viên</span>
+                          <i class="bi bi-person-video3 tmp-icon"></i>
+                          <span class="item__span">Trở thành giảng viên</span>
                         </a>
                       </li>
                       <li class="list__option-item">
                         <a href="" class="list__option-link">
                           <i
-                            class="fa-solid fa-right-from-bracket tmp-icon"
+                            class="bi bi-box-arrow-right tmp-icon"
                           ></i>
-                          <span>Đăng xuất</span>
+                          <span class="item__span">Đăng xuất</span>
                         </a>
                       </li>
                     </ul>

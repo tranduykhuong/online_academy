@@ -1,52 +1,731 @@
-<div class="card">
-  <h4 class="card-header">
-    Home
-  </h4>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-  <nav aria-label="...">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <span class="page-link">Previous</span>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active" aria-current="page">
-        <span class="page-link">2</span>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="card-footer text-muted">
-    2 days ago
+
+
+{{!-- <link rel="stylesheet" href="/css/home.css" type="text/css">
+<div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="..." alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Third slide">
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+  <div class="container">
+    <div class="qualitysoure">
+      <h1 class="title">Khóa học chất lượng cao được sản xuất bởi Edumall</h1>
+      <p class="content">Những khóa học được Edumall sản xuất theo tiêu chuẩn chất lượng cao đối với học tập trực tuyến dựa trên ba trụ cột: Học liệu chất lượng quốc tế; Giảng viên & chuyên gia chất lượng cao, uy tín, kinh nghiệm; Mô hình học tập đa tương tác & định hướng kết quả đầu ra được tích hợp công nghệ giáo dục tiên tiến, cập nhật nhất.</p>
+      <div class="listcarditem">
+        <p class="directionalleft">
+          0
+        </p>
+        <div class="carditem">
+            <h2 id="1">adasasd asasd</h2>
+        </div>
+         <div class="carditem">
+            <h2 id="1">adasasd asasd</h2>
+        </div>
+         <div class="carditem">
+            <h2 id="1">adasasd asasd</h2>
+        </div>
+         <div class="carditem">
+            <h2 id="1">adasasd asasd</h2>
+        </div>
+        <p class="directionalright">
+          1
+        </p>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Detail</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./font/fontawesome-free-6.2.0-web/css/all.min.css">
+  <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/courseDetail.css" type="text/css">
+  <link rel="stylesheet" href="/css/home.css" type="text/css">
+</head>
+<body>
+
+  <div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner  Husky" style="height: 408px; background-size: 100% 100% !important;">
+        <div class="carousel-item  active">
+          <img class="d-block w-100 h-50 "
+            src="https://cdn2.topica.vn/b92eed95-8a0f-4ba6-bc37-aaa9205437f5/product/63897d7aaf47c60040e48e98"
+            alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 h-50"
+            src="https://cdn2.topica.vn/b92eed95-8a0f-4ba6-bc37-aaa9205437f5/product/63897fd8af47c60040e48ea3"
+            alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 h-50"
+            src="https://cdn2.topica.vn/b92eed95-8a0f-4ba6-bc37-aaa9205437f5/product/63898019af47c60040e48ea7"
+            alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div class="qualitysoure">
+      <h1 class="title">Khóa học chất lượng cao được sản xuất bởi Edumall</h1>
+      <p class="content">Những khóa học được Edumall sản xuất theo tiêu chuẩn chất lượng cao đối với học tập trực tuyến
+        dựa trên ba trụ cột: Học liệu chất lượng quốc tế; Giảng viên & chuyên gia chất lượng cao, uy tín, kinh nghiệm;
+        Mô
+        hình học tập đa tương tác & định hướng kết quả đầu ra được tích hợp công nghệ giáo dục tiên tiến, cập nhật nhất.
+      </p>
+      <div class="listcarditem">
+        <div id="heading6" class="content__learn" style="max-width: 1200px;">
+            <div class="content__learn_fix course__content">
+                {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
+                <div class="relative__courses">
+                    <div class="mt-4">
+                        <div class="row-1">
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">21,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">275.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/anh-meo-cute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">3.723 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Trần Duy Khương</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">765.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/chocute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">7,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Nguyễn Tấn Lộc</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">145.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="blankitem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+
+    </div>
+
+
+    <div class="qualitysoure">
+      <h1 class="title">Khóa học nổi bật</h1>
+      <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay
+      </p>
+      <div class="listcarditem">
+        <div id="heading6" class="content__learn" style="max-width: 1200px;">
+            <div class="content__learn_fix course__content">
+                {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
+                <div class="relative__courses">
+                    <div class="mt-4">
+                        <div class="row-1">
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">21,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">275.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/anh-meo-cute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">3.723 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Trần Duy Khương</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">765.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/chocute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">7,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Nguyễn Tấn Lộc</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">145.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                            <div class="blankitem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+
+    </div>
+     <div class="qualitysoure">
+      <h1 class="title">Khóa học Mới nhất</h1>
+      <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay
+      </p>
+      <div class="listcarditem">
+        <div id="heading6" class="content__learn" style="max-width: 1200px;">
+            <div class="content__learn_fix course__content">
+                {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
+                <div class="relative__courses">
+                    <div class="mt-4">
+                        <div class="row-1">
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">21,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">275.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/anh-meo-cute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">3.723 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Trần Duy Khương</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">765.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/chocute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">7,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Nguyễn Tấn Lộc</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">145.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="blankitem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+
+    </div>
+     <div class="qualitysoure">
+      <h1 class="title">Các khóa được mua nhiều nhất tuần qua</h1>
+      <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay
+      </p>
+      <div class="listcarditem">
+        <div id="heading6" class="content__learn" style="max-width: 1200px;">
+            <div class="content__learn_fix course__content">
+                {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
+                <div class="relative__courses">
+                    <div class="mt-4">
+                        <div class="row-1">
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">21,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">275.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/anh-meo-cute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">3.723 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Trần Duy Khương</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">765.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/chocute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">7,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Nguyễn Tấn Lộc</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">145.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="blankitem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+
+    </div>
+     <div class="qualitysoure">
+      <h1 class="title">Tiếng Anh toàn diện</h1>
+      <p class="content">Các khóa tiếng Anh hiệu quả nhất
+      </p>
+      <div class="listcarditem">
+        <div id="heading6" class="content__learn" style="max-width: 1200px;">
+            <div class="content__learn_fix course__content">
+                {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
+                <div class="relative__courses">
+                    <div class="mt-4">
+                        <div class="row-1">
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">21,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">275.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/anh-meo-cute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">3.723 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Trần Duy Khương</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">765.000đ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
+                                <div class='card rounded-lg'>
+                                    <img class='card-img-top rounded-lg'
+                                        src='./images/chocute.jpg' alt='Card image cap' />
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
+                                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
+                                            cung cấp:
+                                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
+                                            liệu, in ấn, đóng gói...)
+                                        </p>
+                                        <div class="student-rating">
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p class="total-student">7,779 students</p>
+                                        </div>
+                
+                                        <p class="author-name">Nguyễn Tấn Lộc</p>
+                                        <div class="contain-outstanding">
+                                            <a href='#' class='btn btn-primary'>Đăng kí</a>
+                                            <div>
+                                                <p class="outstanding">145.000đ </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="blankitem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      
+
+    </div>
+  </div>
+    
+  </div>
+  </div>
+
+  </div>
+  <script>
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

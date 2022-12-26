@@ -1,0 +1,57 @@
+.container {
+    max-width: 97rem;
+    color: #333333;
+    
+}
+.qualitysoure {
+
+}
+.title {
+    /* color: brown; */
+    margin-top: 3rem;
+    color: black;
+    font-size: 28px;
+    font-style: normal;
+    text-align: left;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0px;
+}
+.content {
+    color: #333333;
+}
+.listcarditem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.directionalleft {
+    width: 2rem;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    height: 2rem;
+    text-align: center;
+    /* position: relative; */
+}
+.directionalright {
+    width: 2rem;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    height: 2rem;
+    text-align: center;
+    /* position: relative; */
+    /* right: 2rem; */
+    right: 0;
+}
+.carditem {
+    width: 18rem;
+    height: 22rem;
+    background: aqua;
+    border-radius: 2rem;
+    padding: 0 2rem;
+    /* justify-content: space-between; */
+}

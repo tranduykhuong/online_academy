@@ -9,46 +9,44 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Name must not empty"],
       minlength: 3,
       maxlength: 50,
-      trim: true,
+      trim: true
     },
     email: {
       type: String,
       required: [true, "Email must not empty"],
       match: [
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "Email does not exist",
+        "Please provide a valid email!",
       ],
       unique: true,
-      trim: true,
+      trim: true
     },
     password: {
       type: String,
-      required: [true, "Password must not empty"],
-      minlength: 6,
-      trim: true,
+      required: [true, "Password must not empty"]
     },
     gender: {
       type: String,
       enum: ["nam", "nữ"],
-      default: "nam",
+      default: "nam"
     },
-    permission: {
+    role: {
       type: String,
       enum: ["student", "teacher", "admin"],
-      default: "student",
+      default: "student"
     },
-    favoritecourseList: {
-        type: Array,
-        default: [],
-      },
-    courseList: {
-      type: Array,
-      default: [],
-    },
+    favoriteCourses: [
+      type: mongoose.Types.ObjectId,
+      ref: 'course'
+    ],
     image: {
       type: String,
-      default: "",
+      default: ""
     },
+    active: {
+      type: Boolean,
+      default: true
+    }
   },
   { timestamps: true }
 );

@@ -2,6 +2,7 @@
 
 {{/section}}
 
+<<<<<<< HEAD
 <div class="">
   <div class="col col-md-3 col-sm-4 p-0 position-fixed">
     <h5 class="mt-5">Kế hoạch khóa học</h5>
@@ -11,16 +12,34 @@
           {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
+=======
+<div class="row">
+  <div class="col col-md-3 col-sm-4 p-0">
+    <h5 class="mt-5">Kế hoạch khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+>>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Mục tiêu khóa học
         </a>
       </li>
       <li class="my-3">
+<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
+=======
+        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+>>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Cấu trúc khóa học
@@ -31,30 +50,51 @@
     <h5 class="mt-5">Tạo khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
+<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step3}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
+=======
+        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+>>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Thông tin khóa học
         </a>
       </li>
       <li class="my-3">
+<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step4}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
+=======
+        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+>>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Chương trình giảng dạy
         </a>
       </li>
       <li class="my-3">
+<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step5}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
+=======
+        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+>>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Học phí
@@ -62,15 +102,24 @@
       </li>
     </ul>
 
+<<<<<<< HEAD
     <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+=======
+    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+>>>>>>> 58d249f (handle: create course (teacher))
       aria-pressed="true">
       Đăng khóa học
     </button>
   </div>
 
+<<<<<<< HEAD
   <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
     width: auto !important;">
     <form id="pricingForm" class="needs-validation" novalidate method="post">
+=======
+  <div class="col shadow pb-3 px-0 mb-5">
+    <form action="" method="post">
+>>>>>>> 58d249f (handle: create course (teacher))
       <h3 class="p-5 border-bottom">Học phí khóa học</h3>
       <div class="col px-5 py-4">
         <p class="mb-2">Vui lòng chọn tầng giá cho khóa học của bạn dưới đây và nhấp vào 'Lưu'.</p>
@@ -81,7 +130,11 @@
           <div class="form-group col">
             <label for="price" class="font-weight-bolder">Học phí</label>
             <div class="input-group mb-3">
+<<<<<<< HEAD
               <input type="text" class="form-control border-dark rounded-0 number" placeholder="Nhập học phí" required
+=======
+              <input type="text" class="form-control border-dark rounded-0 number" placeholder="Nhập học phí"
+>>>>>>> 58d249f (handle: create course (teacher))
                 aria-label="Nhập học phí" aria-describedby="basic-addon2" id="price" name="price" value={{price}}>
               <div class="input-group-append">
                 <select class="custom-select border-dark rounded-0" id="inputGroupSelect01">
@@ -91,7 +144,11 @@
               </div>
             </div>
             <div class="invalid-feedback">
+<<<<<<< HEAD
               Vui lòng nhập học phí khóa học!
+=======
+              Vui lòng nhập học phí!
+>>>>>>> 58d249f (handle: create course (teacher))
             </div>
           </div>
 
@@ -116,10 +173,14 @@
           <textarea class="h100p w100 form-control border-dark rounded-0" id="descriptionDiscount"
             name="descriptionDiscount">{{descriptionDiscount}}</textarea>
         </div>
+<<<<<<< HEAD
 
         <div style="text-align: right;">
           <button class="btn btn-primary btn-lg bg-lightseagreen" type="submit">Save</button>
         </div>
+=======
+        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
+>>>>>>> 58d249f (handle: create course (teacher))
       </div>
     </form>
   </div>

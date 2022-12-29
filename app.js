@@ -1,4 +1,6 @@
 import express from 'express';
+import session from 'express-session';
+import flash from 'connect-flash';
 import rateLimit from 'express-rate-limit';
 import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
@@ -64,6 +66,18 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
+
+app.set('trust proxy', 1) // trust first proxy
+  app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      // secure: true
+    }
+  }))
+
+app.use(flash());
 
 // ROUTES
 app.get('/', (req, res) => {

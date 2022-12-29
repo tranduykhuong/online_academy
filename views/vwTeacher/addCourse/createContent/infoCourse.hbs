@@ -1,0 +1,179 @@
+{{#section 'js'}}
+<script>
+  $('#fuImage').fileinput({
+    theme: 'fa4',
+    allowedFileExtensions: ['png', 'jpg'],
+    uploadAsync: true,
+    reversePreviewOrder: true,
+    initialPreviewAsData: true,
+    overwriteInitial: true,
+    initialPreview: "{{image}}",
+  });
+  $('#fuVideo').fileinput({
+    theme: 'fa4',
+    allowedFileExtensions: ['mp4'],
+    uploadAsync: true,
+    reversePreviewOrder: true,
+    initialPreviewAsData: true,
+    overwriteInitial: true,
+    initialPreview: "{{videoDemo}}",
+    initialPreviewConfig: [{
+      type: "video",
+      filetype: "video/mp4",
+      downloadUrl: "{{videoDemo}}"
+    }]
+  });
+</script>
+{{/section}}
+
+<div class="row">
+  <div class="col col-md-3 col-sm-4 p-0">
+    <h5 class="mt-5">Kế hoạch khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Mục tiêu khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Cấu trúc khóa học
+        </a>
+      </li>
+    </ul>
+
+    <h5 class="mt-5">Tạo khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Thông tin khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Chương trình giảng dạy
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Học phí
+        </a>
+      </li>
+    </ul>
+
+    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+      aria-pressed="true">
+      Đăng khóa học
+    </button>
+  </div>
+
+  <div class="col shadow pb-3 px-0 mb-5">
+    <form method="post" enctype="multipart/form-data">
+      <h3 class="p-5 border-bottom">Thông tin khóa học</h3>
+      <div class="col px-5 py-4">
+
+        <div class="form-group">
+          <label for="validationNameCourse" class="font-weight-bolder">Tên khóa học</label>
+          <input type="text" class="form-control border-dark p-4 rounded-0" id="validationNameCourse" name="name"
+            placeholder="Nhập tên khóa học" value="{{name}}">
+          <div class="invalid-feedback">
+            Vui lòng nhập tên khóa học!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="shortDescription" class="font-weight-bolder">Mô tả ngắn gọn</label>
+          <textarea class="h100p w100 form-control border-dark p-4 rounded-0" name="summary"
+            id="shortDescription">{{summary}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="" class="font-weight-bolder">Mô tả chi tiết</label>
+          <textarea class="border-dark p-4 rounded-0" name="description" id="myTextarea">{{description}}</textarea>
+        </div>
+
+        <div class="form-group row">
+          <div class="form-group col">
+            <label for="tuition" class="font-weight-bolder">Chọn Category</label>
+            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="category">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group col">
+            <label for="promotionTuition" class="font-weight-bolder">Chọn Field</label>
+            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="field">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="font-weight-bolder">Ảnh khóa học</label>
+          <div class="row">
+            <div class="col-7">
+              <div class="input-group">
+                <input type="file" width="100%" id="fuImage" class="fuImage" name="image">
+              </div>
+            </div>
+            <div class="col-5">
+              <p>Tải lên hình ảnh khóa học của bạn ở đây. Nó phải đáp ứng các tiêu chuẩn chất lượng hình ảnh khóa học
+                của
+                chúng tôi để được chấp nhận. Hướng dẫn quan trọng: <strong>750x422 pixel; .jpg, .jpeg hoặc
+                  .png</strong>.
+                Không có văn
+                bản trên hình ảnh.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="font-weight-bolder">Video demo khóa học</label>
+          <div class="row">
+            <div class="col-7">
+              <div class="input-group">
+                <input type="file" width="100%" id="fuVideo" class="fuVideo" name="videoDemo">
+              </div>
+            </div>
+            <div class="col-5">
+              <p>Học sinh xem video quảng cáo được làm tốt có khả năng đăng ký khóa học của bạn hơn 5 lần. Chúng tôi đã
+                thấy
+                rằng thống kê lên tới 10 lần cho các video đặc biệt tuyệt vời.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

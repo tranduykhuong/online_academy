@@ -10,11 +10,19 @@ const CourseSchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
-    briefDescription: {
+    summary: {
       type: String,
       trim: true,
     },
-    detailDescription: {
+    description: {
+      type: String,
+      trim: true,
+    },
+    benifits: {
+      type: String,
+      trim: true,
+    },
+    who: {
       type: String,
       trim: true,
     },
@@ -40,49 +48,68 @@ const CourseSchema = new mongoose.Schema(
           required: [true, "Chapter title must not be empty"],
           trim: true,
         },
+        chapter: Number,
         listVideo: [
           {
+            chapter: Number,
+            lession: Number,
             name: {
               type: String,
               trim: true,
-              unique: true,
             },
             urlVideo: {
               type: String,
-              default: "./default.mp4",
             },
             avtVideo: {
               type: String,
-              default: "./default.png",
             }
           }
         ]
       }
     ],
-    ratingList: {
-      type: Array,
-      default: [],
-    },
-    ratingTotal: {
+    ratingsAverage: {
       type: Number,
-      default: 0,
+      default: 4.5,
+      min: [1, 'Rating must be above 1.0'],
+      max: [5, 'Rating must be below 5.0'],
+      set: val => Math.round(val * 10) / 10,
     },
     price: {
       type: Number,
       required: [true, "Please provide price of Course"],
     },
-    middlecategory: {
+    priceDiscount: {
+      type: Number,
+      validate: {
+        validator: function(val) {
+          // this only points to current doc in NEW document creation
+          return val < this.price; 
+        },
+        message: 'Discount price {{VALUE}} should be below regular price'
+      }
+    },
+    descriptionDiscount: String,
+    field: {
       type: mongoose.Types.ObjectId,
-      ref: "MiddleCategory",
-      required: [true, "Category must not be empty"],
+      ref: "field",
+      // required: [true, "Field must not be empty"],
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: [true, "Provider must not be empty"],
+      ref: "user",
+      // required: [true, "Provider must not be empty"],
     },
+    fieldsVideo: [
+      {
+        name: String,
+        maxCount: Number
+      }
+    ],
   },
-  { timestamps: true }
+  { 
+    timestamps: true,
+    toObject: { virtuals: true } 
+  }
 ); // timestamps -> key createdAt, updatedAt
 
 export default mongoose.model("Course", CourseSchema);

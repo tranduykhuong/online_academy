@@ -8,7 +8,7 @@ const ReviewSchema = new mongoose.Schema(
     }, 
     course: {
         type: mongoose.Types.ObjectId,
-        ref: 'courses'
+        ref: 'course'
     },
     comment:{
         type: String,
@@ -19,10 +19,8 @@ const ReviewSchema = new mongoose.Schema(
     } ,
     rating: {
         type: Number,
-        default: 0,
-        min: [0, "Rating must be above 0.0"],
-        max: [5, "Rating must be below 5.0"],
-        set: (val) => Math.round(val * 10) / 10,
+        min: [0, "Rating must be above 0"],
+        max: [5, "Rating must be below 5"]
     }
   },
   { timestamps: true }

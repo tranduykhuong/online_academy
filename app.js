@@ -209,6 +209,9 @@ app.use('/home', homeRouter);
 //Admin
 app.use('/adCategorySideBar', adCategorySideBar);
 
+//Admin
+app.use('/adCategorySideBar', adCategorySideBar);
+
 // app.get('/teacher/addCourse', (req, res) => res.render('teacher/addCourse'))
 
 app.all('*', (req, res, next) => {

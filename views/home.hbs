@@ -19,11 +19,11 @@
       <img class="d-block w-100" src="..." alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button class="button__navSub"" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button class="button__navSub"" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -67,7 +67,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./font/fontawesome-free-6.2.0-web/css/all.min.css">
   <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/courseDetail.css" type="text/css">
+  {{!-- <link rel="stylesheet" href="/css/courseDetail.css" type="text/css"> --}}
   <link rel="stylesheet" href="/css/home.css" type="text/css">
 </head>
 <body>
@@ -96,11 +96,11 @@
             alt="Third slide">
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button class="button__navSub"" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button class="button__navSub"" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -124,6 +124,8 @@
                                     <img class='card-img-top rounded-lg'
                                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f26844d19e002406a7ad" class="image_small">
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -157,6 +159,8 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/anh-meo-cute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f41244d19e002406a7b3" class="image_small">
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -192,6 +196,8 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/chocute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f26844d19e002406a7ad" class="image_small">
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -233,8 +239,30 @@
 
     <div class="qualitysoure">
       <h1 class="title">Khóa học nổi bật</h1>
-      <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay
-      </p>
+      <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay</p>
+      <div class="navSub">
+            <button class="button__navSub">
+                Tất cả
+            </button class="button__navSub">
+            <button class="button__navSub">
+                Lập trình - CNTT
+            </button class="button__navSub">
+            <button class="button__navSub">
+                Ngoại ngữ
+            </button class="button__navSub">
+            <button class="button__navSub">
+                Phát triển bản thân
+            </button class="button__navSub">
+            <button class="button__navSub">
+                Thiết kế
+            </button class="button__navSub">
+            <button class="button__navSub">
+                Công cụ tin học văn phòng
+            </button class="button__navSub">
+            <div class="navSub_Border"></div>
+        </div>
+            
+    </div>
       <div class="listcarditem">
         <div id="heading6" class="content__learn" style="max-width: 1200px;">
             <div class="content__learn_fix course__content">
@@ -247,6 +275,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -281,6 +310,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/anh-meo-cute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -314,6 +344,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/chocute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -349,10 +380,7 @@
                 </div>
             </div>
       </div>
-      
-
-    </div>
-     <div class="qualitysoure">
+           <div class="qualitysoure">
       <h1 class="title">Khóa học Mới nhất</h1>
       <p class="content">Khám phá các kỹ năng được tìm kiếm nhiều nhất/hàng đầu trong tuần này và bắt đầu việc học của bạn ngay hôm nay
       </p>
@@ -368,6 +396,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -401,6 +430,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/anh-meo-cute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -434,6 +464,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/chocute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -487,6 +518,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -520,6 +552,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/anh-meo-cute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -553,6 +586,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/chocute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -606,6 +640,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -639,6 +674,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/anh-meo-cute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Bé màu cute siêu cấp pro đỉnh cao dẻ trời</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -672,6 +708,7 @@
                                     <img class='card-img-top rounded-lg'
                                         src='./images/chocute.jpg' alt='Card image cap' />
                                     <div class='card-body'>
+                                        <div class="category">Lập trình - CNTT</div>
                                         <h5 class='card-title'>Chó Husky đẹp trai lãng tử nâng cao</h5>
                                         <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
                                             cung cấp:
@@ -708,12 +745,8 @@
       </div>
       
 
-    </div>
   </div>
     
-  </div>
-  </div>
-
   </div>
   <script>
   </script>

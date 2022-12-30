@@ -24,6 +24,7 @@ import profileRoutes from './routes/profileRoutes.js';
 import favoriteRoutes from './routes/favoriteRoutes.js';
 import viewVideoRoutes from './routes/viewVideoRoutes.js';
 import courseDetailRoutes from './routes/courseDetailRoutes.js';
+import adCategorySideBar from './routes/adCategorySideBar.js';
 
 const limiter = rateLimit({
   max: 1000,
@@ -90,6 +91,9 @@ app.use('/favorite' , favoriteRoutes);
 app.use('/teacher', teacherRoutes);
 app.use('/viewVideo', viewVideoRoutes);
 app.use('/courseDetail', courseDetailRoutes);
+
+//Admin
+app.use('/adCategorySideBar', adCategorySideBar);
 
 // app.get('/teacher/addCourse', (req, res) => res.render('teacher/addCourse'))
 

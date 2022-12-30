@@ -1,0 +1,384 @@
+<head>
+    <link rel="stylesheet" href="/css/adCategorySideBar.css" type="text/css">
+</head>
+
+<body>
+    <div>
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+            <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+                <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+                <!-- Bootstrap List Group -->
+                <ul class="list-group">
+                    <!-- Separator with title -->
+                    <li
+                        class="list-group-item sidebar-separator-title ml-2 text-muted d-flex align-items-center menu-collapsed">
+                        <small>MAIN MENU</small>
+                    </li>
+                    <!-- /END Separator -->
+                    <!-- Menu with submenu -->
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed ml-2 text-uppercase">LẬP TRÌNH WEB</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu1' class="collapse sidebar-submenu">
+                        <a href="#nodejs" data-toggle="tab"
+                            class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed text-uppercase ml-2">NODEJS</span>
+                        </a>
+                        <a href="#reactjs" data-toggle="tab"
+                            class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed text-uppercase ml-2">REACTJS</span>
+                        </a>
+                        <a href="#angular" data-toggle="tab"
+                            class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed text-uppercase ml-2">ANGULAR</span>
+                        </a>
+                    </div>
+                    <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                        class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            {{!-- <span class="fa fa-fw mr-3"></span> --}}
+                            <span class="menu-collapsed text-uppercase ml-2">LẬP TRÌNH MOBILE</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu2' class="collapse sidebar-submenu">
+                        <a href="#" data-toggle="tab" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed text-uppercase ml-2">KOTLIN</span>
+                        </a>
+                        <a href="#" data-toggle="tab" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed text-uppercase ml-2">SWIFT</span>
+                        </a>
+                    </div>
+
+                    <!-- Separator without title -->
+                    <li class="list-group-item sidebar-separator menu-collapsed"></li>
+                    <!-- /END Separator -->
+
+
+                    <!-- Logo -->
+                    <li class="list-group-item logo-separator d-flex justify-content-center">
+                        <img src='https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg' width="30"
+                            height="30" />
+                    </li>
+                </ul><!-- List Group END-->
+            </div><!-- sidebar-container END -->
+
+
+            <!-- MAIN Content -->
+            <div class="col">
+                <div class="mt-2 ml-5 d-flex">
+                    <a href="/adCategorySideBar"
+                        class="text-decoration-none font-weight-bold ml-4 text-primary">Aspect</a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a
+                            href="/adCategorySideBar/editCategory"
+                            class="text-decoration-none font-weight-bold text-primary">List Category</a></a>
+
+                </div>
+                <div class="w-100 d-flex justify-content-end pr-5">
+                    <div class="mr-2">
+                        <a href="/adCategorySideBar/editCategory"><button
+                                class="text-decoration-none mr-5 btn-add-aspect-hover btn-add-aspect w-100 text-uppercase">Refresh</button></a>
+                    </div>
+                    <div class="mr-2">
+                        <a href="#"><button
+                                class="text-decoration-none mr-5 btn-add-aspect-hover btn-add-aspect w-100 text-uppercase">Add
+                                new aspect</button></a>
+                    </div>
+                </div>
+
+                <div class="card d-flex mt-3 flex-column position-relative ">
+                    <div class="card-content">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Avatar</th>
+                                            <th>Name Category</th>
+                                            <th>Amount courses </th>
+                                            <th>Category</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="align-middle">1</th>
+                                            <td class="align-middle">
+                                                <div class="product-img d-flex align-items-center my-auto">
+                                                    <img class="img-fluid img-thumbnail"
+                                                        src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.webp"
+                                                        alt="Card image cap">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-uppercase">Nodejs</td>
+                                            <td class="align-middle text-uppercase">20</td>
+                                            <td class="align-middle text-uppercase">Lập trình web</td>
+                                            <td class="align-middle text-uppercase">
+                                                <button class="btn btn-success btn-sm rounded-0 mr-2" type="button"
+                                                    data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo"
+                                                    title="Edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div
+                                                            class="modal-content text-dark text-uppercase font-weight-bold">
+                                                            <div class="modal-header">
+                                                                <p class="modal-title text-dark text-uppercase font-weight-bold"
+                                                                    id="exampleModalLabel">Edit</p>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <img class="product-img-avt mx-auto d-flex align-items-center my-auto img-fluid img-thumbnail"
+                                                                                src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.webp"
+                                                                                alt="Card image cap">
+                                                                            <input type="file"
+                                                                                class="addproduct__upload-custom-file-input mx-auto mt-3 d-flex rounded bg-primary center-block file-upload">
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <label for="category_name">
+                                                                                <h6>Nhập tên mục</h6>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                class="form-control form-control"
+                                                                                name="category_name" id="category_name"
+                                                                                placeholder="Nhập tên category"
+                                                                                title="enter your full name if any.">
+                                                                            <label for="number">
+                                                                                <h6>Số khóa học</h6>
+                                                                            </label>
+                                                                            <input type="number"
+                                                                                class="form-control form-control"
+                                                                                name="number" id="number"
+                                                                                placeholder="Nhập số lượng"
+                                                                                title="enter your email.">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group shadow-textarea">
+                                                                        <label for="exampleFormControlTextarea6">Mô
+                                                                            tả</label>
+                                                                        <textarea class="form-control z-depth-1"
+                                                                            id="exampleFormControlTextarea6" rows="3"
+                                                                            placeholder="Write something here..."></textarea>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Send
+                                                                    message</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">2</th>
+                                            <td class="align-middle">
+                                                <div class="product-img d-flex align-items-center my-auto">
+                                                    <img class="img-fluid img-thumbnail"
+                                                        src="https://mdbootstrap.com/img/Photos/Others/photo6.webp"
+                                                        alt="Card image cap">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-uppercase">Reactjs</td>
+                                            <td class="align-middle text-uppercase">30</td>
+                                            <td class="align-middle text-uppercase">Lập trình web</td>
+                                            <td class="align-middle text-uppercase">
+                                                <button class="btn btn-success btn-sm rounded-0 mr-2" type="button"
+                                                    data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"
+                                                    title="Edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div
+                                                            class="modal-content text-dark text-uppercase font-weight-bold">
+                                                            <div class="modal-header">
+                                                                <p class="modal-title text-dark text-uppercase font-weight-bold"
+                                                                    id="exampleModalLabel">Edit</p>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <img class="product-img-avt mx-auto d-flex align-items-center my-auto img-fluid img-thumbnail"
+                                                                                src="https://mdbootstrap.com/img/Photos/Others/photo6.webp"
+                                                                                alt="Card image cap">
+                                                                            <input type="file"
+                                                                                class="addproduct__upload-custom-file-input mx-auto mt-3 d-flex rounded bg-primary center-block file-upload">
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <label for="category_name">
+                                                                                <h6>Nhập tên mục</h6>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                class="form-control form-control"
+                                                                                name="category_name" id="category_name"
+                                                                                placeholder="Nhập tên category"
+                                                                                title="enter your full name if any.">
+                                                                            <label for="number">
+                                                                                <h6>Số khóa học</h6>
+                                                                            </label>
+                                                                            <input type="number"
+                                                                                class="form-control form-control"
+                                                                                name="number" id="number"
+                                                                                placeholder="Nhập số lượng"
+                                                                                title="enter your email.">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group shadow-textarea">
+                                                                        <label for="exampleFormControlTextarea6">Mô
+                                                                            tả</label>
+                                                                        <textarea class="form-control z-depth-1"
+                                                                            id="exampleFormControlTextarea6" rows="3"
+                                                                            placeholder="Write something here..."></textarea>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Send
+                                                                    message</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">3</th>
+                                            <td class="align-middle">
+                                                <div class="product-img d-flex align-items-center my-auto">
+                                                    <img class="img-fluid img-thumbnail"
+                                                        src="https://placeimg.com/280/180/tech" alt="Card image cap">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-uppercase">angular</td>
+                                            <td class="align-middle text-uppercase">15</td>
+                                            <td class="align-middle text-uppercase">Lập trình web</td>
+                                            <td class="align-middle text-uppercase">
+                                                <button class="btn btn-success btn-sm rounded-0 mr-2" type="button"
+                                                    data-toggle="modal" data-target="#exampleModal3" data-whatever="@mdo"
+                                                    title="Edit">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div
+                                                            class="modal-content text-dark text-uppercase font-weight-bold">
+                                                            <div class="modal-header">
+                                                                <p class="modal-title text-dark text-uppercase font-weight-bold"
+                                                                    id="exampleModalLabel">Edit</p>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <img class="product-img-avt mx-auto d-flex align-items-center my-auto img-fluid img-thumbnail"
+                                                                                src="https://placeimg.com/280/180/tech"
+                                                                                alt="Card image cap">
+                                                                            <input type="file"
+                                                                                class="addproduct__upload-custom-file-input mx-auto mt-3 d-flex rounded bg-primary center-block file-upload">
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <label for="category_name">
+                                                                                <h6>Nhập tên mục</h6>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                class="form-control form-control"
+                                                                                name="category_name" id="category_name"
+                                                                                placeholder="Nhập tên category"
+                                                                                title="enter your full name if any.">
+                                                                            <label for="number">
+                                                                                <h6>Số khóa học</h6>
+                                                                            </label>
+                                                                            <input type="number"
+                                                                                class="form-control form-control"
+                                                                                name="number" id="number"
+                                                                                placeholder="Nhập số lượng"
+                                                                                title="enter your email.">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group shadow-textarea">
+                                                                        <label for="exampleFormControlTextarea6">Mô
+                                                                            tả</label>
+                                                                        <textarea class="form-control z-depth-1"
+                                                                            id="exampleFormControlTextarea6" rows="3"
+                                                                            placeholder="Write something here..."></textarea>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Send
+                                                                    message</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- Main Col END -->
+        </div><!-- body-row END -->
+    </div>
+    <script>
+
+    </script>
+</body>

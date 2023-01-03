@@ -299,4 +299,16 @@ export default {
    layout: 'layoutTeacher',
   });
  }),
+
+ viewVideo: catchAsync(async (req, res, next) => {
+  res.render('vwviewVideo/viewVideo', {
+    layout: 'layoutEmpty'
+  })
+}),
+
+courseDetail: catchAsync(async (req, res, next) => {
+  res.render('vwCourseDetail/courseDetail', {
+    layout: 'layout'
+  })
+}),
 };

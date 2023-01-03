@@ -18,13 +18,12 @@ import connectLiveReload from "connect-livereload";
 import AppError from './utils/appError.js';
 import globalErrorHandler from './controllers/errorController.js';
 import authRoutes from './routes/authRoutes.js';
-import settings from './routes/profileRoutes.js';
 import teacherRoutes from './routes/teacherRoutes.js';
-import profileRoutes from './routes/profileRoutes.js';
-import favoriteRoutes from './routes/favoriteRoutes.js';
-import viewVideoRoutes from './routes/viewVideoRoutes.js';
-import courseDetailRoutes from './routes/courseDetailRoutes.js';
-import adCategorySideBar from './routes/adCategorySideBar.js';
+import userRoutes from './routes/userRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import studyRoutes from './routes/studyRoutes.js';
+import courseRoutes from './routes/courseRoutes.js';
+import adCategorySideBar from './routes/adminRoutes.js';
 
 const limiter = rateLimit({
   max: 1000,
@@ -82,15 +81,18 @@ app.use(flash());
 
 // ROUTES
 app.get('/', (req, res) => {
+  res.redirect('/home');
+});
+app.get('/home', (req, res) => {
   res.render('home');
 });
 
-app.use('/', authRoutes);
-app.use('/profile', profileRoutes);
-app.use('/favorite' , favoriteRoutes);
+app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 app.use('/teacher', teacherRoutes);
-app.use('/viewVideo', viewVideoRoutes);
-app.use('/courseDetail', courseDetailRoutes);
+app.use('/study', studyRoutes);
+app.use('/course', courseRoutes);
 
 //Admin
 app.use('/adCategorySideBar', adCategorySideBar);

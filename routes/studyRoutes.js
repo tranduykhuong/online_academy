@@ -2,11 +2,11 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
 
-import viewVideoController from '../controllers/viewVideoController.js';
+import courseController from '../controllers/courseController.js';
 
 const router = express.Router();
 
-router.route('/')
-.get(viewVideoController.video);
+router.route('/:idCourse')
+.get(courseController.viewVideo);
 
 export default router;

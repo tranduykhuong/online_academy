@@ -6,16 +6,6 @@ import localMdw from '../middlewares/locals.mdw.js';
 
 const router = express.Router();
 
-<<<<<<< HEAD
-router.route('/addCourse/:id')
-    .get(teacherController.addCourse);
-
-router.route('/home')
-    .get(teacherController.home);
-
-router.route('/statistic')
-    .get(teacherController.statistic);
-=======
 router.route('/addCourse/addChapter')
 .get(courseController.addChapter)
 router.route('/addCourse/addLession')
@@ -36,6 +26,5 @@ router.route('/home')
 
 router.route('/statistic')
 .get(courseController.statistic);
->>>>>>> 94d6c2cc1a5d150d6af7db9b32632f0fe6fe66a4
 
 export default router;

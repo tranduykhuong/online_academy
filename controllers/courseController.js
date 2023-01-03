@@ -468,9 +468,9 @@ export default {
 
  viewVideo: catchAsync(async (req, res, next) => {
   res.render('vwviewVideo/viewVideo', {
-   layout: 'layoutEmpty',
-  });
- }),
+    layout: 'layoutEmpty'
+  })
+}),
 
  //[GET] /course/:idcourse
   courseDetail: catchAsync(async (req, res, next) => {

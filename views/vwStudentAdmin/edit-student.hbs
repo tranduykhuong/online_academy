@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <link rel="stylesheet" href="/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="/css/style.css">
 	<!-- Pick date -->
@@ -36,21 +37,9 @@
     ***********************************-->
     <div id="main-wrapper">
         <!--**********************************
-            Nav header end
-        ***********************************-->
-
-        <!--**********************************
-            Header start
-        ***********************************-->
-
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="deznav">
+        {{!-- <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
@@ -105,7 +94,7 @@
 				
 				</ul>
             </div>
-        </div>
+        </div> --}}
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -118,8 +107,8 @@
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
-				
-				<div class="row page-titles mx-0">
+				    
+                <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Add Student</h4>
@@ -146,31 +135,31 @@
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">First Name</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="Deangelo">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Last Name</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="Sena">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Email</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="info@example.com">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Registration Date</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker">
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker" value="07 August, 2022">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Roll No.</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="52">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
@@ -180,7 +169,7 @@
 													<option value=""></option>
 													<option value="html">HTML</option>
 													<option value="css">CSS</option>
-													<option value="javascript">JavaScript</option>
+													<option value="javascript" selected>JavaScript</option>
 													<option value="angular">Angular</option>
 													<option value="angular">React</option>
 													<option value="vuejs">Vue.js</option>
@@ -197,7 +186,7 @@
 												<label class="form-label">Gender</label>
 												<select class="form-control">
 													<option value=""></option>
-													<option value="Male">Male</option>
+													<option value="Male" selected>Male</option>
 													<option value="Female">Female</option>
 												</select>
 											</div>
@@ -205,37 +194,37 @@
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Mobile Number</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="+01 123 456 7890">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Parents Name</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="James Jones">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Parents Mobile Number</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" value="+01 987 654 3210">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Date of Birth</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker1">
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker1" value="31 July 1998">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Blood Group</label>
-												<input type="text" class="form-control">
+												<input type="text" class="form-control"  value="+AB">
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Address</label>
-												<textarea class="form-control" rows="5"></textarea>
+												<textarea class="form-control" rows="5">Demo Address #8901 Marmora Road Chi Minh City, Vietnam</textarea>
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
@@ -253,7 +242,7 @@
                         </div>
                     </div>
 				</div>
-                
+				
             </div>
         </div>
         <!--**********************************
@@ -275,6 +264,9 @@
 
 
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
 
     <!--**********************************
         Scripts
@@ -282,7 +274,6 @@
     <!-- Required vendors -->
     <script src="/js/global.min.js"></script>
 	<script src="/js/deznav-init.js"></script>
-	<!-- <script src="vendor/bootstrap-select/dist//js/bootstrap-select.min.js"></script> -->
     <script src="/js/custom.min.js"></script>
 
 	<!-- Svganimation scripts -->

@@ -26,7 +26,6 @@
 </script>
 {{/section}}
 
-<<<<<<< HEAD
 <div class="">
   <div class="col col-md-3 col-sm-4 p-0 position-fixed">
     <h5 class="mt-5">Kế hoạch khóa học</h5>
@@ -36,34 +35,16 @@
           {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
-=======
-<div class="row">
-  <div class="col col-md-3 col-sm-4 p-0">
-    <h5 class="mt-5">Kế hoạch khóa học</h5>
-    <ul class="list-unstyled">
-      <li class="my-3">
-        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
-          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
->>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Mục tiêu khóa học
         </a>
       </li>
       <li class="my-3">
-<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
-=======
-        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
-          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
->>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Cấu trúc khóa học
@@ -74,51 +55,30 @@
     <h5 class="mt-5">Tạo khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step3}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
-=======
-        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step3}} 
-          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
->>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Thông tin khóa học
         </a>
       </li>
       <li class="my-3">
-<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step4}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
-=======
-        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step4}} 
-          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
->>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Chương trình giảng dạy
         </a>
       </li>
       <li class="my-3">
-<<<<<<< HEAD
         <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step5}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}}
-=======
-        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step5}} 
-          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
->>>>>>> 58d249f (handle: create course (teacher))
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Học phí
@@ -126,35 +86,22 @@
       </li>
     </ul>
 
-<<<<<<< HEAD
     <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
-=======
-    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
->>>>>>> 58d249f (handle: create course (teacher))
       aria-pressed="true">
       Đăng khóa học
     </button>
   </div>
 
-<<<<<<< HEAD
   <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
     width: auto !important;">
     <form id="infoCourseForm" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
-=======
-  <div class="col shadow pb-3 px-0 mb-5">
-    <form method="post" enctype="multipart/form-data">
->>>>>>> 58d249f (handle: create course (teacher))
       <h3 class="p-5 border-bottom">Thông tin khóa học</h3>
       <div class="col px-5 py-4">
 
         <div class="form-group">
           <label for="validationNameCourse" class="font-weight-bolder">Tên khóa học</label>
           <input type="text" class="form-control border-dark p-4 rounded-0" id="validationNameCourse" name="name"
-<<<<<<< HEAD
             placeholder="Nhập tên khóa học" value="{{name}}" required>
-=======
-            placeholder="Nhập tên khóa học" value="{{name}}">
->>>>>>> 58d249f (handle: create course (teacher))
           <div class="invalid-feedback">
             Vui lòng nhập tên khóa học!
           </div>
@@ -162,7 +109,6 @@
 
         <div class="form-group">
           <label for="shortDescription" class="font-weight-bolder">Mô tả ngắn gọn</label>
-<<<<<<< HEAD
           <textarea class="h100p w100 form-control border-dark p-4 rounded-0" name="summary" required
             id="shortDescription">{{summary}}</textarea>
           <div class="invalid-feedback">
@@ -176,20 +122,11 @@
           <div class="invalid-feedback">
             Vui lòng mô tả chi tiết khóa học!
           </div>
-=======
-          <textarea class="h100p w100 form-control border-dark p-4 rounded-0" name="summary"
-            id="shortDescription">{{summary}}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="" class="font-weight-bolder">Mô tả chi tiết</label>
-          <textarea class="border-dark p-4 rounded-0" name="description" id="myTextarea">{{description}}</textarea>
->>>>>>> 58d249f (handle: create course (teacher))
         </div>
 
         <div class="form-group row">
           <div class="form-group col">
             <label for="tuition" class="font-weight-bolder">Chọn Category</label>
-<<<<<<< HEAD
             <select class="custom-select  border-dark rounded-0" onchange="categoryChange(this)" id="categorySelect"
               name="category" required>
               <option selected disabled></option>
@@ -209,23 +146,6 @@
             <div class="invalid-feedback">
               Vui lòng chọn Lĩnh vực!
             </div>
-=======
-            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="category">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="form-group col">
-            <label for="promotionTuition" class="font-weight-bolder">Chọn Field</label>
-            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="field">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
->>>>>>> 58d249f (handle: create course (teacher))
           </div>
         </div>
 
@@ -235,12 +155,9 @@
             <div class="col-7">
               <div class="input-group">
                 <input type="file" width="100%" id="fuImage" class="fuImage" name="image">
-<<<<<<< HEAD
                 <div class="valid-tooltip">
                   Vui lòng chọn ảnh đại diện cho khóa học!
                 </div>
-=======
->>>>>>> 58d249f (handle: create course (teacher))
               </div>
             </div>
             <div class="col-5">
@@ -260,12 +177,9 @@
             <div class="col-7">
               <div class="input-group">
                 <input type="file" width="100%" id="fuVideo" class="fuVideo" name="videoDemo">
-<<<<<<< HEAD
                 <div class="invalid-feedback">
                   Vui lòng chọn video demo cho khóa học!
                 </div>
-=======
->>>>>>> 58d249f (handle: create course (teacher))
               </div>
             </div>
             <div class="col-5">
@@ -275,7 +189,6 @@
             </div>
           </div>
         </div>
-<<<<<<< HEAD
         <div style="text-align: right;">
           <button class="btn btn-primary btn-lg bg-lightseagreen" type="submit">Save</button>
         </div>
@@ -322,11 +235,3 @@
   }, false);
   })();
 </script>
-=======
-
-        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
->>>>>>> 58d249f (handle: create course (teacher))

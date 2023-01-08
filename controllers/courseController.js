@@ -382,6 +382,7 @@ export default {
     try {
       result = await Course.create(data);
     } catch(err) {
+      console.log(err);
       return res.json('Duplicate name');
     }
     console.log('Create course successfully!');

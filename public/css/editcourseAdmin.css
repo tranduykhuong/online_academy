@@ -20,10 +20,12 @@ img {
     max-width: calc(100% - 2em);
     margin: 1em auto;
     overflow: hidden;
-    width: 1400px;
+    width: calc(100vw - 280px);
+    max-height: calc(100vh - 10px);
+    /* width: 100%; */
     display: block;
-    position: absolute;
-    top: 0;
+    /* position: absolute;
+    top: 0; */
     left: 16%;
 }
 
@@ -52,7 +54,7 @@ table {
 
 .table-fixed tbody{
     display: block;
-    height: 650px;
+    /* height: 650px; */
     overflow-y: auto;
 }
 

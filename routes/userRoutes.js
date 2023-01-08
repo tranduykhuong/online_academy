@@ -6,6 +6,10 @@ import localMdw from '../middlewares/upload.mdw.js';
 const router = express.Router();
 
 router.route('/favorite/:id').get(userController.favorite);
+
+router.route('/mycourse') 
+  .get(userController.mycourse);
+  
 // router.get('/:id/edit', userController.edit);
 // router.put('/:id', userController.update);
 router.route('/:id').get(userController.show);

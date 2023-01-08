@@ -662,7 +662,7 @@ buycourse: catchAsync(async (req, res, next) => {
  viewVideo: catchAsync(async (req, res, next) => {
   const id = req.params.idCourse;
   const query = req.query;
-  const idUser = '63af99d9bbc55b73d3b1761c';
+  const idUser = req.session.user._id;
 
   const user = await User.findById({ _id: idUser });
   const dataCourse = await Course.findById({ _id: id });
@@ -813,7 +813,7 @@ buycourse: catchAsync(async (req, res, next) => {
    }
   });
   if (!isStudyPage) {
-   res.redirect(`/courses/${id}`);
+   res.redirect(`/course/${id}`);
   }
  }),
 

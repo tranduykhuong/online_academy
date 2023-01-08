@@ -110,8 +110,8 @@
                                     <p>{{addOne @index}}</p>
                                 </td>
                                 <td>
-                                    <p>{{getDate this.createdAt}}</p>
-                                    <p class="text-danger">{{getTime this.createdAt}}</p>
+                                    <p>{{this.createdAt}}</p>
+                                    <p class="text-danger">{{ this.createdAt}}</p>
                                 </td>
                                 <td class="member">
                                     <div class="member-info">
@@ -210,8 +210,8 @@
                                     {{#each newestcourse}}
                                     <tr>
                                         <td>
-                                            <p>{{getDate this.createdAt}}</p>
-                                            <p class="text-danger">{{getTime this.createdAt}}</p>
+                                            <p>{{ this.createdAt}}</p>
+                                            <p class="text-danger">{{ this.createdAt}}</p>
                                         </td>
                                         <td >
                                             <p>{{this.name}}</p>

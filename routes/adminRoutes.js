@@ -22,12 +22,7 @@ router.route('/studentProfile').get(adminController.studentProfile);
 router.route('/editCategory/:id').post(adminController.deleteField);
 router.route('/is-available').get(adminController.isAvailable);
 
-router.route('/:id/edit').get(adminController.showUpdateField);
-router.route('/:id/edit').put(adminController.updateField);
 
-router.route('/:id/:idField').get(adminController.detail);
-router.route('/:id').get(adminController.listField);
-router.route('/').post(adminController.addCategory);
 router.route('/detail').get(adminController.detail);
 router.route('/dashboard/acceptrequest/:idrequest').post(adminController.acceptrequest);
 router.route('/dashboard/removerequest/:idrequest').post(adminController.removerequest);
@@ -37,10 +32,17 @@ router.route('/dashboard').get(adminController.dashboard);
 router.route('/deletecourse/disabled/:idcourse').post(adminController.dsbcourse)
 router.route('/deletecourse/:idcourse').post(adminController.dltcourse);
 router.route('/deletecourse').get(adminController.deletecourse);
-router.route('/').get(adminController.adCategory);
 
 router.route('/editTeacher').get(adminController.editTeacher);
 router.route('/editStudent').get(adminController.editStudent);
+
+router.route('/:id/edit').get(adminController.showUpdateField);
+router.route('/:id/edit').put(adminController.updateField);
+
+router.route('/:id/:idField').get(adminController.detail);
+router.route('/:id').get(adminController.listField);
+router.route('/').get(adminController.adCategory);
+router.route('/').post(adminController.addCategory);
 
 
 

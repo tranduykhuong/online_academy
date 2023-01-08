@@ -35,7 +35,7 @@
                         <p>Được tạo bởi:</p>
                         <p class="name_author"><a href="" class="">{{course.createdBy.name}}</a></p>
                         <br>
-                        <p id="headingvideo"><i class="fa-solid fa-wrench"></i>&nbsp; Lần cập nhật gần đây nhất: {{formatData
+                        <p id="headingvideo"><i class="fa-solid fa-wrench"></i>&nbsp; Lần cập nhật gần đây nhất: {{
                             course.updatedAt}}</p>
                     </div>
                 </div>
@@ -44,8 +44,8 @@
         <div class="video">
             <div class="video_fix">
                 <video width="100%" height="315" onclick="playVideo1()" class="watch__body-video-frame" id="player"
-                    playsinline controls preload="auto" poster={{changeURLVideo course.image}}>
-                    <source src={{changeURLVideo course.videodemo}} type="video/mp4" class="videosrc"/>
+                    playsinline controls preload="auto" poster={{course.image}}>
+                    <source src={{course.videodemo}} type="video/mp4" class="videosrc"/>
                 </video>
             </div>
         </div>
@@ -103,7 +103,7 @@
                         <span class="infor__item">{{numbervideo}} bài giảng</span>
                     </div>
                     <span class="total__time">
-                        {{formatTime (changeTime totaltime)}}
+                        {{changeTime totaltime}}
                     </span>
                 </div>
                 <div class="wrapper">
@@ -118,7 +118,7 @@
                                 <ul class="collapse list-unstyled" id="SubMenu">
                                     {{#each coursevideodemo.listVideo}}
                                     <li>
-                                        <a href="#headingvideo" class="canviewchapter" data-img={{changeURLVideo this.avtVideo}} data-video={{changeURLVideo this.urlVideo}}>
+                                        <a href="#headingvideo" class="canviewchapter" data-img={{this.avtVideo}} data-video={{this.urlVideo}}>
                                             <div class="chapter-item">
                                                 <i class="fa-solid fa-circle-play"></i>
                                                 {{this.name}}
@@ -338,7 +338,7 @@
                                     <div class="comment-text active w-100">
                                         <h5>{{this.user.name}}</h5>
                                         <div class="comment-footer">
-                                            <span class="date">{{formatData this.createdAt}}</span>
+                                            <span class="date">{{this.createdAt}}</span>
                                             <span class="action-icons active">
                                                 <a data-toggle="modal" data-target="#deletereviewmodal" data-id={{this._id}} class="delete-review-btn"><i class="fa-solid fa-trash trash"></i></a>
                                                 <a><i class="fa fa-heart fvricon"></i></a>
@@ -368,7 +368,7 @@
                             <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
                                 <div class='card rounded-lg'>
                                     <img class='card-img-top rounded-lg'
-                                        src={{changeURLVideo this.image}}
+                                        src={{this.image}}
                                         alt='Card image cap' />
                                     <div class='card-body'>
                                         <h5 class='card-title'>{{this.name}}</h5>
@@ -400,7 +400,7 @@
                             {{#each relative2}}
                             <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
                                 <div class='card rounded-lg'>
-                                    <img class='card-img-top rounded-lg' src={{changeURLVideo this.image}} alt='Card image cap' />
+                                    <img class='card-img-top rounded-lg' src={{this.image}} alt='Card image cap' />
                                     <div class='card-body'>
                                         <h5 class='card-title'>{{this.name}}</h5>
                                         <div class="card-text hiden-text">{{{this.description}}}</div>
@@ -435,7 +435,7 @@
 
         <div class="content__course">
             <div class="courseimg__contain">
-                <div class="background_img" style="background-image: url({{changeURLVideo course.image}});"></div>
+                <div class="background_img" style="background-image: url({{course.image}});"></div>
             </div>
             <strong class="price">{{course.priceDiscount}} <span class="symbol_price">đ</span></strong>
             <del>{{course.price}}</del>

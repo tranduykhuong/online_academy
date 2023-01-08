@@ -12,7 +12,4 @@ router.route('/:idcourse').get(courseController.courseDetail);
 router.route('/') 
   .get(courseController.courses);
 
-router.route('/') 
-  .get(courseController.courses);
-
 export default router;

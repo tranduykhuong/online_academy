@@ -12,12 +12,13 @@
     display: block;
     width: 250px;
     background-color: black;
-    height: 115vh;
+    height: 100vh;
 }
 
 #sidebar {
     min-width: 250px;
     max-width: 250px;
+    height: 100vh;
     background: black;
     color: #fff;
     transition: all 0.3s;

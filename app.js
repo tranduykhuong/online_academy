@@ -33,7 +33,6 @@ import courseRoutes from './routes/courseRoutes.js';
 import adCategorySideBar from './routes/adminRoutes.js';
 import homeRouter from './routes/homeRoutes.js'
 
-import fieldModel from './models/field.model.js';
 import courseModel from './models/course.model.js';
 
 const limiter = rateLimit({
@@ -165,40 +164,6 @@ ativate_locals(app);
 // ROUTES
 app.get('/', (req, res) => {
   res.redirect('/home');
-});
-app.get('/home', (req, res) => {
-  var listresult = [];
-
-  fieldModel.find({}).select('category, name').then(fields=>{
-    //console.log(fields);
-    for(var i = 0; i < fields.length; i++)
-    {
-      var object = {
-          idctgr: fields[i].category._id,
-          namectgr: fields[i].category.name,
-          listfield: fields[i].name
-        }
-        listresult = [...listresult, object];
-    }
-      //console.log(listresult);
-
-    function groupBy(xs, f) {
-      return xs.reduce((r, v, i, a, k = f(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
-    }
-    const result = groupBy(listresult, (c) => c.namectgr);
-
-
-    //console.log(result);
-    const entries = Object.entries(result);
-
-    //console.log(entries);
-
-    req.session.entries = entries;
-    
-    res.render('home', {
-      listcategory: req.session.entries
-    });
-  });
 });
 
 app.use('/auth', authRoutes);

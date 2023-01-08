@@ -131,6 +131,12 @@ app.engine('hbs', engine({
     changeURLVideo(url){
       return url.substring(8, url.length);
     },
+    getTime(date){
+      return date.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[1];
+    },
+    getDate(date){
+    return date.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[0];
+  },
   }
 }));
 app.set('view engine', 'hbs');

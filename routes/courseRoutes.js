@@ -9,4 +9,7 @@ router.route('/:idcourse/addtofavorite/:flag').post(courseController.addtofavori
 router.route('/:idcourse/buycourse/:flag').post(courseController.buycourse);
 router.route('/:idcourse').get(courseController.courseDetail);
 
+router.route('/') 
+  .get(courseController.courses);
+
 export default router;

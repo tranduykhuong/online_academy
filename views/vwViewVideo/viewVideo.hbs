@@ -5,33 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
-      href="assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css"
-    />
-    <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,400&display=swap&subset=vietnamese"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/viewVideo.css" type="text/css">
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
   </head>
   <body>
     <div class="watch">
       <div class="watch__header">
         <div class="watch__header-left">
-          <i class="watch__header-left-icon fa fa-chevron-left" aria-hidden="true"></i>
+          <a href="/course/{{idCourse}}" id="backto" >
+            <i class="watch__header-left-icon fa fa-chevron-left" aria-hidden="true"></i>
+          </a>
 
           <div class="watch__header-logo-title">
             <img class="watch__header-logo" src="/img/logo.png" alt="logo" />
-            <p class="watch__header-title">Lập trình JavaScrip cơ bản</p>
+            <p class="watch__header-title">{{course.name}}</p>
           </div>
         </div>
         <div class="watch__header-right">
-          <div class="watch__header-process">
+          {{!-- <div class="watch__header-process">
             <p class="watch__header-process-percent">49%</p>
-          </div>
+          </div> --}}
           <div class="watch__header-lecture">
             <p class="watch__header-number-lecture">
-              <strong>133/206</strong> bài học
+              <strong>{{lessonCurrent}}/{{total}}</strong> bài học
             </p>
           </div>
         </div>
@@ -41,105 +40,84 @@
         <div class="watch__body-slideshow">
           <div class="watch__body-wrap-video">
             <div class="watch__body-video">
-              <!-- <iframe class="watch__body-video-frame" src="https://youtube.com/embed/LpgoBaULw30" style="border:none;" frameborder="0" allowfullscreen ng-show="showvideo"></iframe> -->
               <video
-                onclick="playVideo1()"
-                class="watch__body-video-frame"
+                class="watch__body-video-frame vjs-matrix video-js"
                 id="player"
                 playsinline
                 controls
                 preload="auto"
-                poster="/img/Screenshot 2022-09-28 184909.png"
+                poster={{pathImage}}
               >
-                <source src="/video/cachhoatdongcuathungrac.mp4" type="video/mp4" />
-                <!-- <track
-                  kind="captions"
-                  label="English captions"
-                  src="/path/to/captions.vtt"
-                  srclang="en"
-                  default
-                /> -->
-              </video>
-              <div onclick="playVideo()" class="play-btn" href="#"></div>
+                <source src={{pathVideo}} id="video" type="video/mp4" />
+             </video>
             </div>
           </div>
           <div class="watch__body-information">
-            <h1 class="watch__body-title">Review, sửa một số lỗi</h1>
+            <h1 class="watch__body-title">{{nameLesson}}</h1>
 
             <span class="watch__body-time-update"
-              >Cập nhật tháng 2 năm 2022</span
+              >Cập nhật tháng {{timeUpdateMonth}} năm {{timeUpdateYear}}</span
             >
             <p>
-              Tham gia nhóm Học lập trình tại F8 trên Facebook để cùng nhau trao
-              đổi trong quá trình học tập ❤️
+              Tham gia khoá học lập trình tại đây để nâng cao kiến thức ❤️
             </p>
             <p>
-              Các bạn subscribe kênh Youtube F8 Official để nhận thông báo khi
-              có các bài học mới nhé ❤️
+              Chúc mọi người học vui vẻ <3 ❤️
             </p>
-            <p>Made with ❤️ · Powered by F8</p>
           </div>
         </div>
 
         <div class="watch__body-category">
           <div class="watch__body-category-heading">Nội dung khóa học</div>
-          <div class="watch__body-category-wrap-chapter">
-            <section class="watch__body-category-chapter">
-              <div class="watch__body-category-chapter-wrap-title">
-                <h4 class="watch__body-category-chapter-title">
-                  1. Giới thiệu
-                </h4>
-                {{!-- <i
-                  class="watch__body-category-chapter-icon fa-solid fa-chevron-down"
-                ></i> --}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__body-category-chapter-icon bi bi-chevron-down" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </div>
-              <div class="watch__body-category-chapter-wrap-compelete">
-                3/3 | 07:28
-              </div>
-            </section>
-            <div class="watch__body-category-wrap-lesson">
-              <div class="watch__body-category-lesson">
-                <a href="" class="watch__body-category-lesson-link">
-                  <div class="watch__body-category-lesson-wrap-title">
-                    <h4 class="watch__body-category-lesson-title">
-                      1. Lời khuyên trước khóa học
+                <div class="watch__body-category-wrap-chapter">
+            {{#each course.listChapter}}
+                <section data={{this._id}} class="watch__body-category-chapter">
+                  <div class="watch__body-category-chapter-wrap-title">
+                    <h4 class="watch__body-category-chapter-title">
+                      {{this.chapter}}. {{this.title}}
                     </h4>
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="watch__body-category-chapter-icon bi bi-chevron-down" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                  </div>
+                    <div class="watch__body-category-chapter-wrap-compelete">
+                      {{this.value}} phút
+                    </div>
+                </section>
+                <div class="watch__body-category-wrap-lesson">
+                  
+                  {{#each this.listVideo}}
+                  <div {{#if this.currentLesson}}
+                          class="watch__body-category-lesson--bg"
+                       {{else}}
+                          class="watch__body-category-lesson"
+                       {{/if}}
+                  >
+                      <a href="" data={{this._id}} type="submit" class="watch__body-category-lesson-link">
+                      
+                      <div class="watch__body-category-lesson-wrap-title">
+                        <h4 class="watch__body-category-lesson-title">
+                          {{this.lession}}. {{this.name}}
+                        </h4>
+                        <!-- <i class="fa-solid fa-circle-check"></i> -->
+                    </div>
+                    <i
+                      class="watch__body-category-lesson-icon fa-solid fa-circle-play"
+                    ></i>
+                    <span class="watch__body-category-lesson-time">{{this.timeLesson}} phút</span>
+                    </a>
+                  </div>
+              {{/each}}
                 </div>
-                <i
-                  class="watch__body-category-lesson-icon fa-solid fa-circle-play"
-                ></i>
-                <span class="watch__body-category-lesson-time">04:20</span>
-                </a>
+          {{/each}}
               </div>
-            </div>
-          </div>
       </div>
     </div>
 
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
     <script>
       const video = document.getElementById("player");
-      const btnVideo = document.querySelector(".play-btn");
-
-      const playVideo = () => {
-        if (video.paused) {
-          video.play();
-          btnVideo.classList.remove("play-btn--show");
-          btnVideo.classList.add("play-btn--hide");
-        }
-      };
-      const playVideo1 = () => {
-        if (video.paused) {
-          btnVideo.classList.remove("play-btn--show");
-          btnVideo.classList.add("play-btn--hide");
-        } else {
-          btnVideo.classList.remove("play-btn--hide");
-          btnVideo.classList.add("play-btn--show");
-        }
-      };
+      var myPlayer = videojs(video);
 
       const chapters = document.querySelectorAll(
         ".watch__body-category-chapter"
@@ -150,10 +128,11 @@
       const rotate = document.querySelectorAll(
         ".watch__body-category-chapter-icon"
       );
-      const lessons = document.querySelectorAll(".watch__body-category-lesson");
 
+      let idChapter = '';
       chapters.forEach((chapter, index) => {
         chapter.onclick = () => {
+        idChapter = chapter.getAttribute("data");
           rotate[index].classList.toggle(
             "watch__body-category-chapter-icon--180deg"
           );
@@ -165,16 +144,18 @@
         };
       });
 
-      lessons.forEach((lesson, idx) => {
-        lesson.onclick = () => {
-          lessons.forEach((less, index) => {
-            less.classList.remove(
-            "watch__body-category-lesson--bg"
-          );
-        })
-        lesson.classList.add("watch__body-category-lesson--bg");
-      };
-    });
+      const lessons = document.querySelectorAll(".watch__body-category-lesson");
+      const links = document.querySelectorAll('.watch__body-category-lesson-link');
+
+      links.forEach((link, idx) => {
+        link.classList.remove("watch__body-category-lesson-link--bg");
+        link.onclick = () => {
+          {{!-- link.classList.add("watch__body-category-lesson--bg"); --}}
+          const currentTime = myPlayer.currentTime();
+          link.setAttribute("href", `/study/{{idCourse}}?chapter=${idChapter}&lesson=${links[idx].getAttribute("data")}&currentTime=${currentTime}`);
+        }
+      })
     </script>
+
   </body>
 </html>

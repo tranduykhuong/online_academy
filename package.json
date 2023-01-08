@@ -43,7 +43,8 @@
     "numeral": "^2.0.6",
     "urid": "^1.1.0",
     "validator": "^13.7.0",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "video.js": "^7.20.3"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
@@ -55,6 +56,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "handlebars-helper-css": "^0.1.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "video.js": "^7.20.3"
   }
 }

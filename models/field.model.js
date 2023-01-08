@@ -28,7 +28,7 @@ const FieldSchema = new mongoose.Schema(
 FieldSchema.pre(/^find/, function(next) {
   this.populate({
     path: 'category',
-    select: 'name description updatedAt createdAt'
+    select: 'name _id description updatedAt createdAt'
   });
   next();
 });

@@ -1,11 +1,11 @@
 
 
-<div class="row">
-  <div class="col col-md-3 col-sm-4 p-0">
+<div class="">
+  <div class="col col-md-3 col-sm-4 p-0 position-fixed">
     <h5 class="mt-5">Kế hoạch khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+        <a href="/teacher/addCourse{{idCourse}}?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step1}} 
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}} 
@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+        <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step1}} 
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}} 
@@ -29,7 +29,7 @@
     <h5 class="mt-5">Tạo khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+        <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step3}} 
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}} 
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+        <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step4}} 
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}} 
@@ -49,7 +49,7 @@
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+        <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
           {{#if step5}} 
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
           {{else}} 
@@ -60,14 +60,15 @@
       </li>
     </ul>
 
-    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+    <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
       aria-pressed="true">
       Đăng khóa học
     </button>
   </div>
 
-  <div class="col shadow pb-3 px-0 mb-5">
-    <form action="" method="post">
+  <div class="col shadow pb-3 px-0 mb-5 ml-5" style="margin-left: 250px !important;
+    width: auto !important;">
+    <form action="" method="post" class="needs-validation" novalidate id="intendedForm">
       <h3 class="p-5 border-bottom">Mục tiêu khóa học</h3>
       <div class="col px-5 py-4">
         <p class="mb-5">Các mô tả sau đây sẽ được hiển thị công khai trên trang đích khóa học của bạn và sẽ có tác động
@@ -83,17 +84,26 @@
           hoàn thành
           khóa học của bạn.</p>
         <div class="form-group">
-          <input class="w100 form-control border-dark rounded-0 py-4" name="intended1"
+          <input class="w100 form-control border-dark rounded-0 py-4" name="intended1" required
             placeholder="Ví dụ: Định nghĩa vai trò và trách nhiệm của một Project manager" value="{{intended1}}">
           </input>
+            <div class="invalid-feedback">
+                Vui lòng nhập các mục tiêu khóa học!
+            </div>
         </div>
         <div class="form-group">
-          <input class="w100 form-control border-dark rounded-0 py-4" name="intended2"
+          <input class="w100 form-control border-dark rounded-0 py-4" name="intended2" required
             placeholder="Ví dụ: Ước lượng thời gian thực hiện project và chi phí" value="{{intended2}}"></input>
+            <div class="invalid-feedback">
+                Vui lòng nhập các mục tiêu khóa học!
+            </div>
         </div>
         <div class="form-group">
-          <input class="w100 form-control border-dark rounded-0 py-4" name="intended3"
+          <input class="w100 form-control border-dark rounded-0 py-4" name="intended3" required
             placeholder="Ví dụ: Xác định và quản lý các rủi ro trong project" value="{{intended3}}"></input>
+            <div class="invalid-feedback">
+                Vui lòng nhập các mục tiêu khóa học!
+            </div>
         </div>
 
         <h5 class="mt-4">Khóa học này dành cho ai?</h5>
@@ -102,14 +112,18 @@
           dung khóa học của bạn có giá trị.
           Điều này sẽ giúp bạn thu hút đúng người học vào khóa học của bạn.</p>
         <div class="form-group">
-          <input class="w100 form-control border-dark rounded-0 py-4" name="who"
+          <input class="w100 form-control border-dark rounded-0 py-4" name="who" required
             placeholder="Ví dụ: Người bắt đầu học Python về Khoa học dữ liệu" value="{{who}}"></input>
+            <div class="invalid-feedback">
+                Vui lòng nhập đối tượng của khóa học!
+            </div>
         </div>
-
-        <button type="submit" class="btn btn-primary btn-lg pull-right bg-lightseagreen" role="button"
-          aria-pressed="true">
-          Save
-        </button>
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary btn-lg bg-lightseagreen" role="button"
+            aria-pressed="true">
+            Save
+          </button>
+        </div>
       </div>
 
     </form>

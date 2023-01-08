@@ -26,25 +26,25 @@
 </script>
 {{/section}}
 
-<div class="row">
-  <div class="col col-md-3 col-sm-4 p-0">
+<div class="">
+  <div class="col col-md-3 col-sm-4 p-0 position-fixed">
     <h5 class="mt-5">Kế hoạch khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Mục tiêu khóa học
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Cấu trúc khóa học
@@ -55,30 +55,30 @@
     <h5 class="mt-5">Tạo khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step3}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Thông tin khóa học
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step4}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Chương trình giảng dạy
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step5}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Học phí
@@ -86,21 +86,22 @@
       </li>
     </ul>
 
-    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+    <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
       aria-pressed="true">
       Đăng khóa học
     </button>
   </div>
 
-  <div class="col shadow pb-3 px-0 mb-5">
-    <form method="post" enctype="multipart/form-data">
+  <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
+    width: auto !important;">
+    <form id="infoCourseForm" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
       <h3 class="p-5 border-bottom">Thông tin khóa học</h3>
       <div class="col px-5 py-4">
 
         <div class="form-group">
           <label for="validationNameCourse" class="font-weight-bolder">Tên khóa học</label>
           <input type="text" class="form-control border-dark p-4 rounded-0" id="validationNameCourse" name="name"
-            placeholder="Nhập tên khóa học" value="{{name}}">
+            placeholder="Nhập tên khóa học" value="{{name}}" required>
           <div class="invalid-feedback">
             Vui lòng nhập tên khóa học!
           </div>
@@ -108,32 +109,43 @@
 
         <div class="form-group">
           <label for="shortDescription" class="font-weight-bolder">Mô tả ngắn gọn</label>
-          <textarea class="h100p w100 form-control border-dark p-4 rounded-0" name="summary"
+          <textarea class="h100p w100 form-control border-dark p-4 rounded-0" name="summary" required
             id="shortDescription">{{summary}}</textarea>
+          <div class="invalid-feedback">
+            Vui lòng mô tả tóm tắt khóa học!
+          </div>
         </div>
         <div class="form-group">
           <label for="" class="font-weight-bolder">Mô tả chi tiết</label>
-          <textarea class="border-dark p-4 rounded-0" name="description" id="myTextarea">{{description}}</textarea>
+          <textarea class="border-dark p-4 rounded-0" name="description" id="myTextarea"
+            required>{{description}}</textarea>
+          <div class="invalid-feedback">
+            Vui lòng mô tả chi tiết khóa học!
+          </div>
         </div>
 
         <div class="form-group row">
           <div class="form-group col">
             <label for="tuition" class="font-weight-bolder">Chọn Category</label>
-            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="category">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select  border-dark rounded-0" onchange="categoryChange(this)" id="categorySelect"
+              name="category" required>
+              <option selected disabled></option>
+              {{#each categories}}
+              <option value="{{_id}}">{{name}}</option>
+              {{/each}}
             </select>
+            <div class="invalid-feedback">
+              Vui lòng chọn Category!
+            </div>
           </div>
           <div class="form-group col">
             <label for="promotionTuition" class="font-weight-bolder">Chọn Field</label>
-            <select class="custom-select  border-dark rounded-0" id="inputGroupSelect01" name="field">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="custom-select  border-dark rounded-0" id="fieldSelect" name="field" required>
+              <option selected></option>
             </select>
+            <div class="invalid-feedback">
+              Vui lòng chọn Lĩnh vực!
+            </div>
           </div>
         </div>
 
@@ -143,6 +155,9 @@
             <div class="col-7">
               <div class="input-group">
                 <input type="file" width="100%" id="fuImage" class="fuImage" name="image">
+                <div class="valid-tooltip">
+                  Vui lòng chọn ảnh đại diện cho khóa học!
+                </div>
               </div>
             </div>
             <div class="col-5">
@@ -162,6 +177,9 @@
             <div class="col-7">
               <div class="input-group">
                 <input type="file" width="100%" id="fuVideo" class="fuVideo" name="videoDemo">
+                <div class="invalid-feedback">
+                  Vui lòng chọn video demo cho khóa học!
+                </div>
               </div>
             </div>
             <div class="col-5">
@@ -171,9 +189,49 @@
             </div>
           </div>
         </div>
-
-        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
+        <div style="text-align: right;">
+          <button class="btn btn-primary btn-lg bg-lightseagreen" type="submit">Save</button>
+        </div>
       </div>
     </form>
   </div>
 </div>
+
+<script>
+  const fieldsData = {{{ fieldsJSON }}};
+
+  function categoryChange(e) {
+    const fieldEle = document.getElementById('fieldSelect');
+    while (fieldEle.options.length) {
+      fieldEle.remove(0);
+    }
+    for (let field of fieldsData) {
+      if (field.category._id === e.value) {
+        fieldEle.options.add(new Option(field.name, field._id))
+      }
+    }
+  }
+
+  (function () {
+    'use strict';
+    const categoryData = {{{ categoryJSON }}};
+  window.addEventListener('load', function () {
+    const CategoryEle = document.getElementById('categorySelect');
+    for (let i = 0; i < categoryData.length; i++) {
+      if (categoryData[i]._id === "{{categorySelected}}") {
+        CategoryEle.selectedIndex = i + 1
+      }
+    }
+
+    const fieldEle = document.getElementById('fieldSelect');
+    for (let i = 0; i < fieldsData.length; i++) {
+      if (fieldsData[i].category._id === "{{categorySelected}}") {
+        fieldEle.options.add(new Option(fieldsData[i].name, fieldsData[i]._id))
+      }
+      if (fieldsData[i]._id === "{{fieldSelected}}") {
+        fieldEle.selectedIndex = i + 1
+      }
+    }
+  }, false);
+  })();
+</script>

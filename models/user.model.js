@@ -23,7 +23,8 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "Password must not empty"]
+      required: [true, "Password must not empty"],
+      select: false
     },
     gender: {
       type: String,
@@ -67,11 +68,25 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-//Mã hóa password
-UserSchema.pre("save", async function () {
+UserSchema.pre('save', async function(next) {
+  // Only run this function if password was actually modified
+  if (!this.isModified('password')) return next();
+
+  // Hash the password with cost of 12
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-});
+
+  next();
+});  
+
+UserSchema.methods.correctPassword = async function(
+  candidatePassword, 
+  userPassword
+  ) {
+    console.log(candidatePassword);
+    console.log(userPassword);
+  return await bcrypt.compare(candidatePassword, userPassword)
+}
 
 
 //Tạo web token
@@ -83,10 +98,5 @@ UserSchema.methods.createJWT = function () {
   );
 };
 
-//So sánh mật khẩu để login
-UserSchema.methods.comparePassword = async function (inputPassword) {
-  const isMatch = await bcrypt.compare(inputPassword, this.password);
-  return isMatch;
-};
-
 export default mongoose.model("User", UserSchema);
+

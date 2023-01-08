@@ -69,20 +69,25 @@ const CourseSchema = new mongoose.Schema(
             },
             urlVideo: {
               type: String,
+              trim: true,
+            },
+            duration: {
+              type: Number
             },
             duration: {
               type: Number
             },
             avtVideo: {
               type: String,
-            },
+              trim: true
+            }
           }
         ]
       }
     ],
     ratingsAverage: {
       type: Number,
-      default: 4.5,
+      default: 1,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
       set: val => Math.round(val * 10) / 10,
@@ -136,7 +141,7 @@ const CourseSchema = new mongoose.Schema(
 CourseSchema.pre(/^find/, function(next) {
   this.populate({
     path: 'field',
-    select: 'category name description updatedAt createdAt'
+    select: 'category name _id description updatedAt createdAt'
   }).populate({
     path: 'createdBy',
     select: 'name image description where'

@@ -1,0 +1,129 @@
+{{#section 'css'}}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+<link rel="stylesheet" href="/css/registerTeacher.css">
+{{/section}}
+
+{{#section 'js'}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script>
+  $('#frmRegister').on('submit', function (e) {
+    const form = document.getElementById('frmRegister');
+
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+  });
+
+  (function () {
+		'use strict';
+		window.addEventListener('load', function () {
+			if ("{{success}}") {
+				Toastify({
+						text: "Đăng ký thành công!",
+						duration: 3000,
+						newWindow: true,
+						close: true,
+						gravity: "top",
+						position: "right",
+						stopOnFocus: true,
+						style: {
+							background: "linear-gradient(to right, #00b09b, green)",
+						},
+						onClick: function () { } // Callback after click
+					}).showToast();
+          setTimeout(function() {
+            window.location.replace("{{path}}");
+          }, 3000);
+			} 
+      if ("{{failed}}") {
+				Toastify({
+						text: "Đăng ký thất bại, vui lòng thử lại!",
+						duration: 3000,
+						newWindow: true,
+						close: true,
+						gravity: "top",
+						position: "right",
+						stopOnFocus: true,
+						style: {
+							background: "linear-gradient(to right, #00b09b, red)",
+						},
+						onClick: function () { } // Callback after click
+					}).showToast();
+			} 
+		}, false);
+	})();
+</script>
+{{/section}}
+
+<div class="container--aply">
+  <form class="appy__form" id="frmRegister" novalidate method="post">
+    <a href={{path}} class="mb-3 text-primary cursor-pointer" style="cursor: pointer; width: 100%;">
+      <i class="fa fa-angle-left mr-2" aria-hidden="true"></i>
+      Trở lại
+    </a>
+    <div class="container--header">
+      <h1 class="apply__title">ĐĂNG KÍ LÀM GIẢNG VIÊN</h1>
+    </div>
+    <div class="row">
+      <div class="col" style="min-width: 350px;">
+        <div class="field" tabindex="1" style="margin-top: 20px;">
+          <label for="name">
+            <i class="fa fa-user"></i>Họ và tên
+          </label>
+          <input name="name" type="text" placeholder="Ví dụ: Anh Khôi" value="{{name}}" required>
+          <div class="invalid-feedback mt-2">
+            Vui lòng nhập họ tên!
+          </div>
+        </div>
+        <div class="field" tabindex="1">
+          <label for="email">
+            <i class="fa fa-envelope"></i>Email liên hệ
+          </label>
+          <input name="email" type="text" placeholder="email@gmail.com" value="{{email}}" required>
+          <div class="invalid-feedback mt-2">
+            Vui lòng nhập email!
+          </div>
+        </div>
+        <div class="field" tabindex="1" style="margin-top: 20px;">
+          <label for="where">
+            <i class="fa fa-user"></i>Địa chỉ công tác
+          </label>
+          <input name="where" type="text" placeholder="Ví dụ: HCM UTE" value="{{where}}" required>
+          <div class="invalid-feedback mt-2">
+            Vui lòng nhập địa chỉ công tác!
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="min-width: 350px;">
+        <div class="field" tabindex="1" style="margin-top: 20px;">
+          <label for="description">
+            <i class="fa fa-user"></i>Mô tả bản thân
+          </label>
+          <input name="description" type="text" placeholder="Ví dụ: Đam mê dạy học..." value="{{description}}" required>
+          <div class="invalid-feedback mt-2">
+            Vui lòng nhập mô tả bản thân!
+          </div>
+        </div>
+        <div class="field" tabindex="3" style="height: 173px; margin-top: 21px;">
+          <label for="experience">
+            <i class="fa fa-edit"></i>Kinh nghiệm bản thân
+          </label>
+          <textarea name="experience" placeholder="Nhập tại đây.." required>{{experience}}</textarea>
+          <div class="invalid-feedback mb-4">
+            Vui lòng nhập kinh nghiệm của bạn!
+          </div>
+        </div>
+        <div class="apply__btn pt-2">
+          <button type="submit" class="btn-apply">Gửi yêu cầu đăng ký</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

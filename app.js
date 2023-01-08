@@ -11,10 +11,12 @@ import hbs_sections from 'express-handlebars-sections'
 import numeral from 'numeral';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import cookieParser from 'cookie-parser';
 
 import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
 
+import ativate_locals from './middlewares/local.mdw.js';
 import AppError from './utils/appError.js';
 import globalErrorHandler from './controllers/errorController.js';
 import authRoutes from './routes/authRoutes.js';
@@ -79,6 +81,8 @@ app.set('trust proxy', 1) // trust first proxy
 
 app.use(flash());
 
+app.use(cookieParser())
+ativate_locals(app);
 // ROUTES
 app.get('/', (req, res) => {
   res.redirect('/home');

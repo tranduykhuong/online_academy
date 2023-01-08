@@ -2,25 +2,25 @@
 
 {{/section}}
 
-<div class="row">
-  <div class="col col-md-3 col-sm-4 p-0">
+<div class="">
+  <div class="col col-md-3 col-sm-4 p-0 position-fixed">
     <h5 class="mt-5">Kế hoạch khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Mục tiêu khóa học
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step1}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Cấu trúc khóa học
@@ -31,30 +31,30 @@
     <h5 class="mt-5">Tạo khóa học</h5>
     <ul class="list-unstyled">
       <li class="my-3">
-        <a href="/teacher/addCourse?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step3}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Thông tin khóa học
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step4}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Chương trình giảng dạy
         </a>
       </li>
       <li class="my-3">
-        <a href="/teacher/addCourse?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
-          {{#if step5}} 
+        <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}}
           <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
-          {{else}} 
+          {{else}}
           <i class="fa fa-circle-thin" aria-hidden="true"></i>
           {{/if}}
           Học phí
@@ -62,14 +62,15 @@
       </li>
     </ul>
 
-    <button type="button" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+    <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
       aria-pressed="true">
       Đăng khóa học
     </button>
   </div>
 
-  <div class="col shadow pb-3 px-0 mb-5">
-    <form action="" method="post">
+  <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
+    width: auto !important;">
+    <form id="pricingForm" class="needs-validation" novalidate method="post">
       <h3 class="p-5 border-bottom">Học phí khóa học</h3>
       <div class="col px-5 py-4">
         <p class="mb-2">Vui lòng chọn tầng giá cho khóa học của bạn dưới đây và nhấp vào 'Lưu'.</p>
@@ -80,7 +81,7 @@
           <div class="form-group col">
             <label for="price" class="font-weight-bolder">Học phí</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control border-dark rounded-0 number" placeholder="Nhập học phí"
+              <input type="text" class="form-control border-dark rounded-0 number" placeholder="Nhập học phí" required
                 aria-label="Nhập học phí" aria-describedby="basic-addon2" id="price" name="price" value={{price}}>
               <div class="input-group-append">
                 <select class="custom-select border-dark rounded-0" id="inputGroupSelect01">
@@ -90,7 +91,7 @@
               </div>
             </div>
             <div class="invalid-feedback">
-              Vui lòng nhập học phí!
+              Vui lòng nhập học phí khóa học!
             </div>
           </div>
 
@@ -115,7 +116,10 @@
           <textarea class="h100p w100 form-control border-dark rounded-0" id="descriptionDiscount"
             name="descriptionDiscount">{{descriptionDiscount}}</textarea>
         </div>
-        <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
+
+        <div style="text-align: right;">
+          <button class="btn btn-primary btn-lg bg-lightseagreen" type="submit">Save</button>
+        </div>
       </div>
     </form>
   </div>

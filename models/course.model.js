@@ -40,7 +40,10 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       default: "./default.mp4",
     },
-    studentList: [mongoose.Types.ObjectId],
+    studentList: [{
+      idStudent: mongoose.Types.ObjectId,
+      registerTime: Date
+    }],
     listChapter: [
       {
         title: {
@@ -59,9 +62,14 @@ const CourseSchema = new mongoose.Schema(
             },
             urlVideo: {
               type: String,
+              trim: true,
+            },
+            duration: {
+              type: Number
             },
             avtVideo: {
               type: String,
+              trim: true
             }
           }
         ]
@@ -69,7 +77,7 @@ const CourseSchema = new mongoose.Schema(
     ],
     ratingsAverage: {
       type: Number,
-      default: 4.5,
+      default: 1,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
       set: val => Math.round(val * 10) / 10,
@@ -91,13 +99,17 @@ const CourseSchema = new mongoose.Schema(
     descriptionDiscount: String,
     field: {
       type: mongoose.Types.ObjectId,
-      ref: "field",
+      ref: "Field",
       // required: [true, "Field must not be empty"],
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       // required: [true, "Provider must not be empty"],
+    },
+    accept: {
+      type: Boolean,
+      default: false
     },
     fieldsVideo: [
       {
@@ -111,6 +123,16 @@ const CourseSchema = new mongoose.Schema(
     toObject: { virtuals: true } 
   }
 ); // timestamps -> key createdAt, updatedAt
+
+
+CourseSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'field',
+    select: 'name _id category'
+  });
+
+  next();
+})
 
 export default mongoose.model("Course", CourseSchema);
 

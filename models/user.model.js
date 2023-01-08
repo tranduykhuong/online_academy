@@ -36,8 +36,7 @@ const UserSchema = new mongoose.Schema(
       default: "student"
     },
     favoriteCourses: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'course'
+        type: mongoose.Types.ObjectId
       }
     ],
     boughtCourses: [
@@ -55,6 +54,10 @@ const UserSchema = new mongoose.Schema(
     active: {
       type: Boolean,
       default: true
+    },
+    description: {
+      type: String,
+      default: ""
     }
   },
   { timestamps: true }
@@ -65,6 +68,7 @@ UserSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
 
 //Tạo web token
 UserSchema.methods.createJWT = function () {

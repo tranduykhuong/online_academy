@@ -4,94 +4,65 @@
     <header>
       <div class="header-container">
         <div class="header-left">
-          <ul>
+          <ul class="header-left-ul">
             <li class="header-left__item">
-              <div class="header-logo__container">
+              <a class="header-logo__container" href="/">
                 <img src="/img/logo.png" alt="" class="logo-img" />
-              </div>
+              </a>
             </li>
             <li class="header-left__item">
               <i class="bi bi-list icon__item icon__category"></i>
               <a href="" class="header-left__item--link">
-                <h3 class="left-item--title">Danh mục</h3>
+                <h3 class="left-item--title">Khóa học</h3>
               </a>
               <i class="bi bi-caret-down-fill icon__item icon__category"></i>
 
               <div class="category__option">
                 <div class="category__option-option--level1">
-                  <span class="category__option-span">IT</span>
+                  <a href="" class="category__option-span">Danh mục</a>
                   <i class="bi bi-caret-right-fill icon_lv1"></i>
                   <!-- Level 2 Option -->
-                  <div class="category__option-option--level2">
-                    <ul>
-                      <li class="option__level2-item">
-                        <span class="category__option-span">Lập trình Web</span>
+                    <ul class="option__level2">
+                      {{#each headline as |item|}}
+                      <li class="option__level2-li">
+                        <a href="" class="category__option-span">{{item.[0]}}</a>
                         <i class="bi bi-caret-right-fill icon_lv2"></i>
 
                         <!-- Level 3 Option -1 -->  
-                        <div class="category__option-option--level3">
-                          <ul option__ul>
-                            <li class="option__level3-item">
-                              <h4 class="category__option-h4">Popular topics</h4>
+                          <ul class="option__level3">
+                            <li class="option__level3-li">
+                              <h4 class="category__option-h4">Popular Topics</h4>
                             </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> ReactJS </a>
+                            {{#each item.[1] as |hehe|}}
+                            <li class="option__level3-li">
+                              <a href="" class="option-link"> {{this.listfield}}</a>
                             </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> HTML/CSS </a>
-                            </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> NodeJS </a>
-                            </li>
+                            {{/each}}
                           </ul>
-                        </div>
                       </li>
-
-                      <li class="option__level2-item">
-                        <span class="category__option-span">Lập trình ứng di động</span>
-                        <i class="bi bi-caret-right-fill icon_lv2"></i>
-                        <!-- Level 3 Option -2 -->
-                        <div class="category__option-option--level31">
-                          <ul class="option__ul">
-                            <li class="option__level3-item">
-                              <h4 class="category__option-h4">Popular topics</h4>
-                            </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> Android </a>
-                            </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> IOS </a>
-                            </li>
-                            <li class="option__level3-item">
-                              <a href="" class="option-link"> React Native </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
+                      {{/each}}
                     </ul>
-                  </div>
                 </div>
               </div>
             </li>
             <li class="header-left__item">
               <div class="search-blank">
                 <i class="bi bi-search"></i>
-                <input type="text" placeholder="Tìm kiếm khóa học" />
+                <input id="search-value" type="text" placeholder="Tìm kiếm khóa học" onkeyup="searchData()"/>
               </div>
             </li>
           </ul>
         </div>
-        <div class="header-right">
+        <div id="header-right-1" class="header-right">
           <ul>
             <li class="header-right__item">
               <div class="my-courses">
                 <i class="bi bi-play-fill icon__category" ></i>
-                <h3 class="left-item--title">Khóa học của tôi</h3>
+                <h3 class="left-item--title"><a href="/user/mycourse" class="header__lin">Khóa học của tôi</a></h3>
               </div>
             </li>
             <li class="header-right__item">
               <a href="" class="header-right__link">
-                <i class="bi bi-cart-fill icon__right"></i>
               </a>
             </li>
             <li class="header-right__item">
@@ -117,7 +88,7 @@
                         </a>
                       </li>
                       <li class="list__option-item">
-                        <a href="" class="list__option-link">
+                        <a href="/user/favorite" class="list__option-link">
                           <i class="bi bi-heart-fill tmp-icon"></i>
                           <span class="item__span">Danh sách yêu thích</span>
                         </a>
@@ -143,24 +114,26 @@
             </li>
           </ul>
         </div>
-        <!-- <div class="header-right header-right--unlogin">
+        {{!-- <div id="header-right-2" class="header-right header-right--unlogin">
             <ul>
-                <li class="header-right__item-new">
-                    <div class="my-courses-new">
-                        <i class="fa-solid fa-play"></i>
-                        <h3>Khóa học của tôi</h3>
-                    </div>
-                </li>
-                <li class="header-right__item-new">
-                    <a href="" class="header-right__link">
-                        <i class="fa-solid fa-cart-shopping icon__right"></i>
-                    </a>
-                </li>
                 <li class="header-right__item-new">
                     <button class="btn_logIn">Đăng Nhập</button>
                     <button class="btn_Register">Đăng kí</button>
                 </li>
             </ul>
-        </div> -->
-      </div>
+        </div>
+      </div> --}}
+
+      {{!-- Search course --}}
+    <form id="search-course-form" method="post"></form>
+
+      <script>
+        function searchData(){
+          //console.log(document.getElementById('search-value').value);
+          var valueinput = document.getElementById('search-value').value;
+          var searchform =document.getElementById('search-course-form');
+          searchform.action = 'searchfood/' + valueinput;
+          searchform.submit();
+        }
+      </script>
     </header>

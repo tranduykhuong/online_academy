@@ -1,7 +1,11 @@
 header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
     display: block;
     width: 100%;
     height: 80px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
   }
 
   .header-container {
@@ -23,7 +27,7 @@ header {
     flex: 1;
   }
 
-  .header-left ul {
+  .header-left .header-left-ul {
     margin: 0;
     display: flex;
     height: 100%;
@@ -47,6 +51,12 @@ header {
   .header-left__item--link .left-item--title{
     font-size: 18.72px;
     margin-bottom: 0;
+  }
+
+  .left-item--title .header__lin{
+    text-decoration: none;
+    color: white;
+    font-size: 18.72px !important;
   }
 
   .header-left__item:first-child {
@@ -98,12 +108,11 @@ header {
     position: absolute;
     padding-left: 0;
     z-index: 1;
-    top: 100%;
+    top: 99%;
     right: 4%;
-    background-color: rgb(255, 255, 255);
+    left: 23%;
+    background-color: #212121;
     width: 180px;
-    list-style: none;
-    /* box-shadow: -6px 9px 10px #c7c4c4; */
     border: 1px solid black;
     display: none;
   }
@@ -118,171 +127,125 @@ header {
     padding-left: 22px;
     position: relative;
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   .category__option-option--level1 .icon_lv1 {
-    color: black;
+    color: white;
   }
 
-  .category__option-option--level1 span {
+  .category__option-option--level1 a {
     font-weight: 500;
   }
 
   .category__option-option--level1:hover .icon_lv1 {
-    color: green;
+    color: lightseagreen;
   }
 
-  .category__option-option--level1:hover > span {
-    color: green;
+  .category__option-option--level1:hover > .category__option-span {
+    color: lightseagreen;
   }
 
-  .category__option:hover .category__option-option--level2 {
+  .category__option:hover .option__level2 {
     display: block;
   }
 
-  .category__option-option--level2 {
-    position: absolute;
-    padding-left: 0;
-    z-index: 1;
-    top: -2%;
-    right: -157%;
-    background-color: rgb(255, 255, 255);
-    width: 261px;
-    list-style: none;
-    border: 1px solid black;
-    display: none;
-  }
-
-  .category__option-option--level2 ul {
-    width: 100%;
-    height: 100%;
-    display: block;
-    padding-left: 0;
-  }
-
-  .option__level2-item {
-    padding-left: 22px;
-    text-decoration: none;
-    color: black;
-    align-items: center;
-    display: flex;
-    height: 35px;
-    width: 97%;
-    justify-content: space-between;
-  }
-
-  .option__level2-item .icon_lv2 {
-    color: black;
-  }
-
-  .option__level2-item:hover span {
-    color: black;
-  }
-
-  .option__level2-item:hover .icon_lv2 {
-    color: green;
-  }
-
-  .option__level2-item:hover > span {
-    color: green;
-  }
-
-  .option__level2-item:nth-child(1) {
-    position: relative;
-  }
-
-  .option__level2-item:nth-child(2) {
-    position: relative;
-  }
-
-  .option__level2-item:nth-child(1):hover .category__option-option--level3 {
-    display: block;
-  }
-
-  .option__level2-item:nth-child(2):hover
-    .category__option-option--level31 {
-    display: block;
-  }
-
-  .option__level2-item:nth-child(1)::after {
-    content: "";
-    border-width: 18px 16px;
-    border-style: solid;
-    border-color: transparent transparent transparent transparent;
-    position: absolute;
-    right: -28px;
-    top: -1px;
-  }
-
-  .option__level2-item:nth-child(2)::after {
-    content: "";
-    border-width: 18px 16px;
-    border-style: solid;
-    border-color: transparent transparent transparent transparent;
-    position: absolute;
-    right: -28px;
-    top: 0;
-  }
-
-  .category__option-option--level3 {
-    position: absolute;
-    padding-left: 0;
-    z-index: 1;
-    top: -3%;
-    right: -82%;
-    background-color: rgb(255, 255, 255);
-    width: 200px;
-    list-style: none;
-    border: 1px solid black;
-    display: none;
-  }
-
-  .category__option-option--level31 {
-    position: absolute;
-    padding-left: 0;
-    z-index: 1;
-    top: -103%;
-    right: -82%;
-    background-color: rgb(255, 255, 255);
-    width: 200px;
-    list-style: none;
-    border: 1px solid black;
-    display: none;
-  }
-
-  .category__option-option--level3 ul,
-  .category__option-option--level31 ul {
-    width: 100%;
-    height: 100%;
-    display: block;
-    padding-left: 22px;
-  }
-
-  .option__level3-item {
-    align-items: center;
-    display: flex;
-    height: 35px;
-    width: 85%;
-  }
-
-  .option__level3-item .option-link {
-    text-decoration: none;
-    color: black;
-    font-size: 17.1px;
+  .category__option-span{
+    font-size: 17.1px !important;
     padding-left: 0 !important;
+    color: white;
+    text-decoration: none !important;
   }
 
-  .option__level3-item:hover .option-link {
-    color: green;
+  .option__level2{
+    position: absolute;
+    padding-top: 3px;
+    padding-left: 22px;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    left: 103%;
+    top: 0;
+    width: 240px;
+    background-color: #212121;
+    justify-content: space-between;
+    list-style: none;
+    padding-bottom: 5px;
+    border: 1px solid black;
+    border-top: 0px;
+    display: none;
   }
 
-  .category__option .category__option-span{
+  .option__level2 .icon_lv2{
+    color: white;
+  }
+
+  .option__level3 .option__level3-li,
+  .option__level2 .option__level2-li{
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    height: 35px;
+    padding-right: 8px;
+    width: 100%;
+    border-bottom: 1px solid #212121;
     font-size: 19px;
-    font-weight: 400;
+    background-color: #212121;
   }
 
-  .category__option .category__option-h4{
+  .option__level2-li .category__option-span{
+    background-color: #212121;
+  }
+
+  .option__level2-li:hover .option__level3{
+    display: block;
+  }
+
+  .option__level2-li:hover > .category__option-span{
+    color: lightseagreen;
+  }
+
+  .option__level2-li:hover > .icon_lv2{
+    color: lightseagreen;
+  }
+
+  .option__level3 {
+    position: absolute;
+    padding-top: 2px;
+    padding-left: 22px;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    left: 100%;
+    top: -6px;
+    width: 205px;
+    background-color: #212121;
+    justify-content: space-between;
+    list-style: none;
+    padding-bottom: 5px;
+    font-weight: 600;
+    border: 1px solid black;
+    border-top: 0px;
+    display: none;
+  }
+
+  .option__level3-li .option-link{
+    background-color: #212121;
+    color: white;
+  }
+
+  .option__level3-li:hover .option-link{
+    color: lightseagreen;
+  }
+
+  .option__level3-li .option-link{
+    font-size: 17.1px !important;
+    padding-left: 0 !important;
+    text-decoration: none;
+    color: white;
+  }
+
+  .category__option-h4{
     font-size: 19px;
   }
 
@@ -336,10 +299,11 @@ header {
     height: 100%;
     justify-content: end;
     display: flex;
+    cursor: pointer;
   }
 
   .header-right__item .left-item--title{
-    font-size: 18.72px;
+    font-size: 18.72px !important;
   }
 
   .my-courses .icon__right{
@@ -347,8 +311,8 @@ header {
   }
 
   .header-right__item:nth-child(2) {
-    padding-right: 30px;
-    flex: 1;
+    padding-right: 0;
+    flex: 0;
   }
 
   .header-right__item:nth-child(3) {
@@ -362,7 +326,7 @@ header {
   }
 
   .icon__right {
-    font-size: 18px;
+    font-size: 18.72px !important;
   }
 
   .my-courses {
@@ -384,7 +348,7 @@ header {
     margin: 0;
   }
 
-  .my-courses:hover h3 {
+  .my-courses:hover .header__lin {
     color: lightseagreen;
   }
 
@@ -531,12 +495,12 @@ header {
 
   .list__option::before {
     content: "";
-    border-width: 11px 27px;
+    border-width: 25px 27px;
     border-style: solid;
     border-color: transparent;
     position: absolute;
     right: 57px;
-    top: -15px;
+    top: -25px;
     background-color: transparent;
   }
 
@@ -604,11 +568,11 @@ header {
   }
 
   .list__option-link:hover i {
-    color: green;
+    color: lightseagreen;
   }
 
   .list__option-link:hover span {
-    color: green;
+    color: lightseagreen;
   }
 
   .list__option-item .list__option-link {

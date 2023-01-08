@@ -2,8 +2,14 @@ import { Error } from 'mongoose';
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import multer from 'multer';
+import courseModel from '../models/course.model.js';
+import mongoose from '../utils/mongoose.js';
+import reviewModal from '../models/review.modal.js';
+import userModel from '../models/user.model.js';
 
 import Course from '../models/course.model.js';
+import fieldModel from '../models/field.model.js';
+import categoryModel from '../models/category.model.js';
 
 export default {
  addCourse: catchAsync(async (req, res, next) => {
@@ -306,9 +312,193 @@ export default {
   })
 }),
 
-courseDetail: catchAsync(async (req, res, next) => {
-  res.render('vwCourseDetail/courseDetail', {
-    layout: 'layout'
-  })
-}),
+ //[GET] /course/:idcourse
+  courseDetail: catchAsync(async (req, res, next) => {
+    var flagFvr, flagBuy = "true";
+    var totalVideo = 0;
+    var nbcourse;
+    var totalStd = 0;
+    var totalReview = 0;
+    var totalTime = 0;
+    var field;
+    var samefieldcrs;
+
+    await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user => {
+    if(user.favoriteCourses.includes(req.params.idcourse) == true)
+    {
+      flagFvr = "false";
+    }
+    else{
+      flagFvr = "true";
+    }
+
+    for(var i = 0; i < user.boughtCourses.length; i++){
+      if(user.boughtCourses[i].idCourse == req.params.idcourse)
+      {
+        flagBuy = "false";
+      }
+    }
+    courseModel.findOne({ _id: req.params.idcourse})
+    .then(courseh =>
+      {
+        //Tìm tổng thời lượng của tất cả video khóa học
+        for (var i = 0; i < courseh.listChapter.length; i++){
+          for(var j = 0; j < courseh.listChapter[i].listVideo.length; j++)
+          {
+            totalTime = totalTime + courseh.listChapter[i].listVideo[j].duration;
+          }
+        }
+        //Tìm tổng video của khóa học này
+        for(var i = 0; i < courseh.listChapter.length; i++)
+        {
+          totalVideo = totalVideo + courseh.listChapter[i].listVideo.length;
+        }
+
+        //Tìm thông tin của thằng giảng viên
+        courseModel.find({createdBy: courseh.createdBy}).then(courses => {
+          nbcourse = courses.length;
+          for(var i = 0; i < courses.length; i++)
+          {
+            totalStd = totalStd + courses[i].studentList.length;
+            
+            reviewModal.find({course: courses[i]._id}).then(rvs => {
+              totalReview = totalReview + rvs.length;
+            });
+
+            //Tìm xem tất cả đánh giá
+          }
+        });
+
+        //Tìm field của khóa học đã
+        field = courseh.field;
+
+        //Tìm 5 khóa học cùng field được mua nhiều nhất
+        courseModel.find({accept: true, field : field}).sort({ studentList: -1 }).limit(5).then(courset => {
+          samefieldcrs = courset;
+
+          var sfieldp1 = samefieldcrs.slice(0,3);
+          var sfieldp2 = samefieldcrs.slice(3,5);
+
+          console.log(req.session.entries);
+
+          var courseVideodemo = courseh.listChapter.shift();
+          reviewModal.find({course: courseh._id}).then(reviews => {
+            res.render('vwCourseDetail/courseDetail', {
+              listcategory: req.session.entries,
+              numberReviews: totalReview,
+              numberStudent: totalStd,
+              numbercourse: nbcourse,
+              numbervideo: totalVideo,
+              totaltime: totalTime,
+              coursevideodemo: mongoose.mongooseToObject(courseVideodemo),
+              flagbuy: flagBuy,
+              flagfvr: flagFvr,
+              iduser: '63af99d9bbc55b73d3b1761c',
+              relative1: mongoose.mutipleMongooseToObject(sfieldp1),
+              relative2: mongoose.mutipleMongooseToObject(sfieldp2),
+              reviews: mongoose.mutipleMongooseToObject(reviews), 
+              benifits: courseh.benifits.split('\n'), 
+              course : mongoose.mongooseToObject(courseh) });
+          });
+          
+        });
+    })
+    .catch(next);
+  });    
+  }),
+
+
+  //[POST] /course/:idcourse/createfeedback
+  createfeedback: catchAsync(async (req, res, next) => {
+    if(req.body.starnb !== "")
+    {
+      const feedback = new reviewModal({
+        course : req.params.idcourse,
+        comment : req.body.feedback,
+        rating : req.body.starnb,
+        user: req.body.iduser
+      });
+      await feedback.save();
+    }
+    else{
+      const feedback = new reviewModal({
+        course : req.params.idcourse,
+        comment : req.body.feedback,
+        user: req.body.iduser
+      });
+      await feedback.save();
+    }
+
+    var starAverage = 0;
+    await reviewModal.find({course: req.params.idcourse}).then(reviews => {
+      reviews.map((value, index) =>{
+        starAverage = starAverage + value.rating;
+      });
+      courseModel.findByIdAndUpdate(req.params.idcourse, { ratingsAverage: starAverage / reviews.length  },
+                        function (err) {
+      if (err){
+          console.log(err)
+      }
+
+      });
+    });
+    
+    res.redirect(`/course/${req.params.idcourse}#heading5`);
+  }),
+
+    //[DELETE] /course/deletefeedback/:idfeedback
+  deletefeedback: catchAsync(async (req, res, next) => {
+      reviewModal.deleteOne({ _id : req.params.idfeedback})
+      .then(() => res.redirect(req.get('referer') + '#heading5'))
+      .catch(next);
+  }),
+
+  //[PATCH] /course/:idcourse/addtofavorite/:flag
+  addtofavorite: catchAsync(async (req, res, next) => {
+    await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user =>{
+      if(req.params.flag == "true")
+      {
+        user.updateOne({ $push: { favoriteCourses: req.params.idcourse } },
+        function (err) {});
+      }
+      else 
+      {
+        user.updateOne({ $pull: { favoriteCourses: req.params.idcourse } },
+          function (err) {});
+      }
+
+    });
+    res.redirect('back');
+  }),
+
+  //[PATCH] /course/:idcourse/buycourse/:flag
+  buycourse: catchAsync(async (req, res, next) => {
+    await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user =>{
+      if(req.params.flag == "true")
+      {
+        user.updateOne({ $push: { boughtCourses: {idCourse: req.params.idcourse} } },
+        function (err) {});
+      }
+      else 
+      {
+        return;
+      }
+
+    });
+
+    //Add thằng mới mua vô listStudent khóa học
+    await courseModel.findOne({ _id: req.params.idcourse}).then(course => {
+      if(req.params.flag == "true")
+      {
+        course.updateOne({ $push: { studentList: {studentId: '63af99d9bbc55b73d3b1761c'} } },
+        function (err) {});
+      }
+      else 
+      {
+        return;
+      }
+    });
+    res.redirect('back');
+  }),
+
 };

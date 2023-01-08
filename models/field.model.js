@@ -12,11 +12,24 @@ const FieldSchema = new mongoose.Schema(
     },
     category:{
         type: mongoose.Types.ObjectId,
-        ref: "category",
+        ref: "Category",
         required: [true, "Field category must not be empty"],
+    },
+    description:{
+      type: String, 
+      trim: true,
     }
   },
   { timestamps: true }
 ); // timestamps -> key createdAt, updatedAt
+
+FieldSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'category',
+    select: 'name'
+  });
+
+  next();
+})
 
 export default mongoose.model("Field", FieldSchema);

@@ -1,0 +1,87 @@
+.bought-container {
+    margin-top: 100px !important;
+    font-size: 14px;
+}
+
+.bought-container >h3{
+    margin-bottom: 30px;
+}
+
+.hiden-text {
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 10px;
+}
+
+.card-img-top {
+    height: 250px;
+}
+
+.card-title {
+    margin-bottom: 2px;
+}
+
+.size-title {
+    height: 3rem;
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.author-name {
+    font-size: 14px;
+    color: rgb(34, 34, 34);
+    margin-bottom: 10px;
+    margin-top: 7px;
+}
+
+.total-student {
+    margin-bottom: 0 !important;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.checked {
+    color: orange;
+}
+
+.student-rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contain-outstanding {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.outstanding {
+    margin: auto 0;
+    padding-left: 1rem;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+}
+
+.card-body {
+    padding-top: 0.5rem;
+}
+
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 2px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+}
+
+.btn-vh{
+    width: 140px;
+}

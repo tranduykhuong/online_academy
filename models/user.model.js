@@ -35,9 +35,18 @@ const UserSchema = new mongoose.Schema(
       enum: ["student", "teacher", "admin"],
       default: "student"
     },
+    boughtCourses: [
+      {
+      idCourse: mongoose.Types.ObjectId,
+      idChapter: mongoose.Types.ObjectId,
+      idLesson: mongoose.Types.ObjectId,
+      currentTime: Number,
+     }
+    ],
     favoriteCourses: [
+      {
       type: mongoose.Types.ObjectId,
-      ref: 'course'
+    }
     ],
     image: {
       type: String,
@@ -46,6 +55,14 @@ const UserSchema = new mongoose.Schema(
     active: {
       type: Boolean,
       default: true
+    },
+    description:{
+      type: String,
+      default: ""
+    },
+    where:{
+      type: String,
+      default: ""
     }
   },
   { timestamps: true }
@@ -73,4 +90,3 @@ UserSchema.methods.comparePassword = async function (inputPassword) {
 };
 
 export default mongoose.model("User", UserSchema);
-

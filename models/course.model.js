@@ -40,7 +40,16 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       default: "./default.mp4",
     },
-    studentList: [mongoose.Types.ObjectId],
+    studentList: [
+      {
+        studentId: mongoose.Types.ObjectId,
+        registerTime: 
+        {
+         type: Date,
+         default: Date.now()
+        }
+      }
+    ],
     listChapter: [
       {
         title: {
@@ -60,9 +69,12 @@ const CourseSchema = new mongoose.Schema(
             urlVideo: {
               type: String,
             },
+            duration: {
+              type: Number
+            },
             avtVideo: {
               type: String,
-            }
+            },
           }
         ]
       }
@@ -88,16 +100,23 @@ const CourseSchema = new mongoose.Schema(
         message: 'Discount price {{VALUE}} should be below regular price'
       }
     },
-    descriptionDiscount: String,
+    descriptionDiscount: {
+      type: String,
+      default: "",
+    },
     field: {
       type: mongoose.Types.ObjectId,
-      ref: "field",
-      // required: [true, "Field must not be empty"],
+      ref: "Field",
+      //required: [true, "Field must not be empty"],
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       // required: [true, "Provider must not be empty"],
+    },
+    accept: {
+      type: Boolean,
+      default: false,
     },
     fieldsVideo: [
       {
@@ -112,5 +131,18 @@ const CourseSchema = new mongoose.Schema(
   }
 ); // timestamps -> key createdAt, updatedAt
 
-export default mongoose.model("Course", CourseSchema);
+CourseSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'createdBy',
+    select: 'name image description where'
+  });
 
+  this.populate({
+    path: 'field',
+    select: 'name',
+  })
+
+  next();
+})
+
+export default mongoose.model("Course", CourseSchema);

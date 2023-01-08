@@ -55,7 +55,11 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: true
     },
-    description: {
+    description:{
+      type: String,
+      default: ""
+    },
+    where:{
       type: String,
       default: ""
     }

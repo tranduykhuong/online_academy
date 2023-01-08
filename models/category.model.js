@@ -10,8 +10,8 @@ const CategorySchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
-    description: {
-      type: String,
+    description:{
+      type: String, 
       trim: true,
     }
   },

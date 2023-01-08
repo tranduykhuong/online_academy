@@ -16,8 +16,8 @@ const FieldSchema = new mongoose.Schema(
         ref: "Category",
         required: [true, "Field category must not be empty"],
     },
-    description: {
-      type: String,
+    description:{
+      type: String, 
       trim: true,
     }
   },

@@ -43,8 +43,12 @@ const CourseSchema = new mongoose.Schema(
     },
     studentList: [
       {
-        idStudent: mongoose.Types.ObjectId,
-        registerTime: Date
+        studentId: mongoose.Types.ObjectId,
+        registerTime: 
+        {
+         type: Date,
+         default: Date.now()
+        }
       }
     ],
     listChapter: [
@@ -66,9 +70,12 @@ const CourseSchema = new mongoose.Schema(
             urlVideo: {
               type: String,
             },
+            duration: {
+              type: Number
+            },
             avtVideo: {
               type: String,
-            }
+            },
           }
         ]
       }
@@ -94,18 +101,24 @@ const CourseSchema = new mongoose.Schema(
         message: 'Discount price {{VALUE}} should be below regular price'
       }
     },
-    descriptionDiscount: String,
-
+    descriptionDiscount: {
+      type: String,
+      default: "",
+    },
     field: {
       type: mongoose.Types.ObjectId,
       ref: "Field",
-      // required: [true, "Field must not be empty"],
+      //required: [true, "Field must not be empty"],
     },
 
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
       // required: [true, "Provider must not be empty"],
+    },
+    accept: {
+      type: Boolean,
+      default: false,
     },
     fieldsVideo: [
       {
@@ -126,11 +139,10 @@ CourseSchema.pre(/^find/, function(next) {
     select: 'category name description updatedAt createdAt'
   }).populate({
     path: 'createdBy',
-    select: 'name'
+    select: 'name image description where'
   });
   
   next();
 });
 
 export default mongoose.model("Course", CourseSchema);
-

@@ -4,27 +4,41 @@ const ReviewSchema = new mongoose.Schema(
   {
     user: {
         type: mongoose.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     }, 
     course: {
         type: mongoose.Types.ObjectId,
-        ref: 'course'
+        ref: 'Course'
     },
     comment:{
         type: String,
-        required: [true, "Comment must not be empty"],
         maxlength: 50,
-        minlength: 3,
+        minlength: 0,
         trim: true,
+        default: ""
     } ,
     rating: {
         type: Number,
         min: [0, "Rating must be above 0"],
-        max: [5, "Rating must be below 5"]
+        max: [5, "Rating must be below 5"],
+        default: 1
     }
   },
   { timestamps: true }
 ); // timestamps -> key createdAt, updatedAt
 
-export default mongoose.model("Review", ReviewSchema);
+ReviewSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'user',
+    select: 'name image'
+  });
 
+  this.populate({
+    path: 'course',
+    select: 'name'
+  });
+
+  next();
+})
+
+export default mongoose.model("Review", ReviewSchema);

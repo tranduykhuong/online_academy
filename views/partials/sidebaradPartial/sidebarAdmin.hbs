@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/sidebarad.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav class="background"></nav>
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/img/LogoApp.png" alt="">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="dashboard" class="component__item">
+                        <i class="fa-solid fa-chart-line"></i>
+                        DashBoard
+                    </a>
+                </li>
+                <li>
+                    <a href="#ProfessorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        Teachers
+                    </a>
+                    <ul class="collapse list-unstyled" id="ProfessorSubmenu">
+                        <li>
+                            <a class="component__item cpn_active" href="#">All Teachers</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">Add Teachers</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">Edit Teachers</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">Teacher Profile</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#StudentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Students
+                    </a>
+                    <ul class="collapse list-unstyled" id="StudentSubmenu">
+                        <li>
+                            <a class="component__item" href="#">All Students</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">Add Students</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">Edit Students</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="#">About Student</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#CategorySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                        <i class="fa-solid fa-database"></i>
+                        Category
+                    </a>
+                    <ul class="collapse list-unstyled" id="CategorySubmenu">
+                        <li>
+                            <a class="component__item" href="#">All Categories</a>
+                        </li>
+                        <li>
+                            <a class="component__item" href="editCategory">Edit Categories</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#CourseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                        <i class="fa-solid fa-book-open"></i>
+                        Courses
+                    </a>
+                    <ul class="collapse list-unstyled" id="CourseSubmenu">
+                        <li>
+                            <a class="component__item" href="deletecourse">Edit Courses</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="component__logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Log Out
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const tabs = $$(".component__item");
+        const tabActive = $(".component__item.cpn_active");
+        tabs.forEach((tab, index) => {
+
+            tab.onclick = function () {
+                $(".component__item.cpn_active").classList.remove("cpn_active");
+
+                this.classList.add("cpn_active");
+            };
+        });
+    </script>
+</body>
+
+</html>

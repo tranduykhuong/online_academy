@@ -1,0 +1,91 @@
+<head>
+    <link rel="stylesheet" href="/css/mycourse.css" type="text/css">
+</head>
+
+<body>
+    <div class="mx-5 bought-container">
+        <h3>Khóa học đã mua</h3>
+        <div class="row mx-5">
+            {{#each boughtCourses}}
+            <div class="col-sm-6 .col-md-5 col-lg-3 my-3" onclick="window.location='/course/{{this._id}}';">
+                <div class='card rounded-lg mb-1'>
+                    <img class='card-img-top rounded-lg'
+                        src={{changeURLVideo this.image}} alt='Card image cap' />
+                    <div class='card-body'>
+                        <h6 class="text-warning text-uppercase">{{this.category}}</h6>
+                        <div class="size-title">
+                            <h5 class='card-title'>{{this.name}}</h5>
+                        </div>
+                        <div class='card-text hiden-text'>{{{this.description}}}
+                        </div>
+                        <div class="student-rating">
+                            <div class="star-rating" id="cl{{this._id}}" data-rating={{this.ratingsAverage}}
+                                data-id={{this._id}}>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <p class="total-student ml-5">{{this.nbstudent}} students</p>
+                        </div>
+
+                        <p class="author-name">{{this.author}}</p>
+                        <div class="contain-outstanding" id="ck{{this._id}}" data-complete={{this.flagSaw}}>
+                            <a href='/study/{{this._id}}' class='btn btn-primary btn-vh'>Vào học</a>
+                            <div>
+                                <p class="outstanding" id="format-money">{{this.price}}đ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <script>
+
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+
+        let ratingPoints;
+        var formatMoney = document.querySelectorAll('.outstanding');
+        var starRating = document.querySelectorAll('.star-rating');
+        var buyComplete = document.querySelectorAll('.contain-outstanding');
+
+        for (let i = 0; i < formatMoney.length; i++) {
+            formatMoney[i].innerHTML = VND.format(parseInt(formatMoney[i].innerHTML));
+        }
+
+        for (var i = 0; i < starRating.length; i++) {
+            var idcr = starRating[i].id;
+            var stars = Math.round(document.getElementById(`${idcr}`).getAttribute('data-rating'));
+            var starlist = document.querySelectorAll(`#${idcr} .fa-star`);
+            for (var j = 0; j < 5; j++) {
+                if (j < stars) {
+                    starlist[j].classList.add('checked');
+                }
+            }
+        }
+
+        for (var i = 0; i < buyComplete.length; i++) {
+            var idcr1 = buyComplete[i].id;
+            var complete = document.getElementById(`${idcr1}`).getAttribute('data-complete');
+            var btnlist = document.querySelector(`#${idcr1} .btn-vh`);
+            if(complete == "true")
+            {
+                btnlist.innerHTML = "Hoàn thành";
+                btnlist.style.backgroundColor = "lightseagreen";
+                btnlist.style.color = "white";
+                btnlist.onmouseover = function(){
+                    this.innerHTML = "Vào học";
+                    this.style.backgroundColor = "#007bff";
+                    this.style.color = "white";
+                };
+            }
+        }
+    </script>
+</body>

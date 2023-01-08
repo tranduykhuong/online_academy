@@ -35,9 +35,18 @@ const UserSchema = new mongoose.Schema(
       enum: ["student", "teacher", "admin"],
       default: "student"
     },
-    favoriteCourses: [
-      type: mongoose.Types.ObjectId,
-      ref: 'course'
+    favoriteCourses: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'course'
+      }
+    ],
+    boughtCourses: [
+      {
+        idCourse:  mongoose.Types.ObjectId,
+        idChapter: mongoose.Types.ObjectId,
+        idLesson: mongoose.Types.ObjectId,
+        currentTime: Number
+      }
     ],
     image: {
       type: String,

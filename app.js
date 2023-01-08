@@ -62,7 +62,13 @@ app.engine('hbs', engine({
     section: hbs_sections(),
     format_number(val) {
       return numeral(val).format('0,0');
-    }
+    },
+    getTime(date){
+      return date.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[1];
+    },
+    getDate(date){
+    return date.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[0];
+  },
   }
 }));
 app.set('view engine', 'hbs');

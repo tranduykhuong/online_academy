@@ -118,43 +118,17 @@
     outline: none;
   }
 
-  .play-btn {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(#23bbad 60%, rgba(255, 255, 255, 1) 62%);
-    border-radius: 50%;
-    position: relative;
-    top: -79%;
-    display: block;
-    margin: 100px auto;
-    box-shadow: 0px 0px 25px 3px #23bbad;
-    cursor: pointer;
+  .vjs-matrix.video-js {
+    color: #449fee;
+    outline: none;
+  }
+  
+  .vjs-big-play-button {
+    top: 45% !important;
+    left: 45% !important;
   }
 
-  .play-btn--hide {
-    display: none;
-  }
-  .play-btn--show {
-    display: block;
-  }
-
-  /* triangle */
-  .play-btn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-40%) translateY(-50%);
-    transform-origin: center center;
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 25px solid #fff;
-    z-index: 100;
-  }
-
-  /* thông tin bài giảng */
+   /* thông tin bài giảng */
   .watch__body-information {
     padding: 0 84px;
     margin-top: 50px;
@@ -270,6 +244,11 @@
     display: block;
     width: 100%;
     padding: 12px 20px 12px 32px;
+  }
+
+  .watch__body-category-lesson-link--bg {
+    pointer-events: none;
+    background-color: rgba(0, 255, 255, 0.4);
   }
 
   .watch__body-category-lesson-link:hover{

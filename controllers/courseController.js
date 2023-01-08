@@ -2,8 +2,13 @@ import { Error } from 'mongoose';
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import multer from 'multer';
+import mongooseFeature from '../utils/mongoose.js';
+import mutipleMongooseToObject from '../utils/mongoose.js';
 
 import Course from '../models/course.model.js';
+import Category from '../models/category.model.js';
+import User from '../models/user.model.js';
+import APIFeatures from '../utils/apiFeature.js';
 
 export default {
  addCourse: catchAsync(async (req, res, next) => {
@@ -262,27 +267,27 @@ export default {
 
  submitCourse: catchAsync(async (req, res, next) => {
   if (req.session.step1 && req.session.step2 && req.session.step3 && req.session.step4 && req.session.step5) {
-    const benifits = req.session.intended1 + '\n' + req.session.intended2 + '\n' + req.session.intended3;
-    const data = {
-      name: req.session.name,
-      summary: req.session.summary,
-      description: req.session.description,
-      benifits: benifits,
-      who: req.session.who,
-      status: req.session.completeCourse ? 'completed' : 'in progress',
-      image: req.session.image,
-      videodemo: req.session.videoDemo,
-      listChapter: req.session.chapter,
-      price: req.session.price,
-      priceDiscount: req.session.priceDiscount,
-      descriptionDiscount: req.session.descriptionDiscount,
+   const benifits = req.session.intended1 + '\n' + req.session.intended2 + '\n' + req.session.intended3;
+   const data = {
+    name: req.session.name,
+    summary: req.session.summary,
+    description: req.session.description,
+    benifits: benifits,
+    who: req.session.who,
+    status: req.session.completeCourse ? 'completed' : 'in progress',
+    image: req.session.image,
+    videodemo: req.session.videoDemo,
+    listChapter: req.session.chapter,
+    price: req.session.price,
+    priceDiscount: req.session.priceDiscount,
+    descriptionDiscount: req.session.descriptionDiscount,
 
-      fieldsVideo: req.session.fields
-    }
+    fieldsVideo: req.session.fields,
+   };
 
-    const result = await Course.create(data);
-   
-    return res.json(result);
+   const result = await Course.create(data);
+
+   return res.json(result);
   } else {
    return res.json(false);
   }
@@ -301,14 +306,302 @@ export default {
  }),
 
  viewVideo: catchAsync(async (req, res, next) => {
-  res.render('vwviewVideo/viewVideo', {
-    layout: 'layoutEmpty'
-  })
-}),
+  const id = req.params.idCourse;
+  const query = req.query;
+  const idUser = '63af99d9bbc55b73d3b1761c';
 
-courseDetail: catchAsync(async (req, res, next) => {
-  res.render('vwCourseDetail/courseDetail', {
-    layout: 'layout'
+  const user = await User.findById({ _id: idUser });
+  const dataCourse = await Course.findById({ _id: id });
+
+  const course = mongooseFeature.mongooseToObject(dataCourse);
+
+  if (query.lesson) {
+   if (req.session.lessonOld) {
+    
+    var data = [];
+    user.boughtCourses.forEach((courseBought, index) => {
+      if (courseBought.idCourse.toString() === id){
+          data.push({
+          idCourse: id,
+          idChapter: req.session.chapterOld,
+          idLesson: req.session.lessonOld,
+          currentTime: query.currentTime,
+         });
+      }
+      else{
+        data.push(courseBought);
+      }
+    })
+
+    await User.findByIdAndUpdate(idUser, {boughtCourses: data});
+   }
+   req.session.lessonOld = query.lesson;
+   req.session.chapterOld = query.chapter;
+  }
+
+  var pathVideo = '';
+  var pathImage = '';
+  var nameLesson = '';
+  var isStudyPage = false;
+  user.boughtCourses.forEach((item, index) => {
+   if (id === item.idCourse.toString()) {
+    isStudyPage = true;
+
+    pathVideo = course.videodemo;
+    pathImage = course.image;
+    nameLesson = 'Overview';
+    var percentCourse;
+    var currentLesson;
+    var totalLesson = 0;
+    var chapter = 0;
+    var lesson = 0;
+    var idChuong ='';
+    var idBaihoc = '';
+    var timeLesson;
+    var listTimeChapter = [];
+    const time_convert = (num) =>
+    { 
+      var hours = Math.floor(num / 60);  
+      var minutes = num % 60;
+      return hours + ":" + minutes;         
+    }
+
+    course.listChapter.forEach(item => {
+      var timeChapter = 0;
+      item.listVideo.forEach(video => {
+        timeChapter+=video.duration;
+      })
+      listTimeChapter.push(timeChapter);
+    })
+
+    var listTimeChapterConvert = [];
+    for (let i = 0;i<listTimeChapter.length;i++){
+      var time = time_convert(Math.round(listTimeChapter[i]));
+      listTimeChapterConvert.push(time);
+    }
+
+    // course.listChapter.push({totalTimeLesson: listTimeChapterConvert})
+    course.listChapter.forEach((item, idx) => {
+      item.value = listTimeChapterConvert[idx];
+    })
+
+    course.listChapter.forEach((item, index) => {
+     totalLesson += item.listVideo.length;
+
+     if (item._id.toString() === query.chapter) {
+      
+      if (item.chapter === 1){
+        item.listVideo.forEach((video, idx) => {
+          if (video._id.toString() === query.lesson) {
+           video.currentLesson = true;
+
+           lesson += idx + 1;
+           pathVideo = video.urlVideo;
+           pathImage = video.avtVideo;
+           nameLesson = video.name;
+           timeLesson = time_convert(Math.round(video.duration));
+           video.timeLesson = timeLesson;
+          }
+          else{
+            timeLesson = time_convert(Math.round(video.duration));
+            video.timeLesson = timeLesson;
+          }
+         });
+      }
+      else{
+        item.listVideo.forEach((video, idx) => {
+          if (video._id.toString() === query.lesson) {
+           video.currentLesson = true;
+            
+           lesson += item.chapter + 1;
+           pathVideo = video.urlVideo;
+           pathImage = video.avtVideo;
+           nameLesson = video.name;
+           timeLesson = time_convert(Math.round(video.duration));
+           video.timeLesson = timeLesson;
+          }
+         });
+      }
+    }
+    else{
+      item.listVideo.forEach((video, idx) => {
+        if (video._id.toString() === query.lesson) {
+         video.currentLesson = true;
+
+         lesson += idx + 1;
+         pathVideo = video.urlVideo;
+         pathImage = video.avtVideo;
+         nameLesson = video.name;
+         timeLesson = time_convert(Math.round(video.duration));
+         video.timeLesson = timeLesson;
+        }
+        else{
+          timeLesson = time_convert(Math.round(video.duration));
+          video.timeLesson = timeLesson;
+        }
+       });
+    }
+    });
+
+
+    res.render('vwviewVideo/viewVideo', {
+     course: course,
+     idCourse: id,
+     layout: 'layoutEmpty',
+     total: totalLesson,
+     pathVideo: pathVideo.split('/').length > 3 ? `/${pathVideo.split('/')[2]}/${pathVideo.split('/')[3]}/${pathVideo.split('/')[4]}` : pathVideo,
+     pathImage: pathImage.split('/').length > 3 ? `/${pathImage.split('/')[2]}/${pathImage.split('/')[3]}/${pathImage.split('/')[4]}` : pathImage,
+     nameLesson: nameLesson.split('/').length > 3 ? `/${nameLesson.split('/')[2]}/${nameLesson.split('/')[3]}/${nameLesson.split('/')[4]}` : nameLesson,
+     timeUpdateMonth: course.updatedAt.getMonth() + 1,
+     timeUpdateYear: course.updatedAt.getFullYear(),
+     lessonCurrent: lesson,
+    });
+   }
+  });
+  if (!isStudyPage) {
+   res.redirect(`/courses/${id}`);
+  }
+ }),
+
+ courses: catchAsync(async (req, res, next) => {
+  var pages = [];
+  var page = req.query.offset || 1;
+  var limit = 12;
+  var query = {...req.query, limit: limit};
+  const dataCategory = await Category.find();
+  const category = mongooseFeature.mutipleMongooseToObject(dataCategory)
+  for (let i = 0;i<category.length;i++){
+    if (category[i]._id.toString() === req.query.category)
+    {
+      category[i].currentCategory = true;
+      break;
+    }
+      
+  }
+
+  const features = new APIFeatures(Course.find(), query)
+                                  .sort()
+                                  .paginate()
+
+  const totalCourse = await Course.find();
+  var dataCourses = await features.query;
+  var courses = JSON.parse(JSON.stringify(dataCourses));
+
+  courses.forEach(item => {
+    item.createdAt = new Date(item.createdAt);
   })
-}),
+
+  var isEmpty = courses.length === 0;
+  var len;
+  if (!isEmpty)
+  {
+    len = (mongooseFeature.mutipleMongooseToObject(totalCourse).filter(item => item.accept === true).length) / limit;
+    for (let i = 0; i < Math.ceil(len); i++){
+      pages.push({
+        value: i+1,
+        isCurrent: +page === i+1,
+      });
+    }
+  }
+
+  var isCreateAt = false;
+  var isOutStanding = false;
+  var isCategory = false;
+  var isRating = false;
+  if (req.query.sort === '-createAt'){
+    isCreateAt = true;
+    isOutStanding = false;
+    isRating = false;
+
+
+    courses.forEach(item => {
+      item.isCreateAt = isCreateAt;
+    })
+
+    courses.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+  }
+  else if (req.query.sort === 'outstanding'){
+    isOutStanding = true;
+    isCreateAt = false;
+    isRating = false;
+
+
+    courses.forEach(item => {
+      item.isOutStanding = isOutStanding;
+    })
+
+    for (let i = 0; i < courses.length -1; i++){
+      for (let j = i + 1; j < courses.length; j++){
+        if (courses[i].studentList.length < courses[j].studentList.length){
+          const temp  = courses[i];
+          courses[i] = courses[j];
+          courses[j] = temp;
+        }
+      }
+    }
+
+    courses = courses.slice(0, 4).filter(item => item.studentList.length !== 0);
+  }
+  else if (req.query.sort === 'rating'){
+    isRating = true;
+    isOutStanding = false;
+    isCreateAt = false;
+
+    // for (let i = 0; i < courses.length -1; i++){
+    //   for (let j = i + 1; j < courses.length; j++){
+    //     if (Math.ceil(courses[i].ratingsAverage) < Math.ceil(courses[j].ratingsAverage)){
+    //       const temp  = courses[i];
+    //       courses[i] = courses[j];
+    //       courses[j] = temp;
+    //     }
+    //   }
+    // }
+    courses.forEach(item => {
+      item.isRating = isRating;
+    })
+
+    console.log(courses);
+
+    courses = courses.filter(item => Math.ceil(item.ratingsAverage) === 5)
+  }
+
+  if (req.query.category){
+    isCategory = true;
+    pages = [];
+    courses = courses.filter(item => item.field.category.name === req.query.category);
+    isEmpty = courses.filter(item => item.accept === true).length === 0;
+    if (!isEmpty)
+    {
+      len = (mongooseFeature.mutipleMongooseToObject(totalCourse).filter(item => item.accept === true).length) / limit;
+      for (let i = 0; i < Math.ceil(len); i++){
+        pages.push({
+          value: i+1,
+          isCurrent: +page === i+1,
+        });
+      }
+    }
+  }
+
+  res.render('vwCourses/courses', {
+    layout: 'layout',
+    course: courses.filter(item => item.accept === true),
+    category: category,
+    total: pages,
+    prev: +page !==1 ? +page - 1 : +page,
+    next: +page > len ? +page : +page + 1,
+    isCreateAt: isCreateAt,
+    isOutStanding: isOutStanding,
+    isEmpty: isEmpty,
+    isCategory: isCategory,
+    isRating: isRating
+    });
+ }),
+
+ courseDetail: catchAsync(async (req, res, next) => {
+  res.render('vwCourseDetail/courseDetail', {
+   layout: 'layout',
+  });
+ }),
 };

@@ -15,6 +15,8 @@ import morgan from 'morgan';
 
 import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
+import Course from './models/course.model.js';
+import Field from './models/field.model.js';
 
 import AppError from './utils/appError.js';
 import globalErrorHandler from './controllers/errorController.js';
@@ -25,6 +27,7 @@ import adminRoutes from './routes/adminRoutes.js';
 import studyRoutes from './routes/studyRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';
 import adCategorySideBar from './routes/adminRoutes.js';
+import homeRouter from './routes/homeRoutes.js'
 
 const limiter = rateLimit({
   max: 1000,
@@ -86,9 +89,13 @@ app.use(flash());
 app.get('/', (req, res) => {
   res.redirect('/home');
 });
-app.get('/home', (req, res) => {
-  res.render('home');
-});
+
+
+
+
+// app.get('/home', async(req, res) => {
+
+// });
 
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
@@ -96,6 +103,7 @@ app.use('/admin', adminRoutes);
 app.use('/teacher', teacherRoutes);
 app.use('/study', studyRoutes);
 app.use('/course', courseRoutes);
+app.use('/home', homeRouter);
 
 //Admin
 app.use('/adCategorySideBar', adCategorySideBar);

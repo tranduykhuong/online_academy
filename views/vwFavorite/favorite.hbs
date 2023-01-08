@@ -3,178 +3,74 @@
 </head>
 
 <body>
-    <div class="mt-4 mx-5">
+    <div class="mt-4 mx-5 contain-favorite">
         <h3>Đã thích</h3>
         <div class="row mx-5">
-            <div class="col-sm-6 .col-md-5 col-lg-3 mt-4">
-                <div class='card rounded-lg'>
+            {{log "Vinh"}}
+            {{log favoriteCourses}}
+            {{#each favoriteCourses}}
+            <div class="col-sm-6 .col-md-5 col-lg-3 my-3">
+                <div class='card rounded-lg mb-1'>
                     <img class='card-img-top rounded-lg'
                         src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
                     <div class='card-body'>
-                        <h6 class="text-warning">LẬP TRÌNH MOBILE</h6>
-                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
-                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
-                            cung cấp:
-                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
-                            liệu, in ấn, đóng gói...)
+                        <h6 class="text-warning text-uppercase">{{this.field.category.name}}</h6>
+                        <div class="size-title">
+                            <h5 class='card-title'>{{this.name}}</h5>
+                        </div>
+                        <p class='card-text hiden-text'>{{this.description}}
                         </p>
                         <div class="student-rating">
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
+                            <div class="star-rating" id="cl{{this._id}}" data-rating={{this.ratingsAverage}}
+                                data-id={{this._id}}>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <p class="total-student">721,779 students</p>
+                            <p class="total-student ml-5">{{this.studentList.length}} students</p>
                         </div>
 
-                        <p class="author-name">Huỳnh Tấn Vinh</p>
+                        <p class="author-name">{{this.createdBy.name}}</p>
                         <div class="contain-outstanding">
-                            <a href='#' class='btn btn-primary'>Đăng kí khóa học</a>
+                            <a href='#' class='btn btn-primary btn-register-course'>Đăng kí khóa học</a>
                             <div>
-                                <p class="outstanding">Nổi bật </p>
+                                <p class="outstanding" id="format-money">{{this.price}}đ</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{/each}}
 
-            <div class="col-sm-6 .col-md-5 col-lg-3 mt-4">
-                <div class='card rounded-lg'>
-                    <img class='card-img-top rounded-lg'
-                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
-                    <div class='card-body'>
-                        <h6 class="text-warning">LẬP TRÌNH MOBILE</h6>
-                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
-                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
-                            cung cấp:
-                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
-                            liệu, in ấn, đóng gói...)
-                        </p>
-                        <div class="student-rating">
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <p class="total-student">721,779 students</p>
-                        </div>
-
-                        <p class="author-name">Huỳnh Tấn Vinh</p>
-                        <div class="contain-outstanding">
-                            <a href='#' class='btn btn-primary'>Đăng kí khóa học</a>
-                            <div>
-                                <p class="outstanding">Nổi bật </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 .col-md-5 col-lg-3 mt-4">
-                <div class='card rounded-lg'>
-                    <img class='card-img-top rounded-lg'
-                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
-                    <div class='card-body'>
-                        <h6 class="text-warning">LẬP TRÌNH MOBILE</h6>
-                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
-                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
-                            cung cấp:
-                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
-                            liệu, in ấn, đóng gói...)
-                        </p>
-                        <div class="student-rating">
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <p class="total-student">721,779 students</p>
-                        </div>
-
-                        <p class="author-name">Huỳnh Tấn Vinh</p>
-                        <div class="contain-outstanding">
-                            <a href='#' class='btn btn-primary'>Đăng kí khóa học</a>
-                            <div>
-                                <p class="outstanding">Nổi bật </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 .col-md-5 col-lg-3 mt-4">
-                <div class='card rounded-lg'>
-                    <img class='card-img-top rounded-lg'
-                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
-                    <div class='card-body'>
-                        <h6 class="text-warning">LẬP TRÌNH MOBILE</h6>
-                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
-                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
-                            cung cấp:
-                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
-                            liệu, in ấn, đóng gói...)
-                        </p>
-                        <div class="student-rating">
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <p class="total-student">721,779 students</p>
-                        </div>
-
-                        <p class="author-name">Huỳnh Tấn Vinh</p>
-                        <div class="contain-outstanding">
-                            <a href='#' class='btn btn-primary'>Đăng kí khóa học</a>
-                            <div>
-                                <p class="outstanding">Nổi bật </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 .col-md-5 col-lg-3 mt-4">
-                <div class='card rounded-lg'>
-                    <img class='card-img-top rounded-lg'
-                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
-                    <div class='card-body'>
-                        <h6 class="text-warning">LẬP TRÌNH MOBILE</h6>
-                        <h5 class='card-title'>Lập trình C# trong 5 tuần - Nâng cao</h5>
-                        <p class='card-text hiden-text'>Với lộ trình 65 bài học được chia thành 8 chương, khóa học sẽ
-                            cung cấp:
-                            - Kiến thức chuyên sâu về ngôn ngữ lập trình C# (MDI, control nâng cao, tương tác cơ sở dữ
-                            liệu, in ấn, đóng gói...)
-                        </p>
-                        <div class="student-rating">
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <p class="total-student">721,779 students</p>
-                        </div>
-
-                        <p class="author-name">Huỳnh Tấn Vinh</p>
-                        <div class="contain-outstanding">
-                            <a href='#' class='btn btn-primary'>Đăng kí khóa học</a>
-                            <div>
-                                <p class="outstanding">Nổi bật </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
+    <script>
+
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+
+        let ratingPoints;
+        var formatMoney = document.querySelectorAll('.outstanding');
+        var starRating = document.querySelectorAll('.star-rating');
+
+        for (let i = 0; i < formatMoney.length; i++) {
+            formatMoney[i].innerHTML = VND.format(parseInt(formatMoney[i].innerHTML));
+        }
+
+        for (var i = 0; i < starRating.length; i++) {
+            var idcr = starRating[i].id;
+            var stars = Math.round(document.getElementById(`${idcr}`).getAttribute('data-rating'));
+            var starlist = document.querySelectorAll(`#${idcr} .fa-star`);
+            for (var j = 0; j < 5; j++) {
+                if (j < stars) {
+                    starlist[j].classList.add('checked');
+                }
+            }
+        }
+    </script>
 </body>

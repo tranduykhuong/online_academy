@@ -281,7 +281,7 @@ export default {
     }
 
     const result = await Course.create(data);
-   
+    
     return res.json(result);
   } else {
    return res.json(false);

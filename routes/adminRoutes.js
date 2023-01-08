@@ -11,16 +11,22 @@ router.route('/detail').get(adminController.detail);
 //teacher admin
 router.route('/allTeachers').get(adminController.allTeacher);
 router.route('/addTeacher').get(adminController.addTeacher);
-router.route('/editTeacher').get(adminController.editTeacher);
+// router.route('/editTeacher').get(adminController.editTeacher);
 router.route('/teacherProfile').get(adminController.addTeacher);
 
 //studennt admin
+router.route('/delStudent').post(adminController.deleteStudent);
+router.route('/addStudent/add').post(adminController.addNewStudent);
 router.route('/allStudents').get(adminController.allStudents);
 router.route('/addStudent').get(adminController.addStudent);
-router.route('/editStudent').get(adminController.editStudent);
 router.route('/studentProfile').get(adminController.studentProfile);
 
 router.route('/').get(adminController.adCategory);
+
+router.route('/editTeacher').get(adminController.editTeacher);
+router.route('/editStudent').get(adminController.editStudent);
+
+
 
 
 export default router;

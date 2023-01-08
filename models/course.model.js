@@ -91,7 +91,7 @@ const CourseSchema = new mongoose.Schema(
     descriptionDiscount: String,
     field: {
       type: mongoose.Types.ObjectId,
-      ref: "field",
+      ref: "Field",
       // required: [true, "Field must not be empty"],
     },
     createdBy: {
@@ -111,6 +111,15 @@ const CourseSchema = new mongoose.Schema(
     toObject: { virtuals: true } 
   }
 ); // timestamps -> key createdAt, updatedAt
+
+CourseSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'field',
+    select: 'name',
+  })
+
+  next();
+})
 
 export default mongoose.model("Course", CourseSchema);
 

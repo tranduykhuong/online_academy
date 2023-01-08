@@ -111,14 +111,14 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Add Student</h4>
+                            <h4>Edit Student</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Student</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Student</a></li>
                         </ol>
                     </div>
                 </div>
@@ -134,40 +134,34 @@
 									<div class="row">
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">First Name</label>
-												<input type="text" class="form-control" value="Deangelo">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Last Name</label>
-												<input type="text" class="form-control" value="Sena">
+												<label class="form-label">Họ Tên</label>
+												<input type="text" class="form-control" value="{{users.name}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Email</label>
-												<input type="text" class="form-control" value="info@example.com">
+												<input type="text" disabled style="background-color: #F7F7F7;" class="form-control" value="{{users.email}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Registration Date</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker" value="07 August, 2022">
+												<label class="form-label">Ngày Cập nhật</label>
+												<input type="text" class="form-control" disabled style="background-color: #F7F7F7;" value="{{users.updatedAt}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Roll No.</label>
-												<input type="text" class="form-control" value="52">
+												<label class="form-label">id</label>
+												<input type="text" class="form-control" disabled style="background-color: #F7F7F7;" value="{{users._id}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Class</label>
-												<select class="form-control">
+												<label  class="form-label">Ngôn ngữ</label>
+												<select style="background-color: #F7F7F7;" class="form-control">
 													<option value=""></option>
-													<option value="html">HTML</option>
+													<option value="html">HTML <i class="fa fa-caret-down" aria-hidden="false"></i></option>
 													<option value="css">CSS</option>
 													<option value="javascript" selected>JavaScript</option>
 													<option value="angular">Angular</option>
@@ -185,46 +179,22 @@
 											<div class="form-group">
 												<label class="form-label">Gender</label>
 												<select class="form-control">
-													<option value=""></option>
-													<option value="Male" selected>Male</option>
-													<option value="Female">Female</option>
+													<option value="nam" hidden selected disabled>nam</option>
+													<option value="nam" >nam</option>
+													<option value="nữ">nữ</option>
 												</select>
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Mobile Number</label>
-												<input type="text" class="form-control" value="+01 123 456 7890">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Parents Name</label>
-												<input type="text" class="form-control" value="James Jones">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Parents Mobile Number</label>
-												<input type="text" class="form-control" value="+01 987 654 3210">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Date of Birth</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker1" value="31 July 1998">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Blood Group</label>
-												<input type="text" class="form-control"  value="+AB">
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Address</label>
 												<textarea class="form-control" rows="5">Demo Address #8901 Marmora Road Chi Minh City, Vietnam</textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Decription</label>
+												<textarea class="form-control" rows="5"></textarea>
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12">

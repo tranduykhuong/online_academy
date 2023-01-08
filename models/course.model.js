@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import fieldModel from "./field.model.js";
 
 const CourseSchema = new mongoose.Schema(
   {
@@ -40,7 +41,16 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       default: "./default.mp4",
     },
-    studentList: [mongoose.Types.ObjectId],
+    studentList: [
+      {
+        studentId: mongoose.Types.ObjectId,
+        registerTime: 
+        {
+         type: Date,
+         default: Date.now()
+        }
+      }
+    ],
     listChapter: [
       {
         title: {
@@ -59,9 +69,17 @@ const CourseSchema = new mongoose.Schema(
             },
             urlVideo: {
               type: String,
+              trim: true,
+            },
+            duration: {
+              type: Number
+            },
+            duration: {
+              type: Number
             },
             avtVideo: {
               type: String,
+              trim: true
             }
           }
         ]
@@ -69,7 +87,7 @@ const CourseSchema = new mongoose.Schema(
     ],
     ratingsAverage: {
       type: Number,
-      default: 4.5,
+      default: 1,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
       set: val => Math.round(val * 10) / 10,
@@ -88,16 +106,24 @@ const CourseSchema = new mongoose.Schema(
         message: 'Discount price {{VALUE}} should be below regular price'
       }
     },
-    descriptionDiscount: String,
+    descriptionDiscount: {
+      type: String,
+      default: "",
+    },
     field: {
       type: mongoose.Types.ObjectId,
       ref: "Field",
-      // required: [true, "Field must not be empty"],
+      //required: [true, "Field must not be empty"],
     },
+
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       // required: [true, "Provider must not be empty"],
+    },
+    accept: {
+      type: Boolean,
+      default: false,
     },
     fieldsVideo: [
       {
@@ -115,11 +141,13 @@ const CourseSchema = new mongoose.Schema(
 CourseSchema.pre(/^find/, function(next) {
   this.populate({
     path: 'field',
-    select: 'name',
-  })
-
+    select: 'category name _id description updatedAt createdAt'
+  }).populate({
+    path: 'createdBy',
+    select: 'name image description where'
+  });
+  
   next();
-})
+});
 
 export default mongoose.model("Course", CourseSchema);
-

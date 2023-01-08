@@ -9,4 +9,6 @@ const router = express.Router();
 router.route('/:idCourse')
 .get(courseController.viewVideo);
 
+
+
 export default router;

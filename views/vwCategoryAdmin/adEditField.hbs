@@ -1,0 +1,85 @@
+<div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-dark text-uppercase font-weight-bold">
+            <div class="modal-header">
+                <p class="modal-title text-dark text-uppercase font-weight-bold" id="exampleModalLabel">Chỉnh sửa lĩnh
+                    vực</p>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/admin/{{FieldDeail._id}}/edit?_method=PUT">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="category_name" id="flag-status" data-flag={{status}}>
+                                Đổi tên lĩnh vực
+                            </label>
+                            <input type="text" class="form-control form-control" id="name_field" name="name"
+                                value="{{FieldDeail.name}}" placeholder="Nhập tên tên lĩnh vực">
+                            <label for="category_type" class="mt-3">
+                                Thay đổi danh mục
+                            </label>
+                            <select name="category" id="name_category" class="form-control">
+                                {{#each categorys}}
+                                <option  value="{{this._id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group shadow-textarea">
+                        <label for="description_area" class="mt-3">Mô tả</label>
+                        <textarea name="description" class="form-control z-depth-1 textarea-resize-field" id="description_area" rows="3"
+                            placeholder="Write something here...">{{FieldDeail.description}}</textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" class="btn btn-secondary" href="/admin/editCategory"
+                            data-dismiss="modal">Back<a />
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="delete-course-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa khóa học?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xóa khóa học này?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-course-form" method="POST"></form>
+
+<script>
+    const categoryElJsonData = {{{ categoryJSON }}};
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+        const categoryEl = document.getElementById('name_category');
+        for (let i = 0; i < categoryElJsonData.length; i++) 
+        {
+            if (categoryElJsonData[i]._id === "{{idCategorySelected}}") 
+            {
+                categoryEl.selectedIndex = i;
+            }
+        }
+
+        document.getElementById('flag-status').getAttribute('data-flag');
+        if ("{{status}}") {
+            alert("Tên lĩnh vực hoặc tên danh mục đã tồn tại! Vui lòng nhập tên khác!")
+        }
+    });
+</script>

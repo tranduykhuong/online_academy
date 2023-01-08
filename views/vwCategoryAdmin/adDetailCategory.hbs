@@ -10,82 +10,87 @@
 
             <!-- MAIN Content -->
             <div class="col">
-                <div class="mt-2 ml-5 d-flex">
-                    <a href="/adCategorySideBar"
-                        class="text-decoration-none font-weight-bold ml-4 text-primary">Category</a>
-                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a
-                            href="/adCategorySideBar/adCategoryMobile"
-                            class="text-decoration-none font-weight-bold text-primary">Field</a></a>
-                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a
-                            href="/adCategorySideBar/detail"
+                <div class="mt-4 ml-5 d-flex">
+                    <a href="/admin" class="text-decoration-none font-weight-bold ml-4 text-primary">Category</a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a href="#"
+                            class="text-decoration-none font-weight-bold text-primary path-back">Field</a></a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a href="#"
                             class="text-decoration-none font-weight-bold text-primary">AllCourses</a></a>
                 </div>
 
-                <section class="dark-bg-card mt-4 rounded">
-                    <article class="postcard dark-bg-card blue mx-2">
-                        <a class="postcard__img_link" href="#">
-                            <img class="postcard__img rounded-left" src="https://picsum.photos/1000/1000"
-                                alt="Image Title" />
-                        </a>
-                        <div class="postcard__text">
-                            <h1 class="postcard__title blue text-uppercase"><a href="#">swift</a></h1>
-                            <div class="postcard__subtitle small">
-                                <time datetime="2022-05-25 12:00:00">
-                                    <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2022
-                                </time>
+                <section class="light">
+                    <div class="container py-2">
+                        <article class="postcard light blue">
+                            <div class="postcard__text t-dark">
+                                <h1 class="postcard__title blue"><a href="#">{{nameField}}</a></h1>
+                                <div class="postcard__subtitle small">
+                                    <time datetime="2020-05-25 12:00:00">
+                                        <i class="fas fa-calendar-alt mr-2"></i>{{createedField}}
+                                    </time>
+                                </div>
+                                <div class="postcard__bar"></div>
+                                <div class="postcard__preview-txt">{{descriptionField}}</div>
                             </div>
-                            <div class="postcard__bar"></div>
-                            <div class="postcard__preview-txt">Swift là ngôn ngữ lập trình tốt và
-                                phổ biến nhất hiện nay được phát triển bởi Apple Inc với mục đích hỗ trợ lập
-                                trình viên trong việc phát triển các ứng dụng chạy trên các hệ điều hành iOS,
-                                macOS, watchOS, tvOS, Linux, và z/OS.</div>
-
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 </section>
 
-                <div class="col-sm-12 .col-md-3 col-lg-4 my-4">
-                    <a href="/adCategorySideBar/adCategoryWeb" class="text-decoration-none">
-                        <!-- Card Dark -->
-                        <div class="card view-card-zoom">
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.webp"
-                                    alt="Card image cap">
-                            </div>
 
-                            <!-- Card content -->
-                            <div class="card-body bg-dark text-light rounded-bottom">
-                                <!-- Title -->
-                                <h4 class="card-title text-uppercase">SWIFT từ cơ bản đến nâng cao</h4>
-                                <p>Giá: 2.000.000đ</p>
-                                <div class="student-rating d-flex ">
-                                    <div>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <p class="total-student ml-3">721,779 students</p>
+                <div class="row mx-5 size-height-card-admin">
+                    {{#each courses}}
+                    <div class="col-sm-12 .col-md-4 col-lg-3 my-3">
+                        <a href="#" class="text-decoration-none">
+                            <!-- Card Dark -->
+                            <div class="card view-card-zoom">
+                                <!-- Card image -->
+                                <div class="view overlay">
+                                    <img class="card-img-top"
+                                        src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.webp"
+                                        alt="Card image cap">
                                 </div>
-                                <p class="author-name">Huỳnh Tấn Vinh</p>
-                                <hr class="hr-light">
-                                <!-- Text -->
-                                <p class="card-text white-text mb-4 hiden-text">Khóa học SWIFT từ cơ bản tới nâng
-                                    cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với
-                                    SWIFT. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể
-                                    tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.
-                                </p>
+
+                                <!-- Card content -->
+                                <div class="card-body bg-dark text-light rounded-bottom">
+                                    <!-- Title -->
+                                    <div class="size-height-title-admin">
+                                        <h4 class="card-title-admin text-uppercase">{{this.name}}</h4>
+                                    </div>
+                                    <p>Giá: {{this.price}}</p>
+                                    <div class="student-rating-admin d-flex ">
+                                        <div>
+                                            {{#each this.ratingsAverage}}
+                                                <span class="fa fa-star checked"></span>
+                                            {{/each}}
+                                            {{#each this.ratingsNo}}
+                                                <span class="fa fa-star"></span>
+                                            {{/each}}
+                                        </div>
+                                        <p class="total-student ml-3">{{this.studentList.length}} students</p>
+                                    </div>
+                                    <p class="author-name">{{this.createdBy.name}}</p>
+                                    <!-- Text -->
+                                    <div class="card-text white-text hiden-text">{{{this.description}}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Card Dark -->
-                    </a>
+                            <!-- Card Dark -->
+                        </a>
+                    </div>
+                    {{/each}}
                 </div>
             </div><!-- Main Col END -->
 
         </div><!-- body-row END -->
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var backAdminField = $('.path-back');
+            backAdminField.click(function () {
+                var pathArray = window.location.pathname.split("/");
+                console.log(pathArray)
+                window.location = '/admin/'+ pathArray[2]
+            })
+        });
+    </script>
 </body>

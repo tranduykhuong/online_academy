@@ -9,6 +9,7 @@ body {
 
 /* content */
 .content {
+    margin-top: 80px;
     width: 100%;
     height: 100%;
     background-color: #f3f3f3;
@@ -239,6 +240,10 @@ body {
     margin-right: 12px;
 }
 
+.itemcc{
+    margin-right: 10px !important;
+}
+
 .teacher__description {
     font-size: 15px;
     margin-top: 10px;
@@ -286,7 +291,6 @@ body {
 
 .content__learn-list>ul>li {
     font-size: 16px;
-    background: url(./img/tick.png) no-repeat 10px 13px;
     background-size: 15px;
     padding: 8px 17px 8px 25px;
 }
@@ -424,9 +428,8 @@ ul ul a {
     display: block;
     width: 99%;
     height: 99%;
-    background-image: url(/img/htmlcss.jpeg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .content__course>strong {
@@ -489,7 +492,31 @@ ul ul a {
 }
 
 .content__course .buy {
-    background-color: black;
+    margin-top: 10px;
+    background-color: lightseagreen;
+}
+
+.content__course .buy__disabled{
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.content__course button:hover .vhoc{
+    color: black;
+}
+
+.vhoc{
+    text-decoration: none !important;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 45px;
+}
+
+.content__course .buy__disabled:hover{
+    background-color: #cccccc;
+    color: #666666;
 }
 
 .content__course .cart {
@@ -516,7 +543,7 @@ ul ul a {
     margin-right: 20px;
 }
 
-.content__course .savetoLove {
+.content__course #savetoLove {
     margin-left: 8px;
     margin-top: 3px;
     color: black;
@@ -524,16 +551,16 @@ ul ul a {
     border: 1px solid black;
 }
 
-.content__course .savetoLove i {
+.content__course #savetoLove i {
     margin-right: 5px;
     color: black;
 }
 
-.content__course .savetoLove:hover i {
+.content__course #savetoLove:hover i {
     color: red;
 }
 
-.content__course .savetoLove:hover {
+.content__course #savetoLove:hover {
     color: red;
     border: 1px solid red;
 }
@@ -579,7 +606,7 @@ ul ul a {
 
 .component-show-rate .content-center .star-percent {
     font-size: .8rem;
-    width: 60%;
+    width: 66%;
 }
 
 .component-show-rate .content-center .star-percent .progress {
@@ -711,7 +738,6 @@ ul ul a {
 
 .feedback__content {
     width: 80%;
-    ;
 }
 
 .feedback__wrapper {
@@ -725,6 +751,17 @@ ul ul a {
 
 .bg-success {
     background-color: lightseagreen !important;
+}
+
+.feedbackbtn:focus{
+    background-color: lightseagreen !important;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.btn__fb-contain{
+    display: flex;
+    justify-content: end;
 }
 
 /* Comment */
@@ -780,10 +817,6 @@ ul ul a {
     color: #99abb4;
 }
 
-.action-icons a:hover {
-    color: red;
-}
-
 .mt-100 {
     margin-top: 100px
 }
@@ -796,10 +829,32 @@ ul ul a {
     font-size: 17px;
 }
 
-.comment-footer .trash:hover {
+.trash:hover {
     color: blue;
 }
 
+.fvricon:hover{
+    color: red;
+}
+
+input[type="cc"],
+input[type="cc"]:focus   
+{
+         padding: 0;
+         width: 0;
+         height: 0;
+         background: transparent;
+         border: none;
+         outline-width: 0;
+}
+
+.btn-danger{
+    background-color: red !important;
+}
+
+.btn-cancel{
+    color: white;
+}
 /* button go up */
 .component-go-up {
     position: fixed;
@@ -942,6 +997,7 @@ ul ul a {
 .card {
     border: 1px solid #a1a3a3;
     cursor: pointer;
+    min-height: 355.4px;
 }
 
 .card:hover {
@@ -950,3 +1006,7 @@ ul ul a {
     top: -4px;
     border: 1px solid lightseagreen;
 }
+
+.disabled-link {
+    pointer-events: none;
+  }

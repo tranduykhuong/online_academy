@@ -1,4 +1,4 @@
-class APIFeatures {
+export default class APIFeatures {
   constructor(query, queryString = '') {
       this.query = query;
       this.queryString = queryString;
@@ -123,7 +123,7 @@ class APIFeatures {
       if (this.queryString.sort) {
           const sortBy = this.queryString.sort.split(',').join(' ');
           this.query = this.query.sort(sortBy).collation({ locale: 'vi', numericOrdering: true });
-      } else this.query = this.query.sort('-create_at');
+      } else this.query = this.query.sort('-createAt');
 
       return this;
   }
@@ -152,4 +152,4 @@ class APIFeatures {
   }
 }
 
-module.exports = APIFeatures;
+// module.exports = APIFeatures;

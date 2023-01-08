@@ -8,6 +8,7 @@
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/teacher.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
   <style>
     * {
@@ -21,7 +22,7 @@
       position: fixed;
       left: 0;
       top: 0;
-      z-index: 100;
+      z-index: 1250;
       transition: width 400ms cubic-bezier(.2, 0, .38, .9);
       box-shadow: 0 4px 8px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 24%);
     }
@@ -65,7 +66,7 @@
       opacity: 1;
     }
 
-    span {
+    .titleItem {
       white-space: nowrap;
       font-size: 16px;
       opacity: 0;
@@ -141,6 +142,7 @@
   </style>
   {{{_sections.css}}}
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     function avatarHover() {
       document.querySelector('.dropdown-nav-teacher').classList.add('show');
@@ -154,7 +156,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-white justify-content-end">
+  <nav class="navbar navbar-light bg-white justify-content-end  sticky-top"> 
     <i class="fa fa-bell-o align-items-center" style="font-size: 20px;" aria-hidden="true"></i>
     <div class="my-2 mx-4 avatar" id="avatar" style="position: relative;" onmouseover="avatarHover()"
       onmouseleave="avatarOut()">
@@ -163,13 +165,13 @@
         <ul style="margin-bottom: 4px;">
           <li style="display: flex; align-items: center; margin-bottom: 14px;">
             <i class="fa fa-user-circle" style="font-size: 50px;" aria-hidden="true"></i>
-            <strong style="padding-left: 10px; font-size: 16px; cursor: pointer;">Trần Khương</strong>
+            <strong style="padding-left: 10px; font-size: 16px; cursor: pointer;">{{user.name}}</strong>
           </li>
           <li class="dropdown-nav-teacher-item">
             <a href="">Thiết đặt tài khoản</a>
           </li>
           <li class="dropdown-nav-teacher-item">
-            <a href="">Đăng xuất</a>
+            <a href="/auth/logout">Đăng xuất</a>
           </li>
         </ul>
       </div>
@@ -188,25 +190,25 @@
       <li id="myCourse" class="myNav-item" style="border-left: 4px solid transparent;">
         <a href="/teacher/home" class="myNav-link">
           <i class="fa fa-laptop myNav-link-icon" aria-hidden="true"></i>
-          <span>Khóa học của tôi</span>
+          <span class="titleItem">Khóa học của tôi</span>
         </a>
       </li>
       <li id="addCourse" class="myNav-item" style="border-left: 4px solid transparent;">
         <a href="/teacher/addCourse?step=1" class="myNav-link">
           <i class="fa fa-upload myNav-link-icon" aria-hidden="true"></i>
-          <span>Đăng khóa học</span>
+          <span class="titleItem">Đăng khóa học</span>
         </a>
       </li>
       <li id="statistic" class="myNav-item" style="border-left: 4px solid transparent;">
         <a href="/teacher/statistic" class="myNav-link">
           <i class="fa fa-bar-chart myNav-link-icon" aria-hidden="true"></i>
-          <span>Thống kê</span>
+          <span class="titleItem">Thống kê</span>
         </a>
       </li>
       <li id="myProfile" class="myNav-item" style="border-left: 4px solid transparent;">
         <a href="" class="myNav-link">
           <i class="fa fa-user-circle-o myNav-link-icon" aria-hidden="true"></i>
-          <span>Hồ sơ cá nhân</span>
+          <span class="titleItem">Hồ sơ cá nhân</span>
         </a>
       </li>
     </ul>

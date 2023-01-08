@@ -1,3 +1,186 @@
+<<<<<<< HEAD
+<div class="">
+  <div class="col col-md-3 col-sm-4 p-0 position-fixed">
+    <h5 class="mt-5">Kế hoạch khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Mục tiêu khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}}
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Cấu trúc khóa học
+        </a>
+      </li>
+    </ul>
+
+    <h5 class="mt-5">Tạo khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}}
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Thông tin khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}}
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Chương trình giảng dạy
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}}
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}}
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Học phí
+        </a>
+      </li>
+    </ul>
+
+    <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+      aria-pressed="true">
+      Đăng khóa học
+    </button>
+  </div>
+
+  <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
+    width: auto !important;">
+    <form id="frmCurriculum" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
+      <h3 class="p-5 border-bottom">Chương trình giảng dạy</h3>
+      <div class="col px-5 py-4">
+        <p class="mb-2">Bắt đầu kết hợp khóa học của bạn bằng cách tạo các phần, bài giảng và thực hành (các câu đố, bài
+          tập mã hóa và bài tập).
+        </p>
+        <p class="mb-5">Nếu bạn có ý định cung cấp khóa học của mình miễn phí, tổng thời lượng nội dung video phải dưới
+          2 giờ.
+        </p>
+
+        <div class="row">
+          <div class="col">
+            {{#each this.chapter}}
+            <div class="mb-3">
+              <div class="card rounded-0 border-dark bg-light">
+                <div class="input-group input-group-prepend">
+                  <span class="input-group-text rounded-0 text-dark border-top-0 border-bottom-0 text-center"
+                    id="basic-addon1">
+                    Chương {{chapter}}
+                  </span>
+                  <input type="text" class="form-control rounded-0 border-top-0 border-bottom-0"
+                    placeholder="Tiêu đề chương" required aria-label="title" aria-describedby="basic-addon1"
+                    name="{{chapter}}|title" value="{{title}}">
+                  <div class="invalid-tooltip">
+                    Vui lòng nhập tiêu đề chương!
+                  </div>
+                  <button class="btn btn-light rounded-0" type="button" data-toggle="collapse"
+                    data-target="#chapter{{chapter}}" aria-expanded="false" aria-controls="chapter{{chapter}}">
+                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+                <div class="card-body container multi-collapse collapse border-top border-dark" id="chapter{{chapter}}">
+                  {{#each listVideo}}
+                  <div class="card mb-3 rounded-0 border-dark">
+                    <div class="input-group">
+                      <div class="input-group input-group-prepend">
+                        <span class="input-group-text rounded-0 text-dark border-bottom-0" id="basic-addon1">
+                          Bài {{lession}}</span>
+                        <input type="text" class="form-control rounded-0 border-0" name="{{chapter}}|name|{{lession}}"
+                          required placeholder="Nhập tiêu đề bài {{lession}}" aria-label="title"
+                          aria-describedby="basic-addon1" value="{{name}}">
+                        <div class="invalid-tooltip">
+                          Vui lòng nhập tên bài học!
+                        </div>
+                        <button class="btn btn-light rounded-0 dropdown-toggle border-left" type="button"
+                          data-toggle="collapse" data-target="#lession{{chapter}}{{lession}}" aria-expanded="false"
+                          aria-controls="lession{{chapter}}{{lession}}">
+                        </button>
+                      </div>
+                      <div class="card-body container multi-collapse collapse border-top border-dark"
+                        id="lession{{chapter}}{{lession}}">
+                        <div class="input-group mb-3">
+                          <label for="" class="font-weight-bold text-info">Ảnh đại diện video</label>
+                          <input type="file" width="100%" id="image{{chapter}}{{lession}}" class="fuImage"
+                            name="{{chapter}}|image|{{lession}}">
+                          <div class="invalid-tooltip">
+                            Vui lòng chọn ảnh đại diện cho bài học!
+                          </div>
+                        </div>
+                        <div class="input-group">
+                          <label for="" class="font-weight-bold text-info">Video bài giảng</label>
+                          <input type="file" width="100%" id="video{{chapter}}{{lession}}" class="fuVideo"
+                            name="{{chapter}}|video|{{lession}}">
+                          <div class="invalid-tooltip">
+                            Vui lòng chọn video cho bài học!
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                  <button class="btn btn-light border-dark rounded-0 pull-right ml-2" type="submit"
+                    onclick="addLession({{chapter}})">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Thêm bài
+                  </button>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-light border-dark rounded-0 mt-3" type="submit" onclick="addChapter()">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              Thêm chương
+            </button>
+            {{#if complete}}
+            <button onclick="completeCourse()" type="submit" class="btn btn-outline-warning rounded-0 mt-3">
+              Đánh dấu chưa hoàn thành
+            </button>
+            {{else}}
+            <button onclick="completeCourse()" type="submit" class="btn btn-outline-success rounded-0 mt-3">
+              Đánh dấu hoàn thành khóa học
+            </button>
+            {{/if}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary btn-lg pull-right bg-lightseagreen" type="submit">Save</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+=======
+>>>>>>> 58d249f (handle: create course (teacher))
 {{#section 'js'}}
 <script>
   const chapterData = {{{ chapterJSON }}};
@@ -32,6 +215,26 @@
   }
 
   function addChapter() {
+<<<<<<< HEAD
+    if (!document.getElementById('frmCurriculum').checkValidity()) {
+      Toastify({
+        text: "Vui lòng kiểm tra và điền đầy đủ thông tin các chương!",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #00b09b, red)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+      return;
+    }
+
+=======
+>>>>>>> 58d249f (handle: create course (teacher))
     $.getJSON('/teacher/addCourse/addChapter', function (data) {
       if (data === false) {
         alert('Error to add chapter!');
@@ -42,6 +245,26 @@
   }
 
   function addLession(chapter) {
+<<<<<<< HEAD
+    if (!document.getElementById('frmCurriculum').checkValidity()) {
+      Toastify({
+        text: "Vui lòng kiểm tra và điền đầy đủ thông tin các chương!",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #00b09b, red)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+      return;
+    }
+
+=======
+>>>>>>> 58d249f (handle: create course (teacher))
     $.getJSON(`/teacher/addCourse/addLession?chapter=${chapter}`, function (data) {
       if (data === false) {
         alert('Error to add lession!');
@@ -52,6 +275,26 @@
   }
 
   function completeCourse() {
+<<<<<<< HEAD
+    if (!document.getElementById('frmCurriculum').checkValidity()) {
+      Toastify({
+        text: "Vui lòng kiểm tra và điền đầy đủ thông tin các chương!",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #00b09b, red)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+      return;
+    }
+
+=======
+>>>>>>> 58d249f (handle: create course (teacher))
     $.getJSON(`/teacher/addCourse/completeCourse`, function (data) {
       if (data === false) {
         alert('Not available for registration!');
@@ -61,6 +304,9 @@
     });
   }
 </script>
+<<<<<<< HEAD
+{{/section}}
+=======
 {{/section}}
 
 <div class="row">
@@ -228,3 +474,4 @@
     </form>
   </div>
 </div>
+>>>>>>> 58d249f (handle: create course (teacher))

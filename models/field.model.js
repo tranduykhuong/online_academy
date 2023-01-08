@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import categoryModel from "./category.model.js";
 
 const FieldSchema = new mongoose.Schema(
   {
@@ -14,6 +15,10 @@ const FieldSchema = new mongoose.Schema(
         type: mongoose.Types.ObjectId,
         ref: "Category",
         required: [true, "Field category must not be empty"],
+    },
+    description:{
+      type: String, 
+      trim: true,
     }
   },
   
@@ -23,9 +28,8 @@ const FieldSchema = new mongoose.Schema(
 FieldSchema.pre(/^find/, function(next) {
   this.populate({
     path: 'category',
-    select: 'name'
+    select: 'name _id description updatedAt createdAt'
   });
-
   next();
 });
 

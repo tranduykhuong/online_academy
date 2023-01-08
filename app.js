@@ -17,11 +17,8 @@ import livereload from "livereload";
 import connectLiveReload from "connect-livereload";
 import Course from './models/course.model.js';
 import Field from './models/field.model.js';
-import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 
-import livereload from "livereload";
-import connectLiveReload from "connect-livereload";
 import methodOverride from "method-override"
 
 import ativate_locals from './middlewares/local.mdw.js';

@@ -10,15 +10,12 @@ import User from '../models/user.model.js';
 
 
 import CategorySchema from '../models/category.model.js';
-import fieldModel from '../models/field.model.js';
 import mongooseFeature from '../utils/mongoose.js';
-import courseModel from '../models/course.model.js';
 
-import mongoose from '../utils/mongoose.js';
 import moment from 'moment';
 import categoryModel from '../models/category.model.js'
 import fieldModel from '../models/field.model.js';
-import teacherformModel from '../models/teacherform.model.js';
+import teacherformModel from '../models/teacher-form.model.js';
 
 export default {
     adCategory: catchAsync(async (req, res, next) => {

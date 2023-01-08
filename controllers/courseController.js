@@ -12,14 +12,11 @@ import fieldModel from '../models/field.model.js';
 import categoryModel from '../models/category.model.js';
 import Email from '../utils/Email.js';
 
-import Course from '../models/course.model.js';
 import Category from '../models/category.model.js'
 import Field from '../models/field.model.js'
 import mongooseFeature from '../utils/mongoose.js';
 import mutipleMongooseToObject from '../utils/mongoose.js';
 
-import Course from '../models/course.model.js';
-import Category from '../models/category.model.js';
 import User from '../models/user.model.js';
 import APIFeatures from '../utils/apiFeature.js';
 

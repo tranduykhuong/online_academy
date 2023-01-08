@@ -1,6 +1,6 @@
 import express from 'express';
 import userController from '../controllers/userController.js';
-import localMdw from '../middlewares/locals.mdw.js';
+import localMdw from '../middlewares/upload.mdw.js';
 
 
 const router = express.Router();

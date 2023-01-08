@@ -12,7 +12,7 @@ router.route('/detail').get(adminController.detail);
 router.route('/allTeachers').get(adminController.allTeacher);
 router.route('/addTeacher').get(adminController.addTeacher);
 // router.route('/editTeacher').get(adminController.editTeacher);
-router.route('/teacherProfile').get(adminController.addTeacher);
+router.route('/teacherProfile').get(adminController.teacherProfile);
 
 //studennt admin
 router.route('/delStudent').post(adminController.deleteStudent);

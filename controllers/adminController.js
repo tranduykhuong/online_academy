@@ -66,9 +66,15 @@ export default {
             users: user,
         });
     }),
-    profileTeacher: catchAsync(async (req, res, next) => {
-        res.render('vwStudentAdmin/all-student', {
+    teacherProfile: catchAsync(async (req, res, next) => {
+        const id = req.query.id || 0;
+        // console.log("id lay duoc: " + id);
+
+        const user = await User.findOne({_id: id}).lean();
+
+        res.render('vwTeacherAdmin/professor-profile', {
             layout: 'layoutAdmin',
+            users: user
         });
     }),
     //student

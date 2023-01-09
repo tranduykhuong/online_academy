@@ -28,15 +28,14 @@
                             <li><i class="fa-solid fa-star star__rate"></i></li>
                             <li><i class="fa-solid fa-star star__rate"></i></li>
                         </ul>
-                        <a class="rating" href="">({{reviews.length}} Đánh giá)</a>
+                        <a class="rating" href="#heading5">({{reviews.length}} Đánh giá)</a>
                         <p class="member_number"><i class="fa-solid fa-users"></i> {{course.studentList.length}} học
                             viên</p>
                         <br>
                         <p>Được tạo bởi:</p>
-                        <p class="name_author"><a href="" class="">{{course.createdBy.name}}</a></p>
+                        <p class="name_author"><a href="#heading4" class="">{{course.createdBy.name}}</a></p>
                         <br>
-                        <p id="headingvideo"><i class="fa-solid fa-wrench"></i>&nbsp; Lần cập nhật gần đây nhất: {{
-                            course.updatedAt}}</p>
+                        <p id="headingvideo"><i class="fa-solid fa-wrench"></i>&nbsp; Lần cập nhật gần đây nhất: {{getDate course.updatedAt}}</p>
                     </div>
                 </div>
             </div>
@@ -118,7 +117,7 @@
                                 <ul class="collapse list-unstyled" id="SubMenu">
                                     {{#each coursevideodemo.listVideo}}
                                     <li>
-                                        <a href="#headingvideo" class="canviewchapter" data-img={{this.avtVideo}} data-video={{this.urlVideo}}>
+                                        <a href="#headingvideo" class="canviewchapter" data-img={{ this.avtVideo}} data-video={{ this.urlVideo}}>
                                             <div class="chapter-item">
                                                 <i class="fa-solid fa-circle-play"></i>
                                                 {{this.name}}
@@ -338,7 +337,7 @@
                                     <div class="comment-text active w-100">
                                         <h5>{{this.user.name}}</h5>
                                         <div class="comment-footer">
-                                            <span class="date">{{this.createdAt}}</span>
+                                            <span class="date">{{getDate this.createdAt}}</span>
                                             <span class="action-icons active">
                                                 <a data-toggle="modal" data-target="#deletereviewmodal" data-id={{this._id}} class="delete-review-btn"><i class="fa-solid fa-trash trash"></i></a>
                                                 <a><i class="fa fa-heart fvricon"></i></a>
@@ -437,8 +436,8 @@
             <div class="courseimg__contain">
                 <div class="background_img" style="background-image: url({{course.image}});"></div>
             </div>
-            <strong class="price">{{course.priceDiscount}} <span class="symbol_price">đ</span></strong>
-            <del>{{course.price}}</del>
+            <strong class="price">{{numberWithDot course.priceDiscount}} <span class="symbol_price">đ</span></strong>
+            <del>{{numberWithDot course.price}}</del>
             <p class="giam">({{divide course.priceDiscount course.price }}% OFF)</p>
             <div class="btn__container">
                 <button class="cart" id="buy-course-btn" data-idcourse={{course._id}} data-crs={{flagbuy}}><i class="fa-solid fa-cart-shopping"></i>Mua ngay</button>
@@ -712,6 +711,7 @@
         window.onload = function () {
            console.log($('.hiden-text > p').style.marginBottom);
         };
+
 
 
     </script>

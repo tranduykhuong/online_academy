@@ -36,6 +36,11 @@ router.route('/deletecourse/disabled/:idcourse').post(adminController.dsbcourse)
 router.route('/deletecourse/:idcourse').post(adminController.dltcourse);
 router.route('/deletecourse').get(adminController.deletecourse);
 
+router.route('/deleteTeacher/:idTeacher').post(adminController.delTeacher);
+router.route('/deleteStudent/:idStudent').post(adminController.delStudent);
+router.route('/addStudent').post(adminController.adStudent);
+router.route('/addTeacher').post(adminController.adTeacher);
+
 router.route('/editTeacher').get(adminController.editTeacher);
 router.route('/editStudent').get(adminController.editStudent);
 

@@ -115,7 +115,6 @@ export default {
    .find({})
    .select('category, name')
    .then((fields) => {
-    //console.log(fields);
     for (var i = 0; i < fields.length; i++) {
      var object = {
       idctgr: fields[i].category._id,
@@ -124,17 +123,13 @@ export default {
      };
      listresult = [...listresult, object];
     }
-    //console.log(listresult);
 
     function groupBy(xs, f) {
      return xs.reduce((r, v, i, a, k = f(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
     }
     const result = groupBy(listresult, (c) => c.namectgr);
 
-    //console.log(result);
     const entries = Object.entries(result);
-
-    //console.log(entries);
 
     req.session.entries = entries;
 

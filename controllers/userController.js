@@ -75,18 +75,24 @@ export default {
       res.redirect('/user/' + id);
     }).catch(next);
   }),
-    mycourse: catchAsync(async (req, res, next) => {
+
+
+  mycourse: catchAsync(async (req, res, next) => {
       var buyCrs;
       var finalBuy = [];
-      await userModel.findOne({ _id : '63af99d9bbc55b73d3b1761c'}).then(user =>{
+      await userModel.findOne({ _id : '63bb5cf366b9ba38ca15d0d8'}).then(user =>{
         buyCrs = user.boughtCourses;
-      })
+      });
+      
       for(var i = 0; i < buyCrs.length; i++)
       {
         var currentChapter = buyCrs[i].idChapter;
         var currentLession = buyCrs[i].idLesson;
+  
         await courseModel.findOne({ _id: buyCrs[i].idCourse}).then(course =>{
+          //console.log(buyCrs[i].idCourse);
           var flagSeen = false;
+         
 
           for(var j = 0; j < course.listChapter.length; j++)
           {

@@ -90,7 +90,7 @@
                     <div class="projects-inner">
                         <header class="projects-header">
                             <div class="title">Teacher Waiting Accept</div>
-                            <div class="count">| 3 Teachers</div>
+                            <div class="count">| {{listrq.length}} Teachers</div>
                             <i class="zmdi zmdi-download"></i>
                         </header>
                         <table class="projects-table">
@@ -110,8 +110,8 @@
                                     <p>{{addOne @index}}</p>
                                 </td>
                                 <td>
-                                    <p>{{this.createdAt}}</p>
-                                    <p class="text-danger">{{ this.createdAt}}</p>
+                                    <p>{{getDate this.createdAt}}</p>
+                                    <p class="text-danger">{{getTime this.createdAt}}</p>
                                 </td>
                                 <td class="member">
                                     <div class="member-info">
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="button offer-button mt-4">View Detail</div>
+                                <div class="button offer-button mt-4" onclick="window.location='/admin/allStudents'">View Detail</div>
                             </div>
                         </div>
                         <div class="col-8 col-md-2 pr-0">
@@ -210,8 +210,8 @@
                                     {{#each newestcourse}}
                                     <tr>
                                         <td>
-                                            <p>{{ this.createdAt}}</p>
-                                            <p class="text-danger">{{ this.createdAt}}</p>
+                                            <p>{{getDate this.createdAt}}</p>
+                                            <p class="text-danger">{{getTime this.createdAt}}</p>
                                         </td>
                                         <td >
                                             <p>{{this.name}}</p>

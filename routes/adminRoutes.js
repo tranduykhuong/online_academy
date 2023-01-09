@@ -38,11 +38,12 @@ router.route('/deleteStudent/:idStudent').post(adminController.delStudent);
 router.route('/addStudent').post(adminController.adStudent);
 router.route('/addTeacher').post(adminController.adTeacher);
 
-
-
-
 router.route('/editTeacher').get(adminController.editTeacher);
 router.route('/editStudent').get(adminController.editStudent);
+
+
+router.route('/editTeacher').post(adminController.edtTeacher);
+router.route('/editStudent').post(adminController.edtStudent);
 
 router.route('/:id/edit').get(adminController.showUpdateField);
 router.route('/:id/edit').put(adminController.updateField);

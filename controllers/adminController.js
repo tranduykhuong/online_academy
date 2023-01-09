@@ -540,4 +540,28 @@ export default {
   .then(() => res.redirect('/admin/allStudents'))
   .catch(next);
  }),
+//[edit student and teacher]
+ edtStudent: catchAsync(async (req, res, next) => {
+  console.log("lấy giá trị query hàm chỉnh")
+  console.log(req.query);
+  User
+  .findOneAndUpdate({_id: req.query.id}, {name: req.query.name, gender: req.query.gender, address: req.query.address})
+  .then(() => res.redirect('/admin/allStudents'))
+  .catch((error)=>{
+    console.log(error);
+    next();
+  });
+ }),
+
+ edtTeacher: catchAsync(async (req, res, next) => {
+  console.log("lấy giá trị query hàm chỉnh")
+  console.log(req.query);
+  User
+  .findOneAndUpdate({_id: req.query.id}, {name: req.query.name, gender: req.query.gender, address: req.query.address})
+  .then(() => res.redirect('/admin/allTeachers'))
+  .catch((error)=>{
+    console.log(error);
+    next();
+  });
+ }),
 }

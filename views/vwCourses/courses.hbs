@@ -9,7 +9,8 @@
 </head>
 
 <body>
- <div class='mt-4 mx-5 d-flex'>
+    <div style="margin-top: 100px;">
+         <div class='mt-4 mx-5 d-flex'>
   <div class='col-m-2 pr-5' style="width: 240px;">
    <h1>Sắp xếp</h1>
    <nav id='sidebar'>
@@ -42,7 +43,6 @@
             </li>
         {{/if}}
 
-        {{log isRating}}
         {{#if isRating}}
             <li class='item'>
                 <a href='?sort=rating' class='link link--active'>
@@ -84,7 +84,7 @@
      {{else}}
         {{#each course}}
             <div class='col-sm-6 .col-md-4 col-lg-3 my-3'>
-            <a href='' style="color: #333; text-decoration: none;">
+            <a href='/course/{{this._id}}' style="color: #333; text-decoration: none;">
             {{#if isOutStanding}}
                 <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f41244d19e002406a7b3" class="image_small">
             {{/if}}
@@ -92,7 +92,7 @@
                 <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f26844d19e002406a7ad" class="image_small">
             {{/if}}
             <div class='card rounded-lg mb-1'>
-            <img class='card-img-top rounded-lg' src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+            <img class='card-img-top rounded-lg' src={{this.image}} alt='Card image cap' />
             <div class='card-body'>
                 <h6 class='text-warning text-uppercase'>{{this.field.category.name}}</h6>
                 <div class='size-title'>
@@ -145,6 +145,8 @@
         <li class='page-item'><a class='page-link' href='?offset={{next}}'>Next</a></li>
     </ul>
    </div>
+    </div>
+
  <script>
         const VND = new Intl.NumberFormat('vi-VN', {
             style: 'currency',

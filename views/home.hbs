@@ -17,7 +17,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" style="margin-top: 80px">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -74,9 +74,10 @@
                                     <div class="row w-100">
                                         {{#each courseSpecial}}
                                         <div class="col-sm-5 .col-md-1 col-lg-2 course-card">
-                                            <div class='card mt-4 rounded-lg'>
+                                            <a href='/course/{{this._id}}' style="color: #333; text-decoration: none;">
+                                                <div class='card mt-4 rounded-lg'>
                                                 <img class='card-img-top rounded-lg'
-                                                    src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png'
+                                                    src={{changeURLVideo this.image}}
                                                     alt='Card image cap' />
                                                 <div class='card-body'>
                                                     <img
@@ -100,13 +101,12 @@
 
                                                     <p class="author-name">{{who}}</p>
                                                     <div class="contain-outstanding">
-                                                        <a href='#' class='btn btn-primary'>Đăng kí</a>
-                                                        <div>
-                                                            <p class="outstanding">{{price}}đ </p>
-                                                        </div>
+                                                        <a href='/course/{{this._id}}' class='btn btn-primary'>Đăng kí khóa học</a>
+                                                        <p class="outstanding" style="font-size: 15px;">{{price}}đ </p>
                                                     </div>
                                                 </div>
                                             </div>
+                                            </a>
                                         </div>
                                         {{/each}}
                                     </div>
@@ -158,11 +158,12 @@
                                 <div class="row w-100">
                                     {{#each courseRatingVeiwer}}
                                     <div class="col-sm-5 .col-md-1 col-lg-2 course-card">
-                                        <div class='card mt-4 rounded-lg'>
+                                        <a href='/course/{{this._id}}' style="color: #333; text-decoration: none;">
+                                            <div class='card mt-4 rounded-lg'>
                                             <img class='card-img-top rounded-lg'
-                                                src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png'
+                                                src={{changeURLVideo this.image}}
                                                 alt='Card image cap' />
-                                            <div class='card-body'>
+                                            <div class='card-body'>D
                                                 {{!-- <img
                                                     src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f26844d19e002406a7ad"
                                                     class="image_small"> --}}
@@ -184,13 +185,12 @@
 
                                                 <p class="author-name">{{who}}</p>
                                                 <div class="contain-outstanding">
-                                                    <a href='#' class='btn btn-primary'>Đăng kí</a>
-                                                    <div>
-                                                        <p class="outstanding">{{price}}đ </p>
-                                                    </div>
+                                                    <a href='/course/{{this._id}}' class='btn btn-primary'>Đăng kí khóa học</a>
+                                                    <p class="outstanding">{{price}}đ </p>
                                                 </div>
                                             </div>
                                         </div>
+                                        </a>
                                     </div>
 
                                     {{/each}}
@@ -218,9 +218,10 @@
                                     <div class="row w-100">
                                         {{#each coursesNews}}
                                         <div class="col-sm-5 .col-md-4 col-lg-2 course-card">
-                                            <div class='card mt-4 rounded-lg'>
+                                            <a href='/course/{{this.id}}' style="color: #333; text-decoration: none;">
+                                                <div class='card mt-4 rounded-lg'>
                                                 <img class='card-img-top rounded-lg'
-                                                    src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png'
+                                                    src={{changeURLVideo this.image}}
                                                     alt='Card image cap' />
                                                 <div class='card-body'>
                                                     {{!-- <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f41244d19e002406a7b3"
@@ -243,13 +244,12 @@
 
                                                     <p class="author-name">{{who}}</p>
                                                     <div class="contain-outstanding">
-                                                        <a href='#' class='btn btn-primary'>Đăng kí</a>
-                                                        <div>
-                                                            <p class="outstanding">{{price}}đ </p>
-                                                        </div>
+                                                        <a href='/course/{{this._id}}' class='btn btn-primary'>Đăng kí khóa học</a>
+                                                        <p class="outstanding">{{price}}đ </p>
                                                     </div>
                                                 </div>
                                             </div>
+                                            </a>
                                         </div>
                                         {{/each}}
                                     </div>
@@ -272,44 +272,26 @@
                 <div class="cardItem">
                     <div id="heading6" class="content__learn" style="max-width: 1200px;">
                         <div class="content__learn_fix course__content">
-                            {{!-- <h3>Cùng được mua nhiều nhất</h3> --}}
                             <div class="relative__courses">
                                 <div class="mt-4">
                                     <div class="row w-100">
                                         {{#each courseBestRatingOfField}}
-                                        <div class="col-sm-5 .col-md-4 col-lg-2 course-card">
-                                            <div class='card mt-4 rounded-lg'>
+                                            <div class="col-sm-5 .col-md-4 col-lg-2 course-card">
+                                            <a href='/course/' style="color: #333; text-decoration: none;">
+                                                <div class='card mt-4 rounded-lg'>
                                                 <img class='card-img-top rounded-lg'
-                                                    src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png'
+                                                    src='https://i.morioh.com/2022/08/19/850dfced.webp'
                                                     alt='Card image cap' />
                                                 <div class='card-body'>
-                                                    <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f41244d19e002406a7b3"
-                                                        class="image_small">
-                                                    {{!-- <div class="category">Lập trình - CNTT</div> --}}
-                                                    <div class="category">{{fieldName}}</div>
-                                                    <h5 class='card-title'>{{name}}</h5>
-                                                    <p class='card-text hiden-text'>{{summary}}
-                                                    </p>
-                                                    <div class="student-rating">
-                                                        <div>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star"></span>
-                                                            <span class="fa fa-star"></span>
-                                                        </div>
-                                                        <p class="total-student">{{value}} students</p>
-                                                    </div>
-
-                                                    <p class="author-name">{{who}}</p>
-                                                    <div class="contain-outstanding">
-                                                        <a href='/course/?field={{id}}' role="button" class='btn btn-primary'>Đăng kí</a>
-                                                        <div>
-                                                            <p class="outstanding"></p>
-                                                        </div>
+                                                    <h1 class="category">{{fieldName}}</h1>
+                                                    <p class='card-text hiden-text'>{{description}}</p>
+                                                    <p></p>
+                                                        <div class="contain-outstanding">
+                                                        <a href='/course/?category={{fieldName}}' class='btn btn-primary'>Xem chi tiết</a>
                                                     </div>
                                                 </div>
                                             </div>
+                                            </a>
                                         </div>
                                         {{/each}}
                                     </div>

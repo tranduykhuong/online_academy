@@ -1,16 +1,31 @@
 .item{
-    margin-bottom: 20px;
+    background-color: #fafafa;
+    margin-bottom: 6px;
 }
 
 .link{
+    padding: 12px;
     font-size: 14px;
     color: #333;
+    display: block;
+    width: 100%;
+}
+
+.link:hover{
+    text-decoration: none;
 }
 
 .link--active{
-    font-size: 16px;
     color: rgb(22, 71, 144);
-    text-decoration: underline;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    background-color: rgb(224, 224, 224);
+}
+
+.link--active:hover{
+    text-decoration: none;
 }
 
 * {

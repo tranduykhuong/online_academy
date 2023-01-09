@@ -63,6 +63,7 @@ export default {
    console.log('index: ' + index + 'sum: ' + sum);
    BestOfField.id = fields[index]._id;
    BestOfField.fieldName = fields[index].name;
+   BestOfField.description = fields[index].description;
    BestOfField.value = sum;
    ListRatingOfField = [...ListRatingOfField, BestOfField];
   }
@@ -108,7 +109,6 @@ export default {
    ListRatingOfField = ListRatingOfField.splice(1, 6);
   }
 
-  // KHOI lam cam xoa
   var listresult = [];
 
   Field

@@ -54,6 +54,7 @@ router.route('/category/:id').get(adminController.listField);
 router.route('/category').get(adminController.adCategory);
 router.route('/category').post(adminController.addCategory);
 
+router.route('/').get(adminController.dashboard);
 
 
 

@@ -104,6 +104,9 @@
     <form id="disable-course-form" method="post"></form>
 
     <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
         //Remove course
         var btndeletes = $$(".remove_btn");
         btndeletes.forEach((btndlt, index) => {
@@ -111,24 +114,28 @@
                 var deleteform = document.getElementById('delete-course-form');
                 var dlmd = document.getElementById('btn-delete-course');
                 dlmd.onclick = function () {
-                     deleteform.action = 'deletecourse/' + btndlt.getAttribute('data-id');
+                     deleteform.action = '/admin/deletecourse/' + btndlt.getAttribute('data-id');
                      deleteform.submit();
                 }
             };
         });
 
         //Disable course
-        var btndisables = $$(".dsb_btnk");
-        btndisables.forEach((btndlt, index) => {
+            
+
+            var btndisables = $$(".dsb_btnk");
+            console.log(btndisables);
+            btndisables.forEach((btndlt, index) => {
             btndlt.onclick = function () {
                 var dsbform = document.getElementById('disable-course-form');
                 var dlmd1 = document.getElementById('btn-disable-course');
                 dlmd1.onclick = function () {
-                     dsbform.action = 'deletecourse/disabled/' + btndlt.getAttribute('data-id');
+                     dsbform.action = '/admin/deletecourse/disabled/' + btndlt.getAttribute('data-id');
                      dsbform.submit();
                 }
             };
         });
+        
 
         //Table search
         function tableSearch(){

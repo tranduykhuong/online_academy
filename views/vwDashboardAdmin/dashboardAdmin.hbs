@@ -128,7 +128,7 @@
                                 <td>
                                     <div class="btn__contain">
                                         <div class="button__accept">
-                                            <button class="btn_action" id="accept-rq-btn" data-idrequest={{this._id}}>Accept <i class="bi bi-check-lg"></i></button>
+                                            <button class="btn_action accept-rq-btn" data-idrequest={{this._id}}>Accept <i class="bi bi-check-lg"></i></button>
                                         </div>
                                         <div class="button__deny">
                                             <button class="btn_action btn_action_remove-rq" data-toggle="modal" data-target="#deleterequest" data-idrequest={{this._id}}>Remove <i class="bi bi-x-lg"></i></button>
@@ -231,7 +231,7 @@
                                         <td>
                                             <div class="btn__contain">
                                                 <div class="button__accept">
-                                                    <button class="btn_action" id="accept-crs-btn" data-idcourse={{this._id}}>Accept <i class="bi bi-check-lg"></i></button>
+                                                    <button class="btn_action accept-crs-btn" data-idcourse={{this._id}}>Accept <i class="bi bi-check-lg"></i></button>
                                                 </div>
                                                 <div class="button__deny">
                                                     <button class="btn_action btn_action_remove-crs" data-toggle="modal" data-target="#deletecourse" data-id={{this._id}}>Remove <i class="bi bi-x-lg"></i></button>
@@ -304,6 +304,8 @@
     <form id="delete-course-form" method="post"></form>
 
     <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
         //Graph 1
         const counter = document.querySelector(".counter1");
         var datapc1 = counter.getAttribute('data-percent1');
@@ -334,11 +336,11 @@
         }, 35);
 
         //Accept request
-        var btnAcceptrq = document.getElementById('accept-rq-btn');
+        var btnAcceptrq = $$('.accept-rq-btn');
         btnAcceptrq.onclick = function() {
             var acceptrqform = document.getElementById('accept-request-form');
             var requestid = btnAcceptrq.getAttribute('data-idrequest');
-            acceptrqform.action = 'dashboard/acceptrequest/' + requestid;
+            acceptrqform.action = '/admin/dashboard/acceptrequest/' + requestid;
             acceptrqform.submit();
         }
 
@@ -349,20 +351,23 @@
                 var dlrqsform = document.getElementById('remove-request-form');
                 var dlmd = document.getElementById('btn-delete-request');
                 dlmd.onclick = function () {
-                     dlrqsform.action = 'dashboard/removerequest/' + btndlt.getAttribute('data-idrequest');
+                     dlrqsform.action = '/admin/dashboard/removerequest/' + btndlt.getAttribute('data-idrequest');
                      dlrqsform.submit();
                 }
             };
         });
 
         //Accept course
-        var btnAcceptCrs = document.getElementById('accept-crs-btn');
-        btnAcceptCrs.onclick = function() {
+        var btnAcceptCrs = $$(".accept-crs-btn");
+        btnAcceptCrs.forEach((btndlt, index) =>{
+            btndlt.onclick = function() {
             var acceptcrsform = document.getElementById('accept-course-form');
-            var courseid = btnAcceptCrs.getAttribute('data-idcourse');
-            acceptcrsform.action = 'dashboard/acceptcourse/' + courseid;
+            var courseid = btndlt.getAttribute('data-idcourse');
+            acceptcrsform.action = '/admin/dashboard/acceptcourse/' + courseid;
             acceptcrsform.submit();
         }
+        })
+        
 
         //Remove course
         var btndeletes = $$(".btn_action_remove-crs");
@@ -371,7 +376,7 @@
                 var deleteform = document.getElementById('delete-course-form');
                 var dlmd = document.getElementById('btn-delete-course');
                 dlmd.onclick = function () {
-                     deleteform.action = 'dashboard/removecourse/' + btndlt.getAttribute('data-id');
+                     deleteform.action = '/admin/dashboard/removecourse/' + btndlt.getAttribute('data-id');
                      deleteform.submit();
                 }
             };

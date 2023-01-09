@@ -36,14 +36,15 @@ export default {
  }),
 
  show: catchAsync(async (req, res, next) => {
-  const id = req.session.user._id || '63bb61b42e51f65fdf601df6';
+  const id = req.session.user._id || '63b9af0b7b2a2f7e0fe57790';
+ console.log(id);
 
   UserSchema.findById({ _id: id })
    .then((user) => {
     const image = user?.image ? process.env.END_POINT + user.image.substring(9) : null;
     user.image = image;
 
-    // console.log(user);
+    console.log(user);
     const success = req.session.success;
     const pwWrong = req.session.pwWrong;
     req.session.success = undefined;
@@ -72,10 +73,10 @@ export default {
  }),
 
  update: catchAsync(async (req, res, next) => {
-  const id = req.session.user._id || '63bb61b42e51f65fdf601df6';
+  const id = req.session.user._id || '63bb5cf366b9ba38ca15d0d8';
   // console.log(req.method)
   const updateData = {
-   image: req.session.avatar ? req.session.avatar : '',
+   image: req.session.image ? req.session.image : '',
    ...req.body,
   };
   UserSchema.findOneAndUpdate({ _id: id }, updateData)
@@ -111,7 +112,7 @@ export default {
  mycourse: catchAsync(async (req, res, next) => {
   var buyCrs;
   var finalBuy = [];
-  await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c' }).then((user) => {
+  await userModel.findOne({ _id: req.session.user._id }).then((user) => {
    buyCrs = user.boughtCourses;
   });
   for (var i = 0; i < buyCrs.length; i++) {

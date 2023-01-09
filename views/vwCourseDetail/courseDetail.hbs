@@ -43,7 +43,7 @@
         <div class="video">
             <div class="video_fix">
                 <video width="100%" height="315" onclick="playVideo1()" class="watch__body-video-frame" id="player"
-                    playsinline controls preload="auto" poster={{course.image}}>
+                    playsinline controls preload="auto" poster={{changeURLVideo course.image}}>
                     <source src={{changeURLVideo course.videodemo}} type="video/mp4" class="videosrc"/>
                 </video>
             </div>
@@ -652,6 +652,7 @@
             buyCourse.disabled = true;
 
             $('.buy').disabled = false;
+            $('.buy.buy__disabled').disabled = false;
             $('.buy.buy__disabled').classList.remove("buy__disabled");
             $('.vhoc.disabled-link').classList.remove("disabled-link");
         }

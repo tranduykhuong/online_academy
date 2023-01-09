@@ -37,7 +37,7 @@
             {{#each listcourse}}
             <tr>
                 <td style="width: 3.4%;">{{addOne @index}}</td>
-                <td style="width: 13%;"><img src={{ this.image}} alt="" /></td>
+                <td style="width: 13%;"><img src={{changeURLVideo this.image}} alt="" /></td>
                 <td style="width: 25%;">{{this.name}}</td>
                 <td style="width: 17%;">{{this.createdBy.name}}</td>
                 <td style="width: 7%;">{{this.field.name}}</td>

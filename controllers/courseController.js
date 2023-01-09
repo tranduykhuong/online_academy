@@ -496,21 +496,25 @@ export default {
   var field;
   var samefieldcrs;
 
-  await userModel.findOne({ _id: req.session.user._id}).then(user => {
-  if(user.favoriteCourses.includes(req.params.idcourse) == true)
-  {
-    flagFvr = "false";
+  const id = req.session.user ? req.session.user._id : '';
+  if (req.session.user) {
+    
   }
-  else{
-    flagFvr = "true";
-  }
+  // await userModel.findOne({ }).then(user => {
+  // if(user.favoriteCourses.includes(req.params.idcourse) == true)
+  // {
+  //   flagFvr = "false";
+  // }
+  // else{
+  //   flagFvr = "true";
+  // }
 
-  for(var i = 0; i < user.boughtCourses.length; i++){
-    if(user.boughtCourses[i].idCourse == req.params.idcourse)
-    {
-      flagBuy = "false";
-    }
-  }
+  // for(var i = 0; i < user.boughtCourses.length; i++){
+  //   if(user.boughtCourses[i].idCourse == req.params.idcourse)
+  //   {
+  //     flagBuy = "false";
+  //   }
+  // }
   courseModel.findOne({ _id: req.params.idcourse})
   .then(courseh =>
     {
@@ -584,11 +588,10 @@ export default {
             benifits: courseh.benifits.split('\n'), 
             course : mongoose.mongooseToObject(courseh) });
         });
-        
       });
   })
   .catch(next);
-});    
+// });    
 }),
 
 
@@ -1021,11 +1024,5 @@ viewVideo: catchAsync(async (req, res, next) => {
     isCategory: isCategory,
     isRating: isRating
     });
- }),
-
- courseDetail: catchAsync(async (req, res, next) => {
-  res.render('vwCourseDetail/courseDetail', {
-   layout: 'layout',
-  });
  }),
 };

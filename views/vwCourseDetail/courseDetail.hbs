@@ -44,7 +44,7 @@
             <div class="video_fix">
                 <video width="100%" height="315" onclick="playVideo1()" class="watch__body-video-frame" id="player"
                     playsinline controls preload="auto" poster={{course.image}}>
-                    <source src={{course.videodemo}} type="video/mp4" class="videosrc"/>
+                    <source src={{changeURLVideo course.videodemo}} type="video/mp4" class="videosrc"/>
                 </video>
             </div>
         </div>
@@ -117,7 +117,7 @@
                                 <ul class="collapse list-unstyled" id="SubMenu">
                                     {{#each coursevideodemo.listVideo}}
                                     <li>
-                                        <a href="#headingvideo" class="canviewchapter" data-img={{ this.avtVideo}} data-video={{ this.urlVideo}}>
+                                        <a href="#headingvideo" class="canviewchapter" data-img={{changeURLVideo this.avtVideo}} data-video={{changeURLVideo this.urlVideo}}>
                                             <div class="chapter-item">
                                                 <i class="fa-solid fa-circle-play"></i>
                                                 {{this.name}}
@@ -167,7 +167,7 @@
                 <div class="infor__teacher">
                     <div class="infor__part1">
                         <div class="avt__container">
-                            <img src={{course.createdBy.image}} alt="">
+                            <img src={{changeURLVideo course.createdBy.image}} alt="">
                         </div>
                         <div class="infor__container">
                             <ul class="infor__list">
@@ -332,7 +332,7 @@
 
                                 {{#each reviews}}
                                 <div class="d-flex flex-row comment-row ">
-                                    <div class="p-2 mr-2"><span class="round"><img src={{this.user.image}} alt="user"
+                                    <div class="p-2 mr-2"><span class="round"><img src={{changeURLVideo this.user.image}} alt="user"
                                                 width="50" height="50"></span></div>
                                     <div class="comment-text active w-100">
                                         <h5>{{this.user.name}}</h5>
@@ -367,7 +367,7 @@
                             <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
                                 <div class='card rounded-lg'>
                                     <img class='card-img-top rounded-lg'
-                                        src={{this.image}}
+                                        src={{changeURLVideo this.image}}
                                         alt='Card image cap' />
                                     <div class='card-body'>
                                         <h5 class='card-title'>{{this.name}}</h5>
@@ -399,7 +399,7 @@
                             {{#each relative2}}
                             <div class="col-sm-6 .col-md-3 col-lg-3 course-card">
                                 <div class='card rounded-lg'>
-                                    <img class='card-img-top rounded-lg' src={{this.image}} alt='Card image cap' />
+                                    <img class='card-img-top rounded-lg' src={{changeURLVideo this.image}} alt='Card image cap' />
                                     <div class='card-body'>
                                         <h5 class='card-title'>{{this.name}}</h5>
                                         <div class="card-text hiden-text">{{{this.description}}}</div>
@@ -434,7 +434,7 @@
 
         <div class="content__course">
             <div class="courseimg__contain">
-                <div class="background_img" style="background-image: url({{course.image}});"></div>
+                <div class="background_img" style="background-image: url({{changeURLVideo course.image}});"></div>
             </div>
             <strong class="price">{{numberWithDot course.priceDiscount}} <span class="symbol_price">đ</span></strong>
             <del>{{numberWithDot course.price}}</del>

@@ -566,7 +566,7 @@ export default {
  edtStudent: catchAsync(async (req, res, next) => {
   console.log('lấy giá trị query hàm chỉnh');
   console.log(req.query);
-  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender, address: req.query.address })
+  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender })
    .then(() => res.redirect('/admin/allStudents'))
    .catch((error) => {
     console.log(error);
@@ -577,7 +577,7 @@ export default {
  edtTeacher: catchAsync(async (req, res, next) => {
   console.log('lấy giá trị query hàm chỉnh');
   console.log(req.query);
-  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender, address: req.query.address })
+  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender })
    .then(() => res.redirect('/admin/allTeachers'))
    .catch((error) => {
     console.log(error);

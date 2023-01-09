@@ -16,12 +16,12 @@
             <!-- MAIN Content -->
             <div class="col">
                 <div class="mt-4 ml-5 d-flex">
-                    <a href="/admin/adField"
+                    <a href="/admin/category"
                         class="text-decoration-none font-weight-bold ml-4 text-primary">Category</a>
                 </div>
                 <div class="w-100 d-flex justify-content-end pr-5">
                     <div class="mr-2">
-                        <a href="/admin"><button
+                        <a href="/admin/category"><button
                                 class="text-decoration-none mr-5 btn-add-aspect-hover btn-add-aspect w-100 text-uppercase">Refresh</button></a>
                     </div>
                     <div class="mr-5">
@@ -127,7 +127,7 @@
         cardAdminCategory.click(function() {
             var categorydId = $(this).data('id');
             console.log(categorydId)
-            var path = '/admin/' + categorydId;
+            var path = '/admin/category/' + categorydId;
             cardAdminCategory.attr("href", path);
         })
     });

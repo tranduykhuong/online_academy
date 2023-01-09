@@ -94,6 +94,11 @@ app.engine('hbs', engine({
     getDate(date){
       return date.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[0];
     },
+
+    getDate1(date){
+      return new Date(date).toLocaleString("en-US", {timeZone: "Asia/Bangkok"}).toString().split(",")[0];
+    },
+
     numberWithDot(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     },

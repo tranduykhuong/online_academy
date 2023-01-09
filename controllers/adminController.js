@@ -175,10 +175,9 @@ export default {
  }),
 
  addCategory: catchAsync(async (req, res, next) => {
-  // console.log(req.body);
   CategorySchema.create(req.body)
    .then(() => {
-    res.redirect('/admin');
+    res.redirect('/admin/category');
    })
    .catch(() => {
     res.render('vwCategoryAdmin/adCategory', {
@@ -204,10 +203,6 @@ export default {
      el.ratingsNo = new Array(5 - Math.round(el.ratingsAverage)).fill(0);
      el.ratingsAverage = new Array(Math.round(el.ratingsAverage)).fill(0);
     });
-
-    // nameField = course ? course[0]?.field.name : 0;
-    // descriptionField = course ? course[0]?.field.description : 0;
-    // createedField = course ? course[0]?.field.createdAt : 0;
     const fields = await fieldModel.findOne({ _id: _idField });
     console.log(fields);
 
@@ -248,6 +243,18 @@ export default {
    })
    .catch(next);
  }),
+
+ isAvailableField: catchAsync(async (req, res, next) => {
+  const fieldname = req.query.fieldName;
+  const _field = await fieldModel.findOne({ name: fieldname });
+  console.log(_field);
+  if (!_field) {
+   return res.json(true);
+  }
+  res.json(false);
+ }),
+
+
 
  showUpdateField: catchAsync(async (req, res, next) => {
   const _idField = req.params.id;
@@ -298,7 +305,7 @@ export default {
   fieldModel
    .findOneAndUpdate({ _id: id }, req.body)
    .then(() => {
-    res.redirect('/admin/editCategory');
+    res.redirect('/admin/category/editCategory');
    })
    .catch(next);
  }),
@@ -424,14 +431,14 @@ export default {
   const password = generateString(8);
 
   teacherformModel.findOne({ _id: req.params.idrequest }).then((teacher) => {
-    // Gửi email
-  try {
+   // Gửi email
+   try {
     new Email(teacher.email).sendAccount(teacher.email, password);
-    console.log('email success')
-  } catch (err) {
+    console.log('email success');
+   } catch (err) {
     console.log(err);
-  }
-  
+   }
+
    const obj = new userModel({
     name: teacher.name,
     password,
@@ -445,15 +452,27 @@ export default {
 
    obj.save();
 
-   teacherformModel
-    .deleteOne({ _id: req.params.idrequest })
-    .then(() => {
-     res.redirect('back');
-    })
-    .catch(next);
+   teacherformModel.deleteOne({ _id: req.params.idrequest }).then(() => {
+    res.redirect('back');
+   });
   });
  }),
 
+ addField: catchAsync(async (req, res, next) => {
+  console.log(11, req.body);
+  fieldModel
+   .create(req.body)
+   .then(() => {
+    res.redirect('/admin/category/editCategory');
+   })
+   .catch(() => {
+    res.render('vwCategoryAdmin/editCategory', {
+     layout: 'layoutAdmin',
+    });
+   });
+ }),
+
+ //  Khoi
  //[DELETE] /admin/dashboard/removerequest/:idrequest
  removerequest: catchAsync(async (req, res, next) => {
   teacherformModel
@@ -513,5 +532,56 @@ export default {
 
    res.redirect('back');
   });
+ }),
+ //[DELETE teacehr]
+ delTeacher: catchAsync(async (req, res, next) => {
+  console.log('xóa: id giáo viên lấy được: ' + req.params.idTeacher);
+  User.deleteOne({ _id: req.params.idTeacher })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ //[DELETE student]
+ delStudent: catchAsync(async (req, res, next) => {
+  console.log('xóa: id hs lấy được: ' + req.params.idStudent);
+  User.deleteOne({ _id: req.params.idStudent })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ adTeacher: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User.create({ name: req.query.name, email: req.query.email, password: req.query.pass, role: 'teacher' })
+   .then(() => res.redirect('/admin/allTeachers'))
+   .catch(next);
+ }),
+
+ adStudent: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User.create({ name: req.query.name, email: req.query.email, password: req.query.pass })
+   .then(() => res.redirect('/admin/allStudents'))
+   .catch(next);
+ }),
+ //[edit student and teacher]
+ edtStudent: catchAsync(async (req, res, next) => {
+  console.log('lấy giá trị query hàm chỉnh');
+  console.log(req.query);
+  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender, address: req.query.address })
+   .then(() => res.redirect('/admin/allStudents'))
+   .catch((error) => {
+    console.log(error);
+    next();
+   });
+ }),
+
+ edtTeacher: catchAsync(async (req, res, next) => {
+  console.log('lấy giá trị query hàm chỉnh');
+  console.log(req.query);
+  User.findOneAndUpdate({ _id: req.query.id }, { name: req.query.name, gender: req.query.gender, address: req.query.address })
+   .then(() => res.redirect('/admin/allTeachers'))
+   .catch((error) => {
+    console.log(error);
+    next();
+   });
  }),
 };

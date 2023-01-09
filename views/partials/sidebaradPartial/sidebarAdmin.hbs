@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="/css/sidebarad.css">
 </head>
@@ -29,7 +31,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#ProfessorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                    <a href="#ProfessorSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle component__item-title">
                         <i class="fa-solid fa-person-chalkboard"></i>
                         Teachers
                     </a>
@@ -49,7 +52,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#StudentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                    <a href="#StudentSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle component__item-title">
                         <i class="fa-solid fa-graduation-cap"></i>
                         Students
                     </a>
@@ -69,7 +73,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#CategorySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                    <a href="#CategorySubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle component__item-title">
                         <i class="fa-solid fa-database"></i>
                         Category
                     </a>
@@ -83,7 +88,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#CourseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle component__item-title">
+                    <a href="#CourseSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle component__item-title">
                         <i class="fa-solid fa-book-open"></i>
                         Courses
                     </a>
@@ -103,24 +109,35 @@
         </nav>
     </div>
     <script>
-        const $ = document.querySelector.bind(document);
-        const $$ = document.querySelectorAll.bind(document);
+        (function () {
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
 
-        const tabs = $$(".component__item");
-        const tabActive = $(".component__item.cpn_active");
-        tabs.forEach((tab, index) => {
+            const tabs = $$(".component__item");
+            const tabActive = $(".component__item.cpn_active");
+            tabs.forEach((tab, index) => {
 
-            tab.onclick = function () {
-                $(".component__item.cpn_active").classList.remove("cpn_active");
+                tab.onclick = function () {
+                    $(".component__item.cpn_active").classList.remove("cpn_active");
 
-                this.classList.add("cpn_active");
-            };
-        });
+                    this.classList.add("cpn_active");
+                };
+            });
+        })();
+
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

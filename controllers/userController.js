@@ -12,9 +12,9 @@ export default {
 
 
   favorite: catchAsync(async (req, res, next) => {
-    const id = req.params.id;
+    const id = req.session.user._id || '63bb5cf366b9ba38ca15d0d8';
     let array = [];
-    var listFavorite
+    var listFavorite;
     // console.log(id)
     UserSchema.findOne({ _id: id }).then(async (user) => {
       listFavorite = user.favoriteCourses;
@@ -27,6 +27,7 @@ export default {
       }
 
       console.log(array);
+
       res.render('vwFavorite/favorite', {
         courseJSON: JSON.stringify(array),
         favoriteCourses: mongooseFeature.mutipleMongooseToObject(array),
@@ -37,7 +38,7 @@ export default {
   }),
 
   show: catchAsync(async (req, res, next) => {
-    const id = req.params.id;
+    const id = req.session.user._id || '63bb5cf366b9ba38ca15d0d8';
     console.log(req.method)
     UserSchema.findById({ _id: id }).then((user) => {
       const image = user.image ? process.env.END_POINT + user.image.substring(9) : null;
@@ -75,63 +76,59 @@ export default {
       res.redirect('/user/' + id);
     }).catch(next);
   }),
-    mycourse: catchAsync(async (req, res, next) => {
-      var buyCrs;
-      var finalBuy = [];
-      await userModel.findOne({ _id : '63af99d9bbc55b73d3b1761c'}).then(user =>{
-        buyCrs = user.boughtCourses;
-      })
-      for(var i = 0; i < buyCrs.length; i++)
-      {
-        var currentChapter = buyCrs[i].idChapter;
-        var currentLession = buyCrs[i].idLesson;
-        await courseModel.findOne({ _id: buyCrs[i].idCourse}).then(course =>{
-          var flagSeen = false;
+  mycourse: catchAsync(async (req, res, next) => {
+    var buyCrs;
+    var finalBuy = [];
+    await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c' }).then(user => {
+      buyCrs = user.boughtCourses;
+    })
+    for (var i = 0; i < buyCrs.length; i++) {
+      var currentChapter = buyCrs[i].idChapter;
+      var currentLession = buyCrs[i].idLesson;
+      await courseModel.findOne({ _id: buyCrs[i].idCourse }).then(course => {
+        var flagSeen = false;
 
-          for(var j = 0; j < course.listChapter.length; j++)
+        for (var j = 0; j < course.listChapter.length; j++) {
+          var tmp = course.listChapter[j]._id;
+          if (tmp.toString() === currentChapter.toString()) //Đã xem tới chương này rồi
           {
-            var tmp = course.listChapter[j]._id;
-            if(tmp.toString() === currentChapter.toString()) //Đã xem tới chương này rồi
-            {
-              for(var m = 0; m < course.listChapter[j].listVideo.length; m++)
-              {
-                var tmp1 = course.listChapter[j].listVideo[m]._id;
-                if(tmp1.toString() === currentLession.toString())
-                {
-                  if(m == course.listChapter[j].listVideo.length - 1){
-                    flagSeen = true;
-                  }
+            for (var m = 0; m < course.listChapter[j].listVideo.length; m++) {
+              var tmp1 = course.listChapter[j].listVideo[m]._id;
+              if (tmp1.toString() === currentLession.toString()) {
+                if (m == course.listChapter[j].listVideo.length - 1) {
+                  flagSeen = true;
                 }
               }
             }
           }
-          var object = {
-            _id: course._id,
-            name: course.name,
-            description: course.description,
-            image: course.image,
-            createdBy: course.createdBy,
-            price: course.price,
-            ratingsAverage: course.ratingsAverage,
-            author: course.createdBy.name,
-            nbstudent: course.studentList.length,
-            category: course.field.category.name,
-            flagSaw: flagSeen
-          }
-          finalBuy.push(object);
-        });
-      }
+        }
+        var object = {
+          _id: course._id,
+          name: course.name,
+          description: course.description,
+          image: course.image,
+          createdBy: course.createdBy,
+          price: course.price,
+          ratingsAverage: course.ratingsAverage,
+          author: course.createdBy.name,
+          nbstudent: course.studentList.length,
+          category: course.field.category.name,
+          flagSaw: flagSeen
+        }
+        finalBuy.push(object);
+      });
+    }
 
-      res.render('vwMyCourses/mycourse', {
-        layout: 'layout',
-        boughtCourses:  finalBuy,
-        listcategory: req.session.entries
-      })
-    }),
+    res.render('vwMyCourses/mycourse', {
+      layout: 'layout',
+      boughtCourses: finalBuy,
+      listcategory: req.session.entries
+    })
+  }),
 
-    // teacherProfile: catchAsync(async (req, res, next) => {
-    //     res.render('vwTeacher/statistic', {
-    //         layout: 'layout'
-    //     })
-    // }),
+  // teacherProfile: catchAsync(async (req, res, next) => {
+  //     res.render('vwTeacher/statistic', {
+  //         layout: 'layout'
+  //     })
+  // }),
 };

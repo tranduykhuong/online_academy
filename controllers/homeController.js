@@ -70,7 +70,7 @@ export default {
   ListRatingOfField = ListRatingOfField.sort(function (a, b) {
    return b.value - a.value;
   });
-  console.log(ListRatingOfField);
+  // console.log(ListRatingOfField);
 
   // //danh sách khóa học theo lĩnh vực đăng kí nhiều nhất trong tuần qua
   // const courseBestOfField = await Course.find({field: BestOfField.fieldName, accept: true}).filter(

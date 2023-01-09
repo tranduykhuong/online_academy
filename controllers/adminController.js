@@ -28,6 +28,7 @@ export default {
   });
  }),
  addTeacher: catchAsync(async (req, res, next) => {
+  console.log(req.query);
   res.render('vwTeacherAdmin/add-professor', {
    layout: 'layoutAdmin',
   });
@@ -66,6 +67,8 @@ export default {
   });
  }),
  addStudent: catchAsync(async (req, res, next) => {
+
+
   res.render('vwStudentAdmin/add-student', {
    layout: 'layoutAdmin',
   });
@@ -503,4 +506,38 @@ export default {
    res.redirect('back');
   });
  }),
-};
+
+ //[DELETE teacehr]
+ delTeacher: catchAsync(async (req, res, next) => {
+  console.log("xóa: id giáo viên lấy được: "+req.params.idTeacher);
+  User
+   .deleteOne({ _id: req.params.idTeacher })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ //[DELETE student]
+ delStudent: catchAsync(async (req, res, next) => {
+  console.log("xóa: id hs lấy được: " +req.params.idStudent);
+  User
+   .deleteOne({ _id: req.params.idStudent })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ adTeacher: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User
+  .create({name: req.query.name, email: req.query.email, password: req.query.pass, role: "teacher" })
+  .then(() => res.redirect('/admin/allTeachers'))
+  .catch(next);
+ }),
+
+ adStudent: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User
+  .create({name: req.query.name, email: req.query.email, password: req.query.pass})
+  .then(() => res.redirect('/admin/allStudents'))
+  .catch(next);
+ }),
+}

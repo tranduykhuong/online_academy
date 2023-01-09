@@ -111,9 +111,15 @@
                                                     <td>2011/04/25</td>
                                                     <td>
                                                         <a href="/admin/editTeacher?id={{_id}}"
-                                                            class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="false"></i></a>
-                                                        <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
-                                                                class="fa fa-trash-o" aria-hidden="false"></i></a>
+                                                            class="btn btn-sm btn-primary"><i class="fa fa-pencil"
+                                                                aria-hidden="false"></i></a>
+
+                                                        {{!-- <button class="remove_btn" data-toggle="modal"
+                                                            data-target="#deletecourse" data-id={{this._id}}><i
+                                                                class="fa fa-trash-o"></i>Delete</button> --}}
+
+                                                        <button data-toggle="modal" type="submit" class="btn btn-sm btn-danger del_btn" data-target="#deletecourse" data-id={{this._id}}><i
+                                                                class="fa fa-trash-o"></i></button>
                                                     </td>
                                                 </tr>
                                                 {{/each}}
@@ -172,10 +178,47 @@
             Content body end
         ***********************************-->
 
-
+    {{!-- DIALOG CONFIRM --}}
+    <div class="modal" tabindex="-1" role="dialog" id="deletecourse" style="top: 30%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa giáo viên</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa đối tượng này?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--**********************************
             Footer start
         ***********************************-->
+
+    <form id="delete-course-form" method="post"></form>
+
+
+    <script>
+        //Remove course
+        var btndeletes = $$(".del_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                var deleteform = document.getElementById('delete-course-form');
+                var dlmd = document.getElementById('btn-delete-course');
+                dlmd.onclick = function () {
+                    deleteform.action = 'deleteTeacher/' + btndlt.getAttribute('data-id');
+                    deleteform.submit();
+                }
+            };
+        });
+    </script>
     <div class="footer">
         <div class="copyright">
             <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">DexignZone</a> 2022</p>

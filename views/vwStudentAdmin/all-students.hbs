@@ -108,9 +108,8 @@
 															<a href="/admin/editStudent?id={{_id}}"
 																class="btn btn-sm btn-primary"><i
 																	class="fa fa-pencil"></i></a>
-															<button type="submit"
-																class="btn btn-sm btn-danger"><i
-																	class="fa fa-trash-o"></i></button>
+															<button data-toggle="modal" type="submit" class="btn btn-sm btn-danger del_btn" data-target="#deletecourse" data-id={{this._id}}><i
+                                                                class="fa fa-trash-o"></i></button>
 														</td>
 													</tr>
 												</form>
@@ -180,7 +179,48 @@
 	<!--**********************************
             Footer end
         ***********************************-->
+	///
+	 {{!-- DIALOG CONFIRM --}}
+    <div class="modal" tabindex="-1" role="dialog" id="deletecourse" style="top: 30%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa học sinh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa đối tượng này?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+            Footer start
+        ***********************************-->
 
+    <form id="delete-course-form" method="post"></form>
+
+
+    <script>
+        //Remove course
+        var btndeletes = $$(".del_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                var deleteform = document.getElementById('delete-course-form');
+                var dlmd = document.getElementById('btn-delete-course');
+                dlmd.onclick = function () {
+                    deleteform.action = 'deleteTeacher/' + btndlt.getAttribute('data-id');
+                    deleteform.submit();
+                }
+            };
+        });
+    </script>
 
 	</div>
 
@@ -209,18 +249,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-	<script>
-			$('button').on('click', function () {
-				$.ajax({
-					type: 'POST',
-					url: '/admin/allStudent/del',
-					data: { id: '_id' },
-					success: function (resultData) {
-						alert(resultData);
-					}
-				});
-			});
-	</script>
 
 </body>
 

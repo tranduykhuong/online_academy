@@ -17,32 +17,11 @@
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
 
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************--
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
+    <div id="main">
 
 
         <!--**********************************
@@ -55,14 +34,14 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Add Professor</h4>
+                            <h4>Thêm Giáo Viên</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="add-professor.html">Professors</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Professor</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="/admin/allTeacher">Giáo viên</a></li>
+                            <li class="breadcrumb-item active"><a href="/admin/addTeacher">Thêm giáo viên</a></li>
                         </ol>
                     </div>
                 </div>
@@ -74,108 +53,100 @@
                                 <h5 class="card-title">Basic Info</h5>
                             </div>
                             <div class="card-body">
-                                <form action="#" method="post">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">First Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Last Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Email Here</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Joining Date</label>
-                                                <input name="datepicker" class="datepicker-default form-control" id="datepicker">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Confirm Password</label>
-                                                <input type="password" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Mobile Number</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Gender</label>
-                                                <select class="form-control">
-													<option></option>
-													<option value="Male">Male</option>
-													<option value="Female">Female</option>
-												</select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Designation</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Department</label>
-                                                <select class="form-control">
-													<option value=""></option>
-													<option value="html">HTML</option>
-													<option value="css">CSS</option>
-													<option value="javascript">JavaScript</option>
-													<option value="angular">Angular</option>
-													<option value="angular">React</option>
-													<option value="vuejs">Vue.js</option>
-													<option value="ruby">Ruby</option>
-													<option value="php">PHP</option>
-													<option value="asp">ASP.NET</option>
-													<option value="python">Python</option>
-													<option value="mysql">MySQL</option>
-												</select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Date of Birth</label>
-                                                <input name="datepicker" class="datepicker-default form-control" id="datepicker1">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Education</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group fallback w-100">
-                                                <input type="file" class="dropify form-control" data-default-file="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="submit" class="btn btn-light">Cencel</button>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Họ</label>
+                                            <input id="fnameF" type="text" class="form-control">
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Tên</label>
+                                            <input id="fnameL" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Password</label>
+                                            <input id="pass" type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <input id="fmail" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">re-password</label>
+                                            <input id="repass" type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Ngày tham gia</label>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group" aria-required="*">
+                                            <label class="form-label">Số điện thoại</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Giới tính</label>
+                                            <select class="form-control">
+                                                <option></option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Department</label>
+                                            <select class="form-control">
+                                                <option value=""></option>
+                                                <option value="html">HTML</option>
+                                                <option value="css">CSS</option>
+                                                <option value="javascript">JavaScript</option>
+                                                <option value="angular">Angular</option>
+                                                <option value="angular">React</option>
+                                                <option value="vuejs">Vue.js</option>
+                                                <option value="ruby">Ruby</option>
+                                                <option value="php">PHP</option>
+                                                <option value="asp">ASP.NET</option>
+                                                <option value="python">Python</option>
+                                                <option value="mysql">MySQL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Date of Birth</label>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="datepicker1">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group fallback w-100">
+                                            <input type="file" class="dropify form-control" data-default-file="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button id="btn-delete-course" data-toggle="modal" type="submit"
+                                            class="btn btn-primary del_btn" data-target="#deletecourse">Submit</button>
+                                        <button data-toggle="modal" type="submit" class="btn btn-sm btn-danger del_btn"
+                                            data-target="#deletecourse">Cencel</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,7 +175,70 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
+    <form id="delete-course-form" method="post"></form>
+    <script>
+        function isEmail(email) {
 
+            // Regular Expression (Accepts every special
+            // character along with @ symbol)
+            var regexp = /\S+@\S+\.\S+/;
+
+            // Converting the email to lowercase
+            return regexp.test(String(email).toLowerCase());
+        }
+        //Remove course
+        var btndeletes = $$(".del_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                if (document.querySelector('#fnameF').value.length === 0) {
+                    document.querySelector('#fnameF').select();
+                    alert("Please fill out your first name");
+                    e.preventDefault();
+                } else if (document.querySelector('#fnameL').value.length === 0) {
+                    document.querySelector('#fnameL').select();
+                    alert("Please fill out your last name");
+                    e.preventDefault();
+                }
+                else if (document.querySelector('#fmail').value.length === 0) {
+
+                    document.querySelector('#fmail').select();
+                    alert("Please fill out your email");
+                    e.preventDefault();
+                }
+                else if (isEmail(document.querySelector('#fmail').value) === false) {
+                    alert('please fill out a valid email fomat ');
+                    document.querySelector('#fmail').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#pass').value.length=== 0) {
+                    alert("Please fill out your password");
+                    document.querySelector('#pass').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#repass').value.length === 0) {
+                    alert('please fill out your re-password');
+                    document.querySelector('#repass').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#repass').value !== document.querySelector('#pass').value){
+                    alert('re-password is a valid');
+                    document.querySelector('#repass').select();
+                    e.preventDefault();
+                }
+                else {
+                    alert('Submit complete');
+                    var addform = document.getElementById('delete-course-form');
+                    var dlmd = document.getElementById('btn-delete-course');
+                    dlmd.onclick = function () {
+                        addform.action = 'addTeacher?name='
+                            + document.querySelector('#fnameF').value + " " 
+                            + document.querySelector('#fnameL').value
+                            + "&email=" + document.querySelector('#fmail').value 
+                            + "&pass="+document.querySelector('#pass').value
+                            + "&repass="+document.querySelector('#repass').value;
+                        addform.submit();
+                    }
+                }
+            };
+        });
+    </script>
     <!--**********************************
         Scripts
     ***********************************-->

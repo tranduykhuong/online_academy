@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-	
-	<meta charset="utf-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <link rel="stylesheet" href="/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="/css/style.css">
-	<!-- Pick date -->
+    <!-- Pick date -->
     <link rel="stylesheet" href="/css/default.css">
     <link rel="stylesheet" href="/css/default.date.css">
 
@@ -17,207 +17,140 @@
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
 
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
-        <!--**********************************
-            Nav header end
-        ***********************************-->
+    <div id="main">
 
-        <!--**********************************
-            Header start
-        ***********************************-->
 
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        {{!-- <div class="deznav">
-            <div class="deznav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Main Menu</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-							<i class="la la-home"></i>
-							<span class="nav-text">Dashboard</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="index.html">Dashboard 1</a></li>
-                            <li><a href="index-2.html">Dashboard 2</a></li>
-                            <li><a href="index-3.html">Dashboard 3</a></li>
-                        </ul>
-                    </li>
-					<li><a class="ai-icon" href="event-management.html" aria-expanded="false">
-							<i class="la la-calendar"></i>
-							<span class="nav-text">Event Management</span>
-						</a>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-							<i class="la la-user"></i>
-							<span class="nav-text">Professors</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="all-professors.html">All Professor</a></li>
-                            <li><a href="add-professor.html">Add Professor</a></li>
-                            <li><a href="edit-professor.html">Edit Professor</a></li>
-                            <li><a href="professor-profile.html">Professor Profile</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-							<i class="la la-users"></i>
-							<span class="nav-text">Students</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="all-students.html">All Patients</a></li>
-                            <li><a href="add-student.html">Add Patient</a></li>
-                            <li><a href="edit-student.html">Edit Patient</a></li>
-                            <li><a href="about-student.html">About Student</a></li>
-                        </ul>
-                    </li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-							<i class="la la-graduation-cap"></i>
-							<span class="nav-text">Courses</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="all-courses.html">All Courses</a></li>
-                            <li><a href="add-courses.html">Add Courses</a></li>
-                            <li><a href="edit-courses.html">Edit Courses</a></li>
-                            <li><a href="about-courses.html">About Courses</a></li>
-                        </ul>
-                    </li>
-				
-				</ul>
-            </div>
-        </div> --}}
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-		
-		
         <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
-				
-				<div class="row page-titles mx-0">
+
+                <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Add Student</h4>
+                            <h4>Thêm Học Sinh</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Student</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="/admin/allStudents">Học sinh</a></li>
+                            <li class="breadcrumb-item active"><a href="/admin/addStudent">Thêm Học Sinh</a></li>
                         </ol>
                     </div>
                 </div>
-				
-				<div class="row">
-					<div class="col-xl-12 col-xxl-12 col-sm-12">
+
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-								<h5 class="card-title">Basic Info</h5>
-							</div>
-							<div class="card-body">
-                                <form action="/admin/addStudent" method="post">
-									<div class="row">
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Full Name</label>
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Email</label>
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Registration Date</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Class</label>
-												<select class="form-control">
-													<option value=""></option>
-													<option value="html">HTML</option>
-													<option value="css">CSS</option>
-													<option value="javascript">JavaScript</option>
-													<option value="angular">Angular</option>
-													<option value="angular">React</option>
-													<option value="vuejs">Vue.js</option>
-													<option value="ruby">Ruby</option>
-													<option value="php">PHP</option>
-													<option value="asp">ASP.NET</option>
-													<option value="python">Python</option>
-													<option value="mysql">MySQL</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Gender</label>
-												<select class="form-control">
-													<option value=""></option>
-													<option value="Male">Male</option>
-													<option value="Female">Female</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Date of Birth</label>
-												<input name="datepicker" class="datepicker-default form-control" id="datepicker1">
-											</div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Address</label>
-												<textarea class="form-control" rows="5"></textarea>
-											</div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12">
-											<div class="form-group fallback w-100">
-												<input type="file" class="dropify form-control" data-default-file="">
-											</div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12">
-											<button type="submit" class="btn btn-primary">Submit</button>
-											<button type="submit" class="btn btn-light">Cencel</button>
-										</div>
-									</div>
-								</form>
+                                <h5 class="card-title">Basic Info</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Họ</label>
+                                            <input id="fnameF" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Tên</label>
+                                            <input id="fnameL" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Password</label>
+                                            <input id="pass" type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <input id="fmail" type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">re-password</label>
+                                            <input id="repass" type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Ngày tham gia</label>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group" aria-required="*">
+                                            <label class="form-label">Số điện thoại</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Giới tính</label>
+                                            <select class="form-control">
+                                                <option></option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Department</label>
+                                            <select class="form-control">
+                                                <option value=""></option>
+                                                <option value="html">HTML</option>
+                                                <option value="css">CSS</option>
+                                                <option value="javascript">JavaScript</option>
+                                                <option value="angular">Angular</option>
+                                                <option value="angular">React</option>
+                                                <option value="vuejs">Vue.js</option>
+                                                <option value="ruby">Ruby</option>
+                                                <option value="php">PHP</option>
+                                                <option value="asp">ASP.NET</option>
+                                                <option value="python">Python</option>
+                                                <option value="mysql">MySQL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Date of Birth</label>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="datepicker1">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group fallback w-100">
+                                            <input type="file" class="dropify form-control" data-default-file="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button id="btn-delete-course" data-toggle="modal" type="submit"
+                                            class="btn btn-primary del_btn" data-target="#deletecourse">Submit</button>
+                                        <button data-toggle="modal" type="submit" class="btn btn-sm btn-danger del_btn"
+                                            data-target="#deletecourse">Cencel</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-				</div>
-                
+                </div>
             </div>
         </div>
         <!--**********************************
@@ -239,27 +172,94 @@
 
 
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <form id="delete-course-form" method="post"></form>
+    <script>
+        function isEmail(email) {
 
+            // Regular Expression (Accepts every special
+            // character along with @ symbol)
+            var regexp = /\S+@\S+\.\S+/;
+
+            // Converting the email to lowercase
+            return regexp.test(String(email).toLowerCase());
+        }
+        //Remove course
+        var btndeletes = $$(".del_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                if (document.querySelector('#fnameF').value.length === 0) {
+                    document.querySelector('#fnameF').select();
+                    alert("Please fill out your first name");
+                    e.preventDefault();
+                } else if (document.querySelector('#fnameL').value.length === 0) {
+                    document.querySelector('#fnameL').select();
+                    alert("Please fill out your last name");
+                    e.preventDefault();
+                }
+                else if (document.querySelector('#fmail').value.length === 0) {
+
+                    document.querySelector('#fmail').select();
+                    alert("Please fill out your email");
+                    e.preventDefault();
+                }
+                else if (isEmail(document.querySelector('#fmail').value) === false) {
+                    alert('please fill out a valid email fomat ');
+                    document.querySelector('#fmail').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#pass').value.length=== 0) {
+                    alert("Please fill out your password");
+                    document.querySelector('#pass').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#repass').value.length === 0) {
+                    alert('please fill out your re-password');
+                    document.querySelector('#repass').select();
+                    e.preventDefault();
+                }else if (document.querySelector('#repass').value !== document.querySelector('#pass').value){
+                    alert('re-password is a valid');
+                    document.querySelector('#repass').select();
+                    e.preventDefault();
+                }
+                else {
+                    
+                    var addform = document.getElementById('delete-course-form');
+                    var dlmd = document.getElementById('btn-delete-course');
+                    dlmd.onclick = function () {
+                        alert('Submit complete');
+                        addform.action = 'addStudent?name='
+                            + document.querySelector('#fnameF').value + " " 
+                            + document.querySelector('#fnameL').value
+                            + "&email=" + document.querySelector('#fmail').value 
+                            + "&pass="+document.querySelector('#pass').value
+                            + "&repass="+document.querySelector('#repass').value;
+                        addform.submit();
+                    }
+                }
+            };
+        });
+    </script>
     <!--**********************************
         Scripts
     ***********************************-->
     <!-- Required vendors -->
     <script src="/js/global.min.js"></script>
-	<script src="/js/deznav-init.js"></script>
-	<!-- <script src="vendor/bootstrap-select/dist//js/bootstrap-select.min.js"></script> -->
+    <script src="/js/deznav-init.js"></script>
     <script src="/js/custom.min.js"></script>
 
-	<!-- Svganimation scripts -->
+    <!-- Svganimation scripts -->
     <script src="/js/vivus.min.js"></script>
     <script src="/js/svg.animation.js"></script>
-	
-	<!-- pickdate -->
+
+    <!-- pickdate -->
     <script src="/js/picker.js"></script>
     <script src="/js/picker.time.js"></script>
     <script src="/js/picker.date.js"></script>
-	
-	<!-- Pickdate -->
+
+    <!-- Pickdate -->
     <script src="/js/pickadate-init.js"></script>
-	
+
 </body>
+
 </html>

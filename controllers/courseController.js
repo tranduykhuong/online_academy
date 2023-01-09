@@ -470,6 +470,17 @@ export default {
   });
  }),
 
+ detailCourse: catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+  var course = await courseModel.findOne({_id : id});
+  console.log(course)
+
+  res.render('vwTeacher/detailCourse', {
+    layout: 'layoutTeacher',
+    courseDetail: mongooseFeature.mongooseToObject(course),
+  })
+ }),
+
  //[GET] /course/:idcourse
  courseDetail: catchAsync(async (req, res, next) => {
   var flagFvr, flagBuy = "true";

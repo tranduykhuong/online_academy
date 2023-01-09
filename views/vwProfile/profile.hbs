@@ -1,12 +1,15 @@
 <head>
     <link rel="stylesheet" href="/css/profile.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 
 <body>
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10 ml-5 pl-5">
-                <h1>Trang cá nhân & Cài đặt</h1>
+                <h2>Trang cá nhân & Cài đặt</h2>
                 <br>
             </div>
         </div>
@@ -18,17 +21,17 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#catagory">Danh mục</a>
+                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#pass">Đổi mật khẩu</a>
                     </li>
                     <li class="active">
-                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#history">Lịch sử đăng
-                            kí</a>
+                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#catagory">Danh mục</a>
                     </li>
+
                 </ul>
 
                 <div class="tab-content">
                     <div class="tab-pane active my-2" id="home">
-                        <form method="post" action="/user/{{user._id}}?_method=PUT" enctype="multipart/form-data"
+                        <form method="post" action="/{{role}}/profile?_method=PUT" enctype="multipart/form-data"
                             class="form" id="registrationForm">
                             <div class="col-sm-3">
                                 <div class="text-center">
@@ -41,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mt-5">
+                            <div class="form-group row mt-2">
 
                                 <div class="col-xs-6 col-md-6">
                                     <label for="name">
@@ -96,8 +99,8 @@
                                     <label for="address">
                                         <h5 class="mb-0">Địa chỉ</h5>
                                     </label>
-                                    <input type="text" class="form-control" name="address" id="address"
-                                        placeholder="Nhập họ và tên" value="{{user.where}}"
+                                    <input type="text" class="form-control" name="where" id="address"
+                                        placeholder="Nhập địa chỉ" value="{{user.where}}"
                                         title="enter your full name if any.">
                                 </div>
 
@@ -106,14 +109,51 @@
                             <div class="form-group mb-5">
                                 <button class="btn btn-warning mr-2" type="submit"><i
                                         class="glyphicon glyphicon-ok-sign"></i>Lưu thay đổi</button>
-                                <a class="btn btn-danger mr-2" data-toggle="modal" data-id="{{user._id}}"
-                                    data-target="#delete-course-modal"><i class="glyphicon glyphicon-ok-sign"></i>Đổi
-                                    mật khẩu</a>
+
                             </div>
 
                         </form>
 
                     </div><!--/tab-pane-->
+
+                    <div class="tab-pane my-2" id="pass">
+                        <div class="row my-5">
+                            <div class="col-md-6 offset-md-3">
+                                <span class="anchor" id="formChangePassword"></span>
+                                <div class="card card-outline-secondary">
+                                    <div class="card-header">
+                                        <h3 class="mb-0">Thay đổi mật khẩu</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        {{log role}}
+                                        <form class="form" method="post" action="/{{role}}/profile/password?_method=PUT"
+                                            role="form" name="change-password-form" autocomplete="off">
+                                            <div class="form-group">
+                                                <label for="inputPasswordOld">Nhập mật khẩu hiện tại</label>
+                                                <input type="password" name="curPW" class="form-control"
+                                                    id="inputPasswordOld" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPasswordNew">Nhập mật khẩu mới</label>
+                                                <input type="password" name="password" class="form-control"
+                                                    id="inputPasswordNew" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPasswordNewVerify">Xác thực mật khẩu</label>
+                                                <input type="password" class="form-control" id="inputPasswordNewVerify"
+                                                    required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                    class="btn btn-success float-right btn-save-pass">Lưu mật
+                                                    khẩu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="tab-pane" id="catagory">
                         <div class="container">
@@ -161,120 +201,6 @@
                                             </div>
                                         </div>
 
-                                        <div>
-                                            <h3>Lập Trình Web</h3>
-                                            <div class="row my-2">
-
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/803/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/804/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/805/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5> Lập trình back-end <span><br> Python</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="row my-2">
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/800/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/809/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/808/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <h3>Lập Trình Khác</h3>
-                                            <div class="row">
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/806/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/807/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5>Lập trình Front-end <br><span>ReactJS</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col mx-2 my-2">
-                                                    <figure class="effect-ravi">
-                                                        <img src="https://picsum.photos/1000/808/?random" alt="img25" />
-                                                        <figcaption>
-                                                            <h5> Lập trình back-end <span><br> Python</span></h5>
-                                                            <p>
-                                                                <a href="#"><i class="fa fa-search"></i></a>
-                                                            </p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
@@ -282,37 +208,6 @@
                         </div>
 
                     </div><!--/tab-pane-->
-
-                    <div class="tab-pane" id="history">
-                        <br>
-                        <h3 class="tittle-course">Các khóa học đã đăng kí</h3>
-
-                        <section class="light mt-4">
-                            <div class="container py-2">
-                                <article class="postcard light blue">
-                                    <a class="postcard__img_link" href="#">
-                                        <img class="postcard__img" src="https://picsum.photos/501/500"
-                                            alt="Image Title" />
-                                    </a>
-                                    <div class="postcard__text t-dark">
-                                        <h1 class="postcard__title blue">dahbdahdsj</h1>
-                                        <div class="postcard__subtitle small d-flex">
-                                            <p>Ngày tạo: </p>
-                                            <time datetime="2022-05-25 12:00:00">
-                                                <i class="fas fa-calendar-alt mr-2"></i>snmcnsncdjas
-                                            </time>
-                                        </div>
-                                        <div class="postcard__bar"></div>
-                                        <div class="postcard__preview-txt">nasdjkandjkj</div>
-                                    </div>
-                                </article>
-
-                            </div>
-                        </section>
-                        <br>
-                     
-                    </div>
-
 
                 </div>
             </div>
@@ -363,37 +258,6 @@
     </script>
 </body>
 
-<div class="container py-5 modal" id="delete-course-modal" tabindex="-1" role="dialog">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <span class="anchor" id="formChangePassword"></span>
-            <div class="card card-outline-secondary">
-                <div class="card-header">
-                    <h3 class="mb-0">Thay đổi mật khẩu</h3>
-                </div>
-                <div class="card-body">
-                    <form class="form" role="form" method="post" name="change-password-form" autocomplete="off">
-                        <div class="form-group">
-                            <label for="inputPasswordOld">Nhập mật khẩu hiện tại</label>
-                            <input type="password" class="form-control" id="inputPasswordOld" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPasswordNew">Nhập mật khẩu mới</label>
-                            <input type="password" class="form-control" id="inputPasswordNew" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPasswordNewVerify">Xác thực mật khẩu</label>
-                            <input type="password" class="form-control" id="inputPasswordNewVerify" required="">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success float-right btn-save-pass">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -413,18 +277,44 @@
                 alert("Xác nhận mật khẩu sai")
             }
             else {
-                if (passOldValue == userJs.password) {
-                    changePasswordForm.submit();
-                    console.log('/user/' + userJs._id + '/change_pass?_method=PATCH')
-                    changePasswordForm.action = '/user/' + userJs._id + '/change_pass?_method=PATCH';
-                }
-                else {
-                    alert("mật khẩu cũ sai")
-                }
-
+                changePasswordForm.submit();
             }
-
-
         });
+
+        if ("{{success}}") {
+            Toastify({
+                text: "Cập nhật thành công!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #00b09b, green)",
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+        if ("{{pwWrong}}") {
+            Toastify({
+                text: "Mật khẩu cũ không đúng, vui lòng thử lại!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #00b09b, red)",
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+
+            document.getElementById('pass').classList.add('active')
+        }
     });
+
+
 </script>

@@ -1,9 +1,12 @@
 import express from 'express';
 import userController from '../controllers/userController.js';
 import localMdw from '../middlewares/upload.mdw.js';
+import authMdw from '../middlewares/auth.mdw.js';
 
 
 const router = express.Router();
+
+router.use(authMdw.protect)
 
 router.route('/favorite/:id').get(userController.favorite);
 
@@ -12,11 +15,12 @@ router.route('/mycourse')
   
 // router.get('/:id/edit', userController.edit);
 // router.put('/:id', userController.update);
-router.route('/:id').get(userController.show);
-router.route('/:id').put(
+router.route('/profile').get(userController.show);
+router.route('/profile/password')
+.put(userController.changePassword);
+router.route('/profile').put(
     localMdw.uploadAvtMdw,
     userController.update
 );
-router.route('/:id/change_pass').patch(userController.changePassword);
 
 export default router;

@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password must not empty"],
       select: false,
-      minlength: 6,
+      // minlength: 6,
       trim: true,
     },
     gender: {
@@ -79,7 +79,14 @@ UserSchema.pre('save', async function(next) {
   this.password = await bcrypt.hash(this.password, salt);
 
   next();
-});  
+});
+
+UserSchema.methods.hashPassword = async function(
+  userPassword
+  ) {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(this.password, salt);
+}
 
 UserSchema.methods.correctPassword = async function(
   candidatePassword, 

@@ -7,6 +7,7 @@ import Course from '../models/course.model.js';
 import Field from '../models/field.model.js';
 import category from '../models/category.model.js';
 import User from '../models/user.model.js';
+import Email from '../utils/Email.js';
 
 import CategorySchema from '../models/category.model.js';
 import mongooseFeature from '../utils/mongoose.js';
@@ -420,10 +421,20 @@ export default {
    return result;
   }
 
+  const password = generateString(8);
+
   teacherformModel.findOne({ _id: req.params.idrequest }).then((teacher) => {
+    // Gửi email
+  try {
+    new Email(teacher.email).sendAccount(teacher.email, password);
+    console.log('email success')
+  } catch (err) {
+    console.log(err);
+  }
+  
    const obj = new userModel({
     name: teacher.name,
-    password: generateString(8),
+    password,
     email: teacher.email,
     gender: teacher.gender,
     role: 'teacher',

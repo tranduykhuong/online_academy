@@ -136,7 +136,7 @@
       color: lightseagreen;
     }
 
-    .active {
+    .active-nav {
       border-left: 4px solid lightseagreen !important;
     }
   </style>
@@ -206,7 +206,7 @@
         </a>
       </li>
       <li id="myProfile" class="myNav-item" style="border-left: 4px solid transparent;">
-        <a href="" class="myNav-link">
+        <a href="/teacher/profile" class="myNav-link">
           <i class="fa fa-user-circle-o myNav-link-icon" aria-hidden="true"></i>
           <span class="titleItem">Hồ sơ cá nhân</span>
         </a>
@@ -227,15 +227,15 @@
     crossorigin="anonymous"></script>
   {{{_sections.js}}}
   <script>
-    document.querySelectorAll('.myNav-item').forEach(e => e.classList.remove('active'));
+    document.querySelectorAll('.myNav-item').forEach(e => e.classList.remove('active-nav'));
     if (window.location.href.includes('/teacher/home')) {
-      document.getElementById('myCourse').classList.add('active');
+      document.getElementById('myCourse').classList.add('active-nav');
     } else if (window.location.href.includes('/teacher/addCourse')) {
 
     } else if (window.location.href.includes('/teacher/statistic')) {
-      document.getElementById('statistic').classList.add('active');
+      document.getElementById('statistic').classList.add('active-nav');
     } else if (window.location.href.includes('/teacher/profile')) {
-
+      document.getElementById('myProfile').classList.add('active-nav');
     }
   </script>
 </body>

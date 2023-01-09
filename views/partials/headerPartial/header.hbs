@@ -25,7 +25,7 @@
                     <ul class="option__level2">
                       {{#each headline as |item|}}
                       <li class="option__level2-li">
-                        <a href="" class="category__option-span">{{item.[0]}}</a>
+                        <a href='/course?category={{item.[0]}}' class="category__option-span">{{item.[0]}}</a>
                         <i class="bi bi-caret-right-fill icon_lv2"></i>
 
                         <!-- Level 3 Option -1 -->  
@@ -48,11 +48,13 @@
             <li class="header-left__item">
               <div class="search-blank">
                 <i class="bi bi-search"></i>
-                <input id="search-value" type="text" placeholder="Tìm kiếm khóa học" onkeyup="searchData()"/>
+                <input id="search-value" type="text" placeholder="Tìm kiếm khóa học"/>
               </div>
             </li>
           </ul>
         </div>
+
+        {{#if user}}
         <div id="header-right-1" class="header-right">
           <ul>
             <li class="header-right__item">
@@ -67,22 +69,22 @@
             </li>
             <li class="header-right__item">
               <div class="header-right__avatar header-right__user">
-                <img src="/img/meome.jpg" alt="" class="avatar" />
+                <img src={{changeURLVideo user.image}} alt="" class="avatar" />
 
                 <div class="list__option">
                   <div class="list__option-heading">
                     <div class="heading__logo">
-                      <img src="/img/meome.jpg" alt="" class="logo__title"/>
+                      <img src={{changeURLVideo user.image}} alt="" class="logo__title"/>
                     </div>
                     <div class="heading__text">
-                      <h3 class="heading__text-title">AndyKoi</h3>
+                      <h3 class="heading__text-title">{{user.name}}</h3>
                     </div>
                   </div>
                   <div class="blank"></div>
                   <div class="list__option-choice">
                     <ul class="list-kk">
                       <li class="list__option-item">
-                        <a href="" class="list__option-link">
+                        <a href="/user/profile" class="list__option-link">
                           <i class="bi bi-person-circle tmp-icon"></i>
                           <span class="item__span">Thông tin cá nhân</span>
                         </a>
@@ -94,13 +96,13 @@
                         </a>
                       </li>
                       <li class="list__option-item">
-                        <a href="" class="list__option-link">
+                        <a href="/auth/register-teacher" class="list__option-link">
                           <i class="bi bi-person-video3 tmp-icon"></i>
                           <span class="item__span">Trở thành giảng viên</span>
                         </a>
                       </li>
                       <li class="list__option-item">
-                        <a href="" class="list__option-link">
+                        <a href="/auth/logout" class="list__option-link">
                           <i
                             class="bi bi-box-arrow-right tmp-icon"
                           ></i>
@@ -114,26 +116,32 @@
             </li>
           </ul>
         </div>
-        {{!-- <div id="header-right-2" class="header-right header-right--unlogin">
+        {{else}}
+        <div id="header-right-2" class="header-right header-right--unlogin">
             <ul>
                 <li class="header-right__item-new">
-                    <button class="btn_logIn">Đăng Nhập</button>
-                    <button class="btn_Register">Đăng kí</button>
+                    <button class="btn_logIn" onclick="window.location='/auth/login'">Đăng Nhập</button>
+                    <button class="btn_Register" onclick="window.location='/auth/'">Đăng kí</button>
                 </li>
             </ul>
         </div>
-      </div> --}}
+      </div>
+      {{/if}}
 
       {{!-- Search course --}}
     <form id="search-course-form" method="post"></form>
 
       <script>
-        function searchData(){
-          //console.log(document.getElementById('search-value').value);
-          var valueinput = document.getElementById('search-value').value;
-          var searchform =document.getElementById('search-course-form');
-          searchform.action = 'searchfood/' + valueinput;
-          searchform.submit();
+
+        var btnsearch = document.getElementById("search-value");
+        btnsearch.onkeydown = function(ele){
+          if(event.key === 'Enter') 
+          {  
+            var valueinput = document.getElementById('search-value').value;
+            var searchform =document.getElementById('search-course-form');
+            searchform.action = '/course?name=' + valueinput;
+            searchform.submit();
+          }
         }
       </script>
     </header>

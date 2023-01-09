@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import courseController from '../controllers/courseController.js';
 import localMdw from '../middlewares/upload.mdw.js';
 import authMdw from '../middlewares/auth.mdw.js';
+import userController from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -33,6 +34,17 @@ router.route('/addCourse')
 
 router.route('/home')
 .get(courseController.home);
+router.route('/profile')
+.get(userController.show);
+router.route('/profile/password')
+.put(userController.changePassword);
+router.route('/profile').put(
+  localMdw.uploadAvtMdw,
+  userController.update
+);
+
+router.route('/detail/:id')
+.get(courseController.detailCourse)
 
 router.route('/statistic')
 .get(courseController.statistic);

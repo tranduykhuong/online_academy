@@ -21,6 +21,7 @@ export default {
       res.locals.user = undefined;
       req.session.returnUrl = req.originalUrl;
       res.redirect('/auth/login')
+      console.log('No token');
       return;
     }
   
@@ -32,6 +33,7 @@ export default {
         if (err) {
           req.session.returnUrl = req.originalUrl;
           res.redirect('/auth/login')
+          console.log('Espirise token');
            return;
         }
   
@@ -39,7 +41,8 @@ export default {
         const currentUser = await User.findOne({email: decoded.email});
         if (!currentUser) {
           req.session.returnUrl = req.originalUrl;
-            res.redirect('/auth')
+          res.redirect('/auth')
+          console.log('No user');
            return;
         }
   

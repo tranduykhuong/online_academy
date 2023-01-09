@@ -113,6 +113,7 @@ export default {
     res.render('auth/vwAuth', {
       layout: 'layoutEmpty',
       login: true,
+      path: '/auth/signup?step=email',
       stepEmail: true
      });
      return;
@@ -124,6 +125,7 @@ export default {
       layout: 'layoutEmpty',
       login: true,
       email,
+      path: '/auth/signup?step=email',
       failed: true,
      });
      return;
@@ -215,7 +217,7 @@ export default {
   res.render('auth/vwRegisterTeacher', {
     layout: 'layoutEmpty',
     success: true,
-    path: req.headers.referer || '/'
+    path: req.returnUrl || '/'
    });
  }),
 };

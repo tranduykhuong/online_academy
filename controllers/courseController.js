@@ -474,6 +474,17 @@ export default {
   });
  }),
 
+ detailCourse: catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+  var course = await courseModel.findOne({_id : id});
+  console.log(course)
+
+  res.render('vwTeacher/detailCourse', {
+    layout: 'layoutTeacher',
+    courseDetail: mongooseFeature.mongooseToObject(course),
+  })
+ }),
+
  //[GET] /course/:idcourse
  courseDetail: catchAsync(async (req, res, next) => {
   var flagFvr, flagBuy = "true";
@@ -485,7 +496,7 @@ export default {
   var field;
   var samefieldcrs;
 
-  await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user => {
+  await userModel.findOne({ _id: req.session.user._id}).then(user => {
   if(user.favoriteCourses.includes(req.params.idcourse) == true)
   {
     flagFvr = "false";
@@ -541,10 +552,21 @@ export default {
         var sfieldp1 = samefieldcrs.slice(0,3);
         var sfieldp2 = samefieldcrs.slice(3,5);
 
-        console.log(req.session.entries);
+        //console.log(req.session.entries);
+        for(var i = 0; i < courseh.length; i++)
+        {
+          courseh[i].createAt = new Date(courseh[i].createAt);
+        }
+
+        console.log(courseh);
 
         var courseVideodemo = courseh.listChapter.shift();
         reviewModal.find({course: courseh._id}).then(reviews => {
+          for(var j = 0; j < reviews.length; j++)
+          {
+            reviews[j].createAt = new Date(reviews[j].createAt);
+          }
+
           res.render('vwCourseDetail/courseDetail', {
             listcategory: req.session.entries,
             numberReviews: totalReview,
@@ -555,7 +577,7 @@ export default {
             coursevideodemo: mongoose.mongooseToObject(courseVideodemo),
             flagbuy: flagBuy,
             flagfvr: flagFvr,
-            iduser: '63af99d9bbc55b73d3b1761c',
+            iduser: req.session.user._id,
             relative1: mongoose.mutipleMongooseToObject(sfieldp1),
             relative2: mongoose.mutipleMongooseToObject(sfieldp2),
             reviews: mongoose.mutipleMongooseToObject(reviews), 
@@ -578,7 +600,7 @@ createfeedback: catchAsync(async (req, res, next) => {
       course : req.params.idcourse,
       comment : req.body.feedback,
       rating : req.body.starnb,
-      user: req.body.iduser
+      user: req.session.user._id
     });
     await feedback.save();
   }
@@ -586,7 +608,7 @@ createfeedback: catchAsync(async (req, res, next) => {
     const feedback = new reviewModal({
       course : req.params.idcourse,
       comment : req.body.feedback,
-      user: req.body.iduser
+      user: req.session.user._id
     });
     await feedback.save();
   }
@@ -617,7 +639,7 @@ deletefeedback: catchAsync(async (req, res, next) => {
 
 //[PATCH] /course/:idcourse/addtofavorite/:flag
 addtofavorite: catchAsync(async (req, res, next) => {
-  await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user =>{
+  await userModel.findOne({ _id: req.session.user._id}).then(user =>{
     if(req.params.flag == "true")
     {
       user.updateOne({ $push: { favoriteCourses: req.params.idcourse } },
@@ -635,10 +657,16 @@ addtofavorite: catchAsync(async (req, res, next) => {
 
 //[PATCH] /course/:idcourse/buycourse/:flag
 buycourse: catchAsync(async (req, res, next) => {
-  await userModel.findOne({ _id: '63af99d9bbc55b73d3b1761c'}).then(user =>{
+  var idchapterfirst, idlessonfirst;
+  await courseModel.findOne({ _id: req.params.idcourse}).then(course => {
+    idchapterfirst = course.listChapter[0]._id;
+    idlessonfirst = course.listChapter[0].listVideo[0]._id;
+  });
+
+  await userModel.findOne({ _id: req.session.user._id}).then(user =>{
     if(req.params.flag == "true")
     {
-      user.updateOne({ $push: { boughtCourses: {idCourse: req.params.idcourse} } },
+      user.updateOne({ $push: { boughtCourses: {idCourse: req.params.idcourse, idChapter: idchapterfirst, idLesson: idlessonfirst, currentTime: 0} } },
       function (err) {});
     }
     else 
@@ -652,7 +680,7 @@ buycourse: catchAsync(async (req, res, next) => {
   await courseModel.findOne({ _id: req.params.idcourse}).then(course => {
     if(req.params.flag == "true")
     {
-      course.updateOne({ $push: { studentList: {studentId: '63af99d9bbc55b73d3b1761c'} } },
+      course.updateOne({ $push: { studentList: {studentId: req.session.user._id} } },
       function (err) {});
     }
     else 
@@ -663,12 +691,16 @@ buycourse: catchAsync(async (req, res, next) => {
   res.redirect('back');
 }),
 
- viewVideo: catchAsync(async (req, res, next) => {
+//  viewVideo: catchAsync(async (req, res, next) => {
+//   const id = req.params.idCourse;
+//   const query = req.query;
+//   const idUser = req.session.user._id  || '63bb5cf366b9ba38ca15d0d8';
+
+//   console.log("aa: ", idUser);
+viewVideo: catchAsync(async (req, res, next) => {
   const id = req.params.idCourse;
   const query = req.query;
-  const idUser = req.session.user._id  || '63bb5cf366b9ba38ca15d0d8';
-
-  console.log("aa: ", idUser);
+  const idUser = req.session.user._id;
 
   const user = await User.findById({ _id: idUser });
   const dataCourse = await Course.findById({ _id: id });
@@ -676,7 +708,7 @@ buycourse: catchAsync(async (req, res, next) => {
   const course = mongooseFeature.mongooseToObject(dataCourse);
 
   if (query.lesson) {
-   if (req.session.lessonOld) {
+    if (req.session.lessonOld) {
     
     var data = [];
     user.boughtCourses.forEach((courseBought, index) => {
@@ -686,7 +718,7 @@ buycourse: catchAsync(async (req, res, next) => {
           idChapter: req.session.chapterOld,
           idLesson: req.session.lessonOld,
           currentTime: query.currentTime,
-         });
+          });
       }
       else{
         data.push(courseBought);
@@ -694,9 +726,9 @@ buycourse: catchAsync(async (req, res, next) => {
     })
 
     await User.findByIdAndUpdate(idUser, {boughtCourses: data});
-   }
-   req.session.lessonOld = query.lesson;
-   req.session.chapterOld = query.chapter;
+    }
+    req.session.lessonOld = query.lesson;
+    req.session.chapterOld = query.chapter;
   }
 
   var pathVideo = '';
@@ -707,122 +739,131 @@ buycourse: catchAsync(async (req, res, next) => {
   user.boughtCourses.forEach((item, index) => {
    if (id === item.idCourse.toString()) {
     isStudyPage = true;
+    var pathVideo = '';
+    var pathImage = '';
+    var nameLesson = '';
+    var isStudyPage = false;
+    user.boughtCourses.forEach((item, index) => {
+      if (id === item.idCourse.toString()) {
+        isStudyPage = true;
 
-    pathVideo = course.videodemo;
-    pathImage = course.image;
-    nameLesson = 'Overview';
-    var percentCourse;
-    var currentLesson;
-    var totalLesson = 0;
-    var chapter = 0;
-    var lesson = 0;
-    var idChuong ='';
-    var idBaihoc = '';
-    var timeLesson;
-    var listTimeChapter = [];
-    const time_convert = (num) =>
-    { 
-      var hours = Math.floor(num / 60);  
-      var minutes = num % 60;
-      return hours + ":" + minutes;         
-    }
+        pathVideo = course.videodemo;
+        pathImage = course.image;
+        nameLesson = 'Overview';
+        var percentCourse;
+        var currentLesson;
+        var totalLesson = 0;
+        var chapter = 0;
+        var lesson = 0;
+        var idChuong ='';
+        var idBaihoc = '';
+        var timeLesson;
+        var listTimeChapter = [];
+        const time_convert = (num) =>
+        { 
+          var hours = Math.floor(num / 60);  
+          var minutes = num % 60;
+          return hours + ":" + minutes;         
+        }
 
-    course.listChapter.forEach(item => {
-      var timeChapter = 0;
-      item.listVideo.forEach(video => {
-        timeChapter+=video.duration;
-      })
-      listTimeChapter.push(timeChapter);
-    })
+        course.listChapter.forEach(item => {
+          var timeChapter = 0;
+          item.listVideo.forEach(video => {
+            timeChapter+=video.duration;
+          })
+          listTimeChapter.push(timeChapter);
+        })
 
-    var listTimeChapterConvert = [];
-    for (let i = 0;i<listTimeChapter.length;i++){
-      var time = time_convert(Math.round(listTimeChapter[i]));
-      listTimeChapterConvert.push(time);
-    }
+        var listTimeChapterConvert = [];
+        for (let i = 0;i<listTimeChapter.length;i++){
+          var time = time_convert(Math.round(listTimeChapter[i]));
+          listTimeChapterConvert.push(time);
+        }
 
-    // course.listChapter.push({totalTimeLesson: listTimeChapterConvert})
-    course.listChapter.forEach((item, idx) => {
-      item.value = listTimeChapterConvert[idx];
-    })
+        // course.listChapter.push({totalTimeLesson: listTimeChapterConvert})
+        course.listChapter.forEach((item, idx) => {
+          item.value = listTimeChapterConvert[idx];
+        })
 
-    course.listChapter.forEach((item, index) => {
-     totalLesson += item.listVideo.length;
+        course.listChapter.forEach((item, index) => {
+          totalLesson += item.listVideo.length;
 
-     if (item._id.toString() === query.chapter) {
-      
-      if (item.chapter === 1){
-        item.listVideo.forEach((video, idx) => {
-          if (video._id.toString() === query.lesson) {
-           video.currentLesson = true;
+          if (item._id.toString() === query.chapter) {
+          
+          if (item.chapter === 1){
+            item.listVideo.forEach((video, idx) => {
+              if (video._id.toString() === query.lesson) {
+                video.currentLesson = true;
 
-           lesson += idx + 1;
-           pathVideo = video.urlVideo;
-           pathImage = video.avtVideo;
-           nameLesson = video.name;
-           timeLesson = time_convert(Math.round(video.duration));
-           video.timeLesson = timeLesson;
+                lesson += idx + 1;
+                pathVideo = video.urlVideo;
+                pathImage = video.avtVideo;
+                nameLesson = video.name;
+                timeLesson = time_convert(Math.round(video.duration));
+                video.timeLesson = timeLesson;
+              }
+              else{
+                timeLesson = time_convert(Math.round(video.duration));
+                video.timeLesson = timeLesson;
+              }
+              });
           }
           else{
-            timeLesson = time_convert(Math.round(video.duration));
-            video.timeLesson = timeLesson;
+            item.listVideo.forEach((video, idx) => {
+              if (video._id.toString() === query.lesson) {
+                video.currentLesson = true;
+                
+                lesson += item.chapter + 1;
+                pathVideo = video.urlVideo;
+                pathImage = video.avtVideo;
+                nameLesson = video.name;
+                timeLesson = time_convert(Math.round(video.duration));
+                video.timeLesson = timeLesson;
+              }
+              });
           }
-         });
-      }
-      else{
-        item.listVideo.forEach((video, idx) => {
-          if (video._id.toString() === query.lesson) {
-           video.currentLesson = true;
-            
-           lesson += item.chapter + 1;
-           pathVideo = video.urlVideo;
-           pathImage = video.avtVideo;
-           nameLesson = video.name;
-           timeLesson = time_convert(Math.round(video.duration));
-           video.timeLesson = timeLesson;
-          }
-         });
-      }
-    }
-    else{
-      item.listVideo.forEach((video, idx) => {
-        if (video._id.toString() === query.lesson) {
-         video.currentLesson = true;
-
-         lesson += idx + 1;
-         pathVideo = video.urlVideo;
-         pathImage = video.avtVideo;
-         nameLesson = video.name;
-         timeLesson = time_convert(Math.round(video.duration));
-         video.timeLesson = timeLesson;
         }
         else{
-          timeLesson = time_convert(Math.round(video.duration));
-          video.timeLesson = timeLesson;
+          item.listVideo.forEach((video, idx) => {
+            if (video._id.toString() === query.lesson) {
+              video.currentLesson = true;
+
+              lesson += idx + 1;
+              pathVideo = video.urlVideo;
+              pathImage = video.avtVideo;
+              nameLesson = video.name;
+              timeLesson = time_convert(Math.round(video.duration));
+              video.timeLesson = timeLesson;
+            }
+            else{
+              timeLesson = time_convert(Math.round(video.duration));
+              video.timeLesson = timeLesson;
+            }
+            });
         }
-       });
-    }
-    });
+        });
 
 
-    res.render('vwviewVideo/viewVideo', {
-     course: course,
-     idCourse: id,
-     layout: 'layoutEmpty',
-     total: totalLesson,
-     pathVideo: `/${pathVideo.split('/')[2]}/${pathVideo.split('/')[3]}/${pathVideo.split('/')[4]}`,
-     pathImage: pathImage.split('/').length > 3 ? `/${pathImage.split('/')[2]}/${pathImage.split('/')[3]}/${pathImage.split('/')[4]}` : pathImage,
-     nameLesson: nameLesson.split('/').length > 3 ? `/${nameLesson.split('/')[2]}/${nameLesson.split('/')[3]}/${nameLesson.split('/')[4]}` : nameLesson,
-     timeUpdateMonth: course.updatedAt.getMonth() + 1,
-     timeUpdateYear: course.updatedAt.getFullYear(),
-     lessonCurrent: lesson,
-    });
-   }
-  });
+        res.render('vwviewVideo/viewVideo', {
+        course: course,
+        idCourse: id,
+        layout: 'layoutEmpty',
+        total: totalLesson,
+        pathVideo: `/${pathVideo.split('/')[2]}/${pathVideo.split('/')[3]}/${pathVideo.split('/')[4]}`,
+        pathImage: pathImage.split('/').length > 3 ? `/${pathImage.split('/')[2]}/${pathImage.split('/')[3]}/${pathImage.split('/')[4]}` : pathImage,
+        nameLesson: nameLesson.split('/').length > 3 ? `/${nameLesson.split('/')[2]}/${nameLesson.split('/')[3]}/${nameLesson.split('/')[4]}` : nameLesson,
+        timeUpdateMonth: course.updatedAt.getMonth() + 1,
+        timeUpdateYear: course.updatedAt.getFullYear(),
+        lessonCurrent: lesson,
+        });
+      }
+    })
+  }
   if (!isStudyPage) {
    res.redirect(`/course/${id}`);
   }
- }),
+ })
+}),
 
  courses: catchAsync(async (req, res, next) => {
   // listcategory = req.session.entries;

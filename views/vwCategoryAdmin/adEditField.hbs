@@ -6,7 +6,7 @@
                     vực</p>
             </div>
             <div class="modal-body">
-                <form method="post" action="/admin/{{FieldDeail._id}}/edit?_method=PUT">
+                <form method="post" action="/admin/category/{{FieldDeail._id}}/edit?_method=PUT">
                     <div class="row">
                         <div class="col-md-12">
                             <label for="category_name" id="flag-status" data-flag={{status}}>
@@ -31,7 +31,7 @@
                             placeholder="Write something here...">{{FieldDeail.description}}</textarea>
                     </div>
                     <div class="modal-footer">
-                        <a type="submit" class="btn btn-secondary" href="/admin/editCategory"
+                        <a type="submit" class="btn btn-secondary" href="/admin/category/editCategory"
                             data-dismiss="modal">Back<a />
                             <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>

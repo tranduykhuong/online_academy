@@ -37,4 +37,21 @@ export default class Email {
       html
     })
   }
+
+  async sendAccount(email, password) {
+    const html = `
+      <div>
+        <h2>Chào mừng bạn đến với ONLINE ACADEMY</h2>
+        <h4>Tài khoản trở thành Giảng viên của bạn dưới đây!</h4>
+        <p><strong>Username: </strong>${email}</p>
+        <p><strong>Password: </strong>${password}</p>
+      </div>
+    `
+    await this.newTransport().sendMail({
+      from: this.from,
+      to: this.to,
+      subject: "Tài khoản Giảng viên tại ONLINE ACADEMY",
+      html
+    })
+  }
 }

@@ -503,4 +503,61 @@ export default {
    res.redirect('back');
   });
  }),
+ //[DELETE teacehr]
+ delTeacher: catchAsync(async (req, res, next) => {
+  console.log("xóa: id giáo viên lấy được: "+req.params.idTeacher);
+  User
+   .deleteOne({ _id: req.params.idTeacher })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ //[DELETE student]
+ delStudent: catchAsync(async (req, res, next) => {
+  console.log("xóa: id hs lấy được: " +req.params.idStudent);
+  User
+   .deleteOne({ _id: req.params.idStudent })
+   .then(() => res.redirect('back'))
+   .catch(next);
+ }),
+
+ adTeacher: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User
+  .create({name: req.query.name, email: req.query.email, password: req.query.pass, role: "teacher" })
+  .then(() => res.redirect('/admin/allTeachers'))
+  .catch(next);
+ }),
+
+ adStudent: catchAsync(async (req, res, next) => {
+  console.log(req.query);
+  User
+  .create({name: req.query.name, email: req.query.email, password: req.query.pass})
+  .then(() => res.redirect('/admin/allStudents'))
+  .catch(next);
+ }),
+//[edit student and teacher]
+ edtStudent: catchAsync(async (req, res, next) => {
+  console.log("lấy giá trị query hàm chỉnh")
+  console.log(req.query);
+  User
+  .findOneAndUpdate({_id: req.query.id}, {name: req.query.name, gender: req.query.gender, address: req.query.address})
+  .then(() => res.redirect('/admin/allStudents'))
+  .catch((error)=>{
+    console.log(error);
+    next();
+  });
+ }),
+
+ edtTeacher: catchAsync(async (req, res, next) => {
+  console.log("lấy giá trị query hàm chỉnh")
+  console.log(req.query);
+  User
+  .findOneAndUpdate({_id: req.query.id}, {name: req.query.name, gender: req.query.gender, address: req.query.address})
+  .then(() => res.redirect('/admin/allTeachers'))
+  .catch((error)=>{
+    console.log(error);
+    next();
+  });
+ }),
 };

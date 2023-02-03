@@ -1,0 +1,179 @@
+<head>
+ <link rel='stylesheet' href='/css/courses.css' type='text/css' />
+ <link
+  rel='stylesheet'
+  href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css'
+  integrity='sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4'
+  crossorigin='anonymous'
+ />
+</head>
+
+<body>
+    <div style="margin-top: 100px;">
+         <div class='mt-4 mx-5 d-flex'>
+  <div class='col-m-2 pr-5' style="width: 240px;">
+   <h1>Sắp xếp</h1>
+   <nav id='sidebar'>
+    <ul class='list-unstyled components'>
+        {{#if isCreateAt}}
+            <li class='item'>
+                <a href='?sort=-createAt' class='link--active'>
+                    Khóa học mới nhất
+                </a>
+            </li> 
+        {{else}}
+            <li class='item'>
+                <a href='?sort=-createAt' class='link'>
+                    Khóa học mới nhất
+                </a>
+            </li> 
+        {{/if}}
+
+        {{#if isOutStanding}}
+            <li class='item'>
+                <a href='?sort=outstanding' class='link link--active'>
+                    Khóa học nổi bậc
+                </a>
+            </li>
+        {{else}}
+            <li class='item'>
+                <a href='?sort=outstanding' class='link'>
+                    Khóa học nổi bậc
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if isRating}}
+            <li class='item'>
+                <a href='?sort=rating' class='link link--active'>
+                    Lượt đánh giá
+                </a>
+            </li>
+        {{else}}
+            <li class='item'>
+                <a href='?sort=rating' class='link'>
+                    Lượt đánh giá
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+   </nav>
+
+   <h1>Lĩnh vực</h1>
+   <nav id='sidebar'>
+    <ul class='list-unstyled components'>
+        {{#each category}}
+            <li class='item'>
+                <a href='?category={{this.name}}' 
+                    {{#if this.currentCategory}}
+                        class='link--active'
+                    {{else}}
+                        class='link'
+                    {{/if}}
+                    >
+                    {{this.name}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+   </nav>
+  </div>
+  <div class='row pr-5 w-100'>
+     {{#if isEmpty}}
+            <h1>Không có sản phẩm<h1/>
+     {{else}}
+        {{#each course}}
+            <div class='col-sm-6 .col-md-4 col-lg-3 my-3'>
+            <a href='/course/{{this._id}}' style="color: #333; text-decoration: none;">
+            {{#if isOutStanding}}
+                <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f41244d19e002406a7b3" class="image_small">
+            {{/if}}
+            {{#if isRating}}
+                <img src="https://storage.googleapis.com/ulp-dev-media/025ce3f4-8671-4e13-ac67-814f757a9851/product/6285f26844d19e002406a7ad" class="image_small">
+            {{/if}}
+            <div class='card rounded-lg mb-1'>
+            <img class='card-img-top rounded-lg' src={{this.image}} alt='Card image cap' />
+            <div class='card-body'>
+                <h6 class='text-warning text-uppercase'>{{this.field.category.name}}</h6>
+                <div class='size-title'>
+                <h5 class='card-title'>{{this.name}}</h5>
+                </div>
+                <div class='card-text hiden-text'>{{{this.description}}}</div>
+                <div class='student-rating d-flex' style="justify-content: space-between;">
+                <div class='star-rating' id='cl{{this._id}}' data-rating={{this.ratingsAverage}} data-id={{this._id}}>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                </div>
+                <p class='total-student ml-5'>{{this.studentList.length}} students </p>
+                </div>
+
+                <div class="d-flex" style="justify-content: space-between;">
+                    <p class='author-name'>{{this.createdBy.name}}</p>
+                    {{#if this.isCreateAt}}
+                        <p class="date-courses">{{getDate this.createdAt}}</p>
+                    {{/if}}
+                </div>
+                <div class='contain-outstanding f-lex' style="justify-content: space-between;">
+                <a href='/course/{{this._id}}' class='btn btn-primary'>Đăng kí khóa học</a>
+                    <p class='outstanding' id='format-money'>{{this.price}}đ</p>
+                <div>
+                </div>
+                </div>
+            </div>
+            </div>
+            </a>
+            </div>
+    
+        {{/each}}
+     {{/if}}
+
+  </div>
+ </div>
+    <div style="display: flex; justify-content: center;">
+    <ul class='pagination pagination-lg'>
+          <li class='page-item'><a class='page-link' href="?offset={{prev}}">Previous</a></li>
+        {{#each total}}
+            {{#if this.isCurrent}}
+                <li class='page-item active'><a class='page-link' href="javascript:;">{{this.value}}</a></li>
+            {{else}}
+                <li class='page-item'><a class='page-link' href="?offset={{this.value}}">{{this.value}}</a></li>
+            {{/if}}
+        {{/ each}}
+        <li class='page-item'><a class='page-link' href='?offset={{next}}'>Next</a></li>
+    </ul>
+   </div>
+    </div>
+
+ <script>
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+
+        let ratingPoints;
+        var formatMoney = document.querySelectorAll('.outstanding');
+
+        var starRating = document.querySelectorAll('.star-rating');
+
+        for (let i = 0; i < formatMoney.length; i++) {
+            formatMoney[i].innerHTML = VND.format(parseInt(formatMoney[i].innerHTML));
+        }
+
+        for (var i = 0; i < starRating.length; i++) {
+            var idcr = starRating[i].id;
+            var stars = Math.round(document.getElementById(`${idcr}`).getAttribute("data-rating"));
+            var starlist = document.querySelectorAll(`#${idcr} .fa-star`);
+            for (var j = 0; j < 5; j++) {
+                if (j < stars) {
+                    starlist[j].classList.add("checked");
+                }
+            }
+        }
+
+        const pagination = document.querySelectorAll(".page-link");
+
+    </script>
+</body>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Pick date -->
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/default.date.css">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main">
+        <!--**********************************
+            Sidebar start
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Edit Student</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Student</a></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Basic Info</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Họ Tên</label>
+                                            <input data-id={{users._id}} id="fname" type="text" class="form-control"
+                                                value="{{users.name}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <input id="fmail" type="text" disabled style="background-color: #F7F7F7;"
+                                                class="form-control" value="{{users.email}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Ngày Cập nhật</label>
+                                            <input type="text" class="form-control" disabled
+                                                style="background-color: #F7F7F7;" value="{{users.updatedAt}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">id</label>
+                                            <input type="text" class="form-control" disabled
+                                                style="background-color: #F7F7F7;" value="{{users._id}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Ngôn ngữ</label>
+                                            <select style="background-color: #F7F7F7;" class="form-control">
+                                                <option value=""></option>
+                                                <option value="html">HTML <i class="fa fa-caret-down"
+                                                        aria-hidden="false"></i></option>
+                                                <option value="css">CSS</option>
+                                                <option value="javascript" selected>JavaScript</option>
+                                                <option value="angular">Angular</option>
+                                                <option value="angular">React</option>
+                                                <option value="vuejs">Vue.js</option>
+                                                <option value="ruby">Ruby</option>
+                                                <option value="php">PHP</option>
+                                                <option value="asp">ASP.NET</option>
+                                                <option value="python">Python</option>
+                                                <option value="mysql">MySQL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Gender</label>
+                                            <select id="fgender" class="form-control">
+                                                <option value="nam" hidden selected disabled>nam</option>
+                                                <option value="nam">nam</option>
+                                                <option value="nữ">nữ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label  class="form-label">Address</label>
+                                            <textarea id="faddress" class="form-control"
+                                                rows="5">Demo Address #8901 Marmora Road Chi Minh City, Vietnam</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Decription</label>
+                                            <textarea class="form-control" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group fallback w-100">
+                                            <input type="file" class="dropify form-control" data-default-file="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button id="btn-delete-course" type="submit" class="btn btn-primary del_btn"
+                                            data-target="#deletecourse">Submit</button>
+                                        <button data-toggle="modal" type="submit" class="btn btn-sm btn-danger "
+                                            data-target="#deletecourse">Cencel</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">DexignZone</a> 2022</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <form id="delete-course-form" method="post"></form>
+
+
+    <script>
+
+        //Remove course
+
+        var name;
+        var addform = document.getElementById('delete-course-form');
+        var dlmd = document.getElementById('btn-delete-course');
+        dlmd.onclick = function (e) {
+            
+            name = document.getElementById('faddress');
+
+            addform.action = 'editStudent?name='
+                + document.querySelector('#fname').value
+                + "&gender=" + document.querySelector('#fgender').value
+                + "&id=" + document.querySelector('#fname').getAttribute('data-id');
+            addform.submit()
+
+        };
+    </script>
+
+    <!-- Required vendors -->
+    <script src="/js/global.min.js"></script>
+    <script src="/js/deznav-init.js"></script>
+    <script src="/js/custom.min.js"></script>
+
+    <!-- Svganimation scripts -->
+    <script src="/js/vivus.min.js"></script>
+    <script src="/js/svg.animation.js"></script>
+
+    <!-- pickdate -->
+    <script src="/js/picker.js"></script>
+    <script src="/js/picker.time.js"></script>
+    <script src="/js/picker.date.js"></script>
+
+    <!-- Pickdate -->
+    <script src="/js/pickadate-init.js"></script>
+
+</body>
+
+</html>

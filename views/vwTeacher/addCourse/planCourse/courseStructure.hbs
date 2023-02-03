@@ -1,0 +1,133 @@
+<div class="">
+  <div class="col col-md-3 col-sm-4 p-0 position-fixed">
+    <h5 class="mt-5">Kế hoạch khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=1" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Mục tiêu khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=2" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step1}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Cấu trúc khóa học
+        </a>
+      </li>
+    </ul>
+
+    <h5 class="mt-5">Tạo khóa học</h5>
+    <ul class="list-unstyled">
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=3" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step3}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Thông tin khóa học
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=4" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step4}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Chương trình giảng dạy
+        </a>
+      </li>
+      <li class="my-3">
+        <a href="/teacher/addCourse{{idCourse}}?step=5" class="text-dark courseLink font-size-16 text-decoration-none">
+          {{#if step5}} 
+          <i class="fa fa-check-circle-o text-info" aria-hidden="true"></i>
+          {{else}} 
+          <i class="fa fa-circle-thin" aria-hidden="true"></i>
+          {{/if}}
+          Học phí
+        </a>
+      </li>
+    </ul>
+
+    <button type="post" onclick="submitCourse()" class="btn btn-lg rounded-0 btn-outline-info mt-4" role="button"
+      aria-pressed="true">
+      Đăng khóa học
+    </button>
+  </div>
+
+  <div class="col shadow pb-3 px-0 mb-5" style="margin-left: 250px !important;
+    width: auto !important;">
+    <form>
+      <h3 class="p-5 border-bottom m-0">Cấu trúc khóa học</h3>
+
+      <div class="p-5 bg-light">
+        <div class="row">
+          <div class="col d-flex flex-column justify-content-center">
+            <h4 class="mb-4">Hãy lên kế hoạch cho khóa học của bạn.</h4>
+            <h5 class="font-weight-normal mr-4">Lập kế hoạch khóa học của bạn một cách cẩn thận sẽ tạo ra một con đường
+              học
+              tập rõ ràng cho sinh viên và giúp
+              bạn
+              một khi bạn quay phim. Hãy suy nghĩ về các chi tiết của từng bài giảng bao gồm các kỹ năng mà bạn sẽ dạy,
+              độ
+              dài
+              video ước tính, các hoạt động thực tế để bao gồm và cách bạn sẽ tạo ra những lời giới thiệu và tóm tắt.
+            </h5>
+          </div>
+          <div class="col col-lg-4 shadow bg-white text-center py-5 px-4">
+            <img width="100px" class="py-3"
+              src="https://www.rd.com/wp-content/uploads/2021/03/kids-books-online-with-GettyImages-487042432.jpg"
+              alt="">
+            <h6>Mẹo và hướng dẫn để cấu trúc một khóa học mà học sinh yêu thích</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="col px-5 py-4">
+        <h4 class="mb-5">Tips</h4>
+        <h5 class="mt-4">Bắt đầu với mục đích của bạn</h5>
+        <p class="mb-5">Đặt mục tiêu cho những gì người học sẽ đạt được trong khóa học của bạn (còn được gọi là mục tiêu
+          học
+          tập) lúc đầu sẽ giúp bạn xác định nội dung nào trong khóa học của bạn và cách bạn sẽ dạy nội dung để giúp
+          người
+          học đạt được mục tiêu.</p>
+
+        <h5 class="mt-4">Giới thiệu bản thân và tạo ra động lực.</h5>
+        <p class="mb-5">Mọi người trực tuyến muốn bắt đầu học hỏi nhanh chóng. Thực hiện một phần giới thiệu mang đến
+          cho
+          người học một cái gì đó để được hào hứng trong 10 phút đầu tiên.</p>
+
+        <h5 class="mt-4">Các phần có một mục tiêu học tập rõ ràng.</h5>
+        <p class="mb-5">Giới thiệu từng phần bằng cách mô tả mục tiêu của phần và tại sao nó lại quan trọng. Đưa ra các
+          bài
+          giảng và các tiêu đề phản ánh nội dung của họ và có một luồng logic.</p>
+
+        <h5 class="mt-4">Bài giảng bao gồm một khái niệm.</h5>
+        <p class="mb-5">Một bài giảng tốt là 2-7 phút để giữ cho sinh viên quan tâm và giúp họ học tập trong các đợt
+          ngắn.
+          Bao gồm một chủ đề duy nhất trong mỗi bài giảng để người học có thể dễ dàng tìm thấy và xem lại chúng sau.</p>
+
+        <h5 class="mt-4">Kết hợp các loại bài giảng của bạn.</h5>
+        <p class="mb-5">Thay thế giữa việc quay phim, màn hình của bạn và các slide hoặc hình ảnh khác. Thể hiện bản
+          thân có
+          thể giúp người học cảm thấy được kết nối.</p>
+
+        <div style="text-align: right;">
+          <a href="/teacher/addCourse{{idCourse}}?step=3" class="btn btn-primary btn-lg active bg-lightseagreen"
+            role="button" aria-pressed="true">
+            Tiếp tục
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

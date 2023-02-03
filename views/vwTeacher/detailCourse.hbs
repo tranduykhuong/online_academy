@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delete Course</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+
+<body>
+    <div class="row d-flex mx-5" style="margin-top: 10px; padding-top:0px; justify-content: space-around;">
+        <div class="col">
+            <div class="d-flex" style="margin-top: 10px; padding-top:0px; flex-direction: column;">
+            <h1 class="block">{{courseDetail.field.name}}</h1>
+
+            <h3>{{courseDetail.name}}</h3>
+            <div class="mt-3">
+                <h5>Mô tả ngắn gọn:</h5>
+                <p>{{courseDetail.summary}}</p>
+                <h5>Lợi ích của khóa học: </h5>
+                <p>{{courseDetail.benifits}}</p>
+                <h5>Điểm bình chọn: {{courseDetail.ratingsAverage}}</h5>
+            </div>
+
+            <div class="mt-3">
+                <h4>Mô tả chi tiết</h4>
+                <div>{{{courseDetail.description}}}</div>
+            </div>
+
+            <div class="mt-3 text-primary">
+                <h6>Giá gốc: {{numberWithDot courseDetail.price}}</h6>
+                <h6>Giá khuyến mãi: {{numberWithDot courseDetail.priceDiscount}}</h6>
+                <h6>Thuộc: {{courseDetail.field.name}}</h6>
+                <h6>Lĩnh vực: {{courseDetail.field.category.name}}</h6>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+            <div class="" style="display: block; text-align: right;">
+                <img style="width: 250px; height: 250px; margin-bottom: 100px" src={{changeURLVideo courseDetail.image}}
+                alt="picture course">
+            </div>
+        <div class="mt-4">
+            <a type="button" href="/teacher/addCourse/{{courseDetail._id}}?step=1"
+                class="btn pull-right btn-lg rounded-0" style="background-color: lightseagreen; color: #fff;">
+                <strong>Chỉnh sửa khóa học</strong>
+            </a>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

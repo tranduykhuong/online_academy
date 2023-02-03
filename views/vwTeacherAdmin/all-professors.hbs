@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+    <!-- Datatable -->
+    <link href="/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/_ui-breadcrumb.scss">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <div class="content-body" style="padding-top: 0;">
+        <!-- row -->
+        <div class="container-fluid">
+
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>DANH SÁCH GIÁO VIÊN</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="/admin">admin</a></li>
+                        <li class="breadcrumb-item active"><a href="/admin/allTeachers">all teachers</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills mb-3">
+                        <li class="nav-item"><a href="#list-view" data-bs-toggle="tab"
+                                class="nav-link btn-primary me-1 show active">Danh sách</a></li>
+                        <li class="nav-item"><a href="#grid-view" data-bs-toggle="tab"
+                                class="nav-link btn-primary">Thẻ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row tab-content">
+                        <div id="list-view" class="tab-pane fade active show col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Tất cả giáo viên</h4>
+                                    <a href="/admin/addTeacher" class="btn btn-primary">+ Thêm mới</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Name</th>
+                                                    <th>Department</th>
+                                                    <th>Gender</th>
+                                                    <th>Education</th>
+                                                    <th>Mobile</th>
+                                                    <th>Email</th>
+                                                    <th>Joining Date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each ListTeachers}}
+                                                <tr>
+                                                    <td><img class="rounded-circle" width="35" src="/img/pic1.jpg"
+                                                            alt=""></td>
+                                                    <td>{{name}}</td>
+                                                    <td>{{role}}</td>
+                                                    <td>{{geder}}</td>
+                                                    <td>Decription</td>
+                                                    <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a>
+                                                    </td>
+                                                    <td><a href="javascript:void(0);"><strong>{{email}}</strong></a>
+                                                    </td>
+                                                    <td>2011/04/25</td>
+                                                    <td>
+                                                        <a href="/admin/editTeacher?id={{_id}}"
+                                                            class="btn btn-sm btn-primary"><i class="fa fa-pencil"
+                                                                aria-hidden="false"></i></a>
+
+                                                        {{!-- <button class="remove_btn" data-toggle="modal"
+                                                            data-target="#deletecourse" data-id={{this._id}}><i
+                                                                class="fa fa-trash-o"></i>Delete</button> --}}
+
+                                                        <button data-toggle="modal" type="submit" class="btn btn-sm btn-danger del_btn" data-target="#deletecourse" data-id={{this._id}}><i
+                                                                class="fa fa-trash-o"></i></button>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="grid-view" class="tab-pane fade col-lg-12">
+                            <div class="row">
+                                {{#each ListTeachers}}
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <div class="profile-photo">
+                                                    <img src="/img/pic2.jpg" width="100"
+                                                        class="img-fluid rounded-circle" alt="">
+                                                </div>
+                                                <h3 class="mt-4 mb-1">{{name}}</h3>
+                                                <p class="text-muted">M.COM., P.H.D.</p>
+                                                <ul class="list-group mb-3 list-group-flush">
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Gender :</span><strong>{{gender}}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Phone No. :</span><strong>+01 123 456
+                                                            7890</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Email:</span><strong>{{email}}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Address:</span><strong>#8901 Marmora
+                                                            Road</strong>
+                                                    </li>
+                                                </ul>
+                                                <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
+                                                    href="/admin/teacherProfile?id={{_id}}">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+
+    {{!-- DIALOG CONFIRM --}}
+    <div class="modal" tabindex="-1" role="dialog" id="deletecourse" style="top: 30%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa giáo viên</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa đối tượng này?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+            Footer start
+        ***********************************-->
+
+    <form id="delete-course-form" method="post"></form>
+
+
+    <script>
+        //Remove course
+        var btndeletes = $$(".del_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                var deleteform = document.getElementById('delete-course-form');
+                var dlmd = document.getElementById('btn-delete-course');
+                dlmd.onclick = function () {
+                    deleteform.action = 'deleteTeacher/' + btndlt.getAttribute('data-id');
+                    deleteform.submit();
+                }
+            };
+        });
+    </script>
+    <div class="footer">
+        <div class="copyright">
+            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">DexignZone</a> 2022</p>
+        </div>
+    </div>
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+
+    </div>
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="/js/global.min.js"></script>
+    <script src="/js/deznav-init.js"></script>
+    <script src="/js/custom.min.js"></script>
+
+    <!-- Datatable -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
+
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatables.init.js"></script>
+    <!-- Svganimation scripts -->
+    <script src="/js/vivus.min.js"></script>
+    <script src="/js/svg.animation.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Online Academy</title>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <style>
+    * {
+      font-size: 14px;
+    }
+  </style>
+  <style>
+    .file-input {
+      width: 100%;
+    }
+
+    .file-preview {
+      border-radius: 0;
+      margin: 0;
+    }
+
+    .file-caption-name {
+      border-radius: 0;
+    }
+
+    .fileinput-upload {
+      display: none;
+    }
+
+    .file-drop-zone {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-file {
+      border-radius: 0;
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css" />
+
+  <link rel="stylesheet" href="/css/teacher.css" type="text/css">
+  {{{_sections.css}}}
+</head>
+
+<body>
+  <div>
+    <nav class="navbar navbar-dark bg-dark mb-2 shadow bg-black fixed-top">
+      <a class="navbar-brand" href="/teacher/home">
+        <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>
+        Trở về Dashboard
+      </a>
+    </nav>
+    <div class="mt-5 mx-5 pt-5">
+      {{{body}}}
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+  <script src='https://cdn.tiny.cloud/1/qzq8c6s21l5d0i1ffpw3c2er0lpyondyxc2doq47gfb217ci/tinymce/6/tinymce.min.js'
+    referrerpolicy="origin">
+    </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    tinymce.init({
+      selector: '#myTextarea',
+      menubar: false,
+      height: 300,
+      plugins: 'paste image link autolink lists table media',
+      toolbar: [
+        'undo redo | bold italic underline | numlist bullist | alignleft aligncenter alignright | forecolor backcolor',
+      ],
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/buffer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/filetype.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/piexif.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/themes/fa4/theme.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/vi.min.js"></script>
+  {{{_sections.js}}}
+  <script>
+    $('.fuVideo').fileinput({
+      {{!-- dropZoneEnabled: false, --}}
+      maxFileCount: 5,
+      theme: 'fa4',
+      allowedFileExtensions: ['mp4'],
+    });
+
+    $('.fuImage').fileinput({
+      {{!-- dropZoneEnabled: false, --}}
+      maxFileCount: 1,
+      theme: 'fa4',
+      allowedFileExtensions: ['png', 'jpg'],
+    });
+
+    {{!-- $('#intendedForm').off('submit').submit();
+    $('#frmCurriculum').off('submit').submit();
+    $('#infoCourseForm').off('submit').submit();
+    $('#pricingForm').off('submit').submit(); --}}
+    function submitCourse() {
+
+      $.getJSON('/teacher/addCourse/submitCourse', function (data) {
+        if (data === 'Duplicate name') {
+          Toastify({
+            text: "Tên khóa học đã tồn tại!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #00b09b, red)",
+            },
+            onClick: function () { } // Callback after click
+          }).showToast();
+        }
+        else if (data === false) {
+          Toastify({
+            text: "Vui lòng kiểm tra và điền đầy đủ thông tin khóa học!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #00b09b, red)",
+            },
+            onClick: function () { } // Callback after click
+          }).showToast();
+        } else {
+          Toastify({
+            text: "Tạo khóa học thành công!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function () { } // Callback after click
+          }).showToast();
+          window.location.replace("/teacher");
+        }
+      });
+    }
+  </script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+</body>
+
+</html>

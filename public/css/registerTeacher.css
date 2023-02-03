@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap");
+* {
+  font-family: "Saira Semi Condensed", sans-serif;
+  transition: all 0.5s ease;
+}
+
+.container--aply {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 16px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;  
+  transition: all 0.5s ease;
+  background: #dfdfdf;
+}
+
+.appy__form {
+  min-width: 720px;
+  max-width: 1000px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+.appy__form div,
+.appy__form label,
+.appy__form input,
+.appy__form textarea {
+  width: 100%;
+}
+
+.appy__form label {
+  width: 80%;
+}
+
+.field:nth-of-type(2) {
+  margin: 16px 0;
+}
+
+.appy__form label,
+.appy__form input,
+.appy__form textarea {
+  padding: 8px;
+}
+
+.appy__form label,
+[placeholder] {
+  color: #555;
+}
+
+.appy__form label i {
+  margin: 0 10px 0 0;
+}
+
+.field:focus-within label {
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.appy__form input,
+.appy__form textarea {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 6px -6px #555;
+}
+.appy__form input:focus,
+.appy__form textarea:focus {
+  background: white;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
+}
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+.btn-apply {
+  background: #2f4ad0;
+  margin: 16px 0 50px 0;
+  padding: 8px 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 6px -6px #555;
+}
+.btn-apply:hover {
+  letter-spacing: 1px;
+  box-shadow: none;
+}
+
+.social-media {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+:not(.social-media) {
+  font-size: 14px;
+}
+.social-media span {
+  font-size: 16px;
+}
+.social-media span .fas {
+  margin: 0 0 0 10px;
+}
+.social-media a {
+  color: #000;
+  font-size: 20px;
+}
+
+@media (max-width: 800px) {
+  form {
+    width: 100%;
+  }
+}
+
+.appy__form textarea {
+  width: 100%;
+  height: 75%;
+}
+
+.container--header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container--header .apply__title{
+  font-size: 25px;
+}
+
+.apply__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apply__btn .btn-apply{
+  background-color: lightseagreen;
+}
+

@@ -1,0 +1,96 @@
+<head>
+    <link rel="stylesheet" href="/css/adCategorySideBar.css" type="text/css">
+</head>
+
+<body>
+    <div>
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+
+            <!-- MAIN Content -->
+            <div class="col">
+                <div class="mt-4 ml-5 d-flex">
+                    <a href="/admin" class="text-decoration-none font-weight-bold ml-4 text-primary">Category</a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a href="#"
+                            class="text-decoration-none font-weight-bold text-primary path-back">Field</a></a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a href="#"
+                            class="text-decoration-none font-weight-bold text-primary">AllCourses</a></a>
+                </div>
+
+                <section class="light">
+                    <div class="container py-2">
+                        <article class="postcard light blue">
+                            <div class="postcard__text t-dark">
+                                <h1 class="postcard__title blue"><a href="#">{{fieldsDetail.name}}</a></h1>
+                                <div class="postcard__subtitle small">
+                                    <time datetime="2020-05-25 12:00:00">
+                                        <i class="fas fa-calendar-alt mr-2"></i>{{fieldsDetail.updatedAt}}
+                                    </time>
+                                </div>
+                                <div class="postcard__bar"></div>
+                                <div class="postcard__preview-txt">{{fieldsDetail.description}}</div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+
+                <div class="row mx-5 size-height-card-admin">
+                    {{#each courses}}
+                    <div class="col-sm-12 .col-md-4 col-lg-3 my-3">
+                        <a href="#" class="text-decoration-none">
+                            <!-- Card Dark -->
+                            <div class="card view-card-zoom">
+                                <!-- Card image -->
+                                <div class="view overlay">
+                                    <img class="card-img-top"
+                                        src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.webp"
+                                        alt="Card image cap">
+                                </div>
+
+                                <!-- Card content -->
+                                <div class="card-body bg-dark text-light rounded-bottom">
+                                    <!-- Title -->
+                                    <div class="size-height-title-admin">
+                                        <h4 class="card-title-admin text-uppercase">{{this.name}}</h4>
+                                    </div>
+                                    <p>Giá: {{this.price}}</p>
+                                    <div class="student-rating-admin d-flex ">
+                                        <div>
+                                            {{#each this.ratingsAverage}}
+                                                <span class="fa fa-star checked"></span>
+                                            {{/each}}
+                                            {{#each this.ratingsNo}}
+                                                <span class="fa fa-star"></span>
+                                            {{/each}}
+                                        </div>
+                                        <p class="total-student ml-3">{{this.studentList.length}} students</p>
+                                    </div>
+                                    <p class="author-name">{{this.createdBy.name}}</p>
+                                    <!-- Text -->
+                                    <div class="card-text white-text hiden-text">{{{this.description}}}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card Dark -->
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div><!-- Main Col END -->
+
+        </div><!-- body-row END -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var backAdminField = $('.path-back');
+            backAdminField.click(function () {
+                var pathArray = window.location.pathname.split("/");
+                console.log(pathArray)
+                window.location = '/admin/'+ pathArray[2]
+            })
+        });
+    </script>
+</body>

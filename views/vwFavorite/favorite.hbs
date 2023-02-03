@@ -1,0 +1,74 @@
+<head>
+    <link rel="stylesheet" href="/css/favorite.css" type="text/css">
+</head>
+
+<body>
+    <div class="mt-4 mx-5 contain-favorite" style="margin-top: 80px">
+        <h3>Đã thích</h3>
+        <div class="row mx-5">
+            {{#each favoriteCourses}}
+            <div class="col-sm-6 .col-md-5 col-lg-3 my-3" onclick="window.location = '/course/{{this._id}}'">
+                <div class='card rounded-lg mb-1'>
+                    <img class='card-img-top rounded-lg'
+                        src='https://static.skillshare.com/uploads/discussion/tmp/b8ba300b.png' alt='Card image cap' />
+                    <div class='card-body'>
+                        <h6 class="text-warning text-uppercase">{{this.field.category.name}}</h6>
+                        <div class="size-title">
+                            <h5 class='card-title'>{{this.name}}</h5>
+                        </div>
+                        <div class='card-text hiden-text'>{{{this.description}}}
+                        </div>
+                        <div class="student-rating">
+                            <div class="star-rating" id="cl{{this._id}}" data-rating={{this.ratingsAverage}}
+                                data-id={{this._id}}>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <p class="total-student ml-5">{{this.studentList.length}} students</p>
+                        </div>
+
+                        <p class="author-name">{{this.createdBy.name}}</p>
+                        <div class="contain-outstanding">
+                            <a href='#' class='btn btn-primary btn-register-course'>Đăng kí khóa học</a>
+                            <div>
+                                <p class="outstanding" id="format-money">{{this.price}}đ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+    <script>
+
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+
+        let ratingPoints;
+        var formatMoney = document.querySelectorAll('.outstanding');
+        var starRating = document.querySelectorAll('.star-rating');
+
+        for (let i = 0; i < formatMoney.length; i++) {
+            formatMoney[i].innerHTML = VND.format(parseInt(formatMoney[i].innerHTML));
+        }
+
+        for (var i = 0; i < starRating.length; i++) {
+            var idcr = starRating[i].id;
+            var stars = Math.round(document.getElementById(`${idcr}`).getAttribute('data-rating'));
+            var starlist = document.querySelectorAll(`#${idcr} .fa-star`);
+            for (var j = 0; j < 5; j++) {
+                if (j < stars) {
+                    starlist[j].classList.add('checked');
+                }
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Online Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/teacher.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <style>
+    * {
+      font-size: 14px;
+    }
+
+    .myNavLeft {
+      width: 56px;
+      height: 100vh;
+      background-color: #1c1d1f;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1250;
+      transition: width 400ms cubic-bezier(.2, 0, .38, .9);
+      box-shadow: 0 4px 8px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 24%);
+    }
+
+    .myNavLeft:hover {
+      width: 280px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      overflow: hidden;
+    }
+
+    .myNav-link {
+      display: flex;
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      width: 100%;
+      overflow: hidden;
+      padding: 16px 12px;
+      position: relative;
+      height: auto;
+      text-align: left;
+      vertical-align: baseline;
+      white-space: normal;
+    }
+
+    .myNav-link:hover {
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      background-color: #3e4143;
+    }
+
+    .myNavLeft:hover span {
+      opacity: 1;
+    }
+
+    .titleItem {
+      white-space: nowrap;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 400ms linear;
+      padding-left: 20px;
+    }
+
+    .myNav-link-icon {
+      font-size: 22px;
+      color: #fff;
+      width: 26px;
+    }
+
+    .container-fluid {
+      padding-left: 100px;
+      padding-right: 44px;
+    }
+
+    .dropdown-nav-teacher {
+      width: 246px;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      padding: 10px 10px 0;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      background-color: #fff;
+      display: none;
+    }
+
+    .dropdown-nav-teacher::before {
+      position: absolute;
+      width: 100px;
+      height: 20px;
+      background-color: transparent;
+      top: -20px;
+      right: 0;
+      content: '';
+    }
+
+    .dropdown-nav-teacher-item {
+      border-top: 1px solid #ccc;
+      padding: 16px 0 16px;
+      cursor: pointer;
+    }
+
+    .dropdown-nav-teacher-item:hover {
+      color: lightseagreen;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1c1d1f;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: lightseagreen;
+    }
+
+    .active-nav {
+      border-left: 4px solid lightseagreen !important;
+    }
+  </style>
+  {{{_sections.css}}}
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    function avatarHover() {
+      document.querySelector('.dropdown-nav-teacher').classList.add('show');
+      document.querySelector('.dropdown-nav-teacher').classList.remove('hidden');
+    }
+    function avatarOut() {
+      document.querySelector('.dropdown-nav-teacher').classList.add('hidden');
+      document.querySelector('.dropdown-nav-teacher').classList.remove('show');
+    }
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-white justify-content-end  sticky-top"> 
+    <i class="fa fa-bell-o align-items-center" style="font-size: 20px;" aria-hidden="true"></i>
+    <div class="my-2 mx-4 avatar" id="avatar" style="position: relative;" onmouseover="avatarHover()"
+      onmouseleave="avatarOut()">
+      <i class="fa fa-user-circle" style="font-size: 30px; cursor: pointer;" aria-hidden="true"></i>
+      <div class="dropdown-nav-teacher">
+        <ul style="margin-bottom: 4px;">
+          <li style="display: flex; align-items: center; margin-bottom: 14px;">
+            <i class="fa fa-user-circle" style="font-size: 50px;" aria-hidden="true"></i>
+            <strong style="padding-left: 10px; font-size: 16px; cursor: pointer;">{{user.name}}</strong>
+          </li>
+          <li class="dropdown-nav-teacher-item">
+            <a href="">Thiết đặt tài khoản</a>
+          </li>
+          <li class="dropdown-nav-teacher-item">
+            <a href="/auth/logout">Đăng xuất</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="myNavLeft">
+    <ul class="">
+      <li>
+        <a href="/teacher/home" class="myNav-link">
+          <img width="28px"
+            src="https://i.pinimg.com/474x/2e/55/45/2e554560b41bf6d2cb1b4a3d6ac61cf2--teddy-bears-teddy-bear-dogs.jpg"
+            alt="">
+        </a>
+      </li>
+      <li id="myCourse" class="myNav-item" style="border-left: 4px solid transparent;">
+        <a href="/teacher/home" class="myNav-link">
+          <i class="fa fa-laptop myNav-link-icon" aria-hidden="true"></i>
+          <span class="titleItem">Khóa học của tôi</span>
+        </a>
+      </li>
+      <li id="addCourse" class="myNav-item" style="border-left: 4px solid transparent;">
+        <a href="/teacher/addCourse?step=1" class="myNav-link">
+          <i class="fa fa-upload myNav-link-icon" aria-hidden="true"></i>
+          <span class="titleItem">Đăng khóa học</span>
+        </a>
+      </li>
+      <li id="statistic" class="myNav-item" style="border-left: 4px solid transparent;">
+        <a href="/teacher/statistic" class="myNav-link">
+          <i class="fa fa-bar-chart myNav-link-icon" aria-hidden="true"></i>
+          <span class="titleItem">Thống kê</span>
+        </a>
+      </li>
+      <li id="myProfile" class="myNav-item" style="border-left: 4px solid transparent;">
+        <a href="/teacher/profile" class="myNav-link">
+          <i class="fa fa-user-circle-o myNav-link-icon" aria-hidden="true"></i>
+          <span class="titleItem">Hồ sơ cá nhân</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container-fluid mt-4">
+    {{{body}}}
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+  {{{_sections.js}}}
+  <script>
+    document.querySelectorAll('.myNav-item').forEach(e => e.classList.remove('active-nav'));
+    if (window.location.href.includes('/teacher/home')) {
+      document.getElementById('myCourse').classList.add('active-nav');
+    } else if (window.location.href.includes('/teacher/addCourse')) {
+
+    } else if (window.location.href.includes('/teacher/statistic')) {
+      document.getElementById('statistic').classList.add('active-nav');
+    } else if (window.location.href.includes('/teacher/profile')) {
+      document.getElementById('myProfile').classList.add('active-nav');
+    }
+  </script>
+</body>
+
+</html>

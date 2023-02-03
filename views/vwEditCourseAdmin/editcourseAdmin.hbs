@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delete Course</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/5a854a2686.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/editcourseAdmin.css">
+</head>
+
+<body>
+    <div class="table-users" data-length={{lengthbody}}>
+        <div class="header">Course List</div>
+        <div class="input__field">
+            <i class="bi bi-search"></i>
+            <input id="myinput" class="form-control" type="search" placeholder="Search by teacher or category..." aria-label="Search" onkeyup="tableSearch()">
+        </div>
+
+        <table cellspacing="0" class="table-sortable table-fixed" id="myTable">
+            <thead>
+            <tr class="tr-head">
+                <th style="width: 3.4%;">No</th>
+                <th style="width: 13%;">Image</th>
+                <th style="width: 25%;" >Name Course</th>
+                <th style="width: 17%;">Teacher</th>
+                <th style="width: 7%;">Field</th>
+                <th style="width: 10%;">Category</th>
+                <th style="width: 8%;">Student</th>
+                <th style="width: 16.6%;">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each listcourse}}
+            <tr>
+                <td style="width: 3.4%;">{{addOne @index}}</td>
+                <td style="width: 13%;"><img src={{changeURLVideo this.image}} alt="" /></td>
+                <td style="width: 25%;">{{this.name}}</td>
+                <td style="width: 17%;">{{this.createdBy.name}}</td>
+                <td style="width: 7%;">{{this.field.name}}</td>
+                <td style="width: 10%;">{{this.field.category.name}}</td>
+                <td style="width: 8%;">{{this.studentList.length}}</td>
+                <td style="width: 16.6%;">
+                    <div class="btn__ctn">
+                        <button class="dsb_btnk" data-toggle="modal" data-target="#disablecrs" data-id={{this._id}}><i class="bi bi-lock-fill"></i>Disabled</button>
+                        <button class="remove_btn" data-toggle="modal" data-target="#deletecourse" data-id={{this._id}}><i class="bi bi-trash3-fill"></i>Delete</button>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    {{!-- DIALOG CONFIRM --}}
+    <div class="modal" tabindex="-1" role="dialog" id="deletecourse" style="top: 30%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa khóa học</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn xóa khóa học này?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- DIALOG CONFIRM --}}
+    <div class="modal" tabindex="-1" role="dialog" id="disablecrs" style="top: 30%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Khóa khóa học</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn vô hiệu khóa học này?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-disable-course" type="button" class="btn btn-danger">Khóa</button>
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Remove course --}}
+    <form id="delete-course-form" method="post"></form>
+
+    {{!-- Disable course --}}
+    <form id="disable-course-form" method="post"></form>
+
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        //Remove course
+        var btndeletes = $$(".remove_btn");
+        btndeletes.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                var deleteform = document.getElementById('delete-course-form');
+                var dlmd = document.getElementById('btn-delete-course');
+                dlmd.onclick = function () {
+                     deleteform.action = '/admin/deletecourse/' + btndlt.getAttribute('data-id');
+                     deleteform.submit();
+                }
+            };
+        });
+
+        //Disable course
+            
+
+            var btndisables = $$(".dsb_btnk");
+            console.log(btndisables);
+            btndisables.forEach((btndlt, index) => {
+            btndlt.onclick = function () {
+                var dsbform = document.getElementById('disable-course-form');
+                var dlmd1 = document.getElementById('btn-disable-course');
+                dlmd1.onclick = function () {
+                     dsbform.action = '/admin/deletecourse/disabled/' + btndlt.getAttribute('data-id');
+                     dsbform.submit();
+                }
+            };
+        });
+        
+
+        //Table search
+        function tableSearch(){
+            let input, filter, table, tr, td, txtValue;
+            input = document.getElementById("myinput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for(let i = 0; i < tr.length; i++){
+                td = tr[i].getElementsByTagName("td")[3]; //Tên giảng viên
+                td1 = tr[i].getElementsByTagName("td")[5]; //Tên lĩnh vực
+                if(td || td1){
+                    txtValue = td.textContent || td.innerText;
+                    txtValue1 = td1.textContent || td1.innerText;
+                    if(txtValue.toUpperCase().indexOf(filter) > -1 || txtValue1.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display ="";
+                    }
+                    else{
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+        //Check ScrollBar
+        var lengthbody = document.querySelector('.table-users').getAttribute('data-length');
+        if(lengthbody * 120 < 650){
+            var trd = document.querySelector('.tr-head').style.paddingRight = "0"; 
+        }
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

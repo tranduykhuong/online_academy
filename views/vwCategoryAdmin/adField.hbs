@@ -1,0 +1,88 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css/adCategorySideBar.css" type="text/css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<body>
+    <div>
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+
+            <!-- MAIN Content -->
+            <div class="col">
+                <div class="mt-2 ml-5 d-flex">
+                    <a href="/admin/category" class="text-decoration-none font-weight-bold ml-4 text-primary">Category</a>
+                    <a href="#" class="text-decoration-none font-weight-bold text-dark">><a href="#"
+                            class="text-decoration-none font-weight-bold text-primary">Field</a></a>
+                </div>
+                <section class="light mt-4">
+                    <div class="container py-2">
+                        <article class="postcard light blue">
+                            <div class="postcard__text t-dark">
+                                <h1 class="postcard__title blue">{{categoryName}}</h1>
+                                <div class="postcard__subtitle small d-flex">
+                                    <p>Ngày tạo: </p>
+                                    <time datetime="2022-05-25 12:00:00">
+                                        <i class="fas fa-calendar-alt mr-2"></i>{{createDate}}
+                                    </time>
+                                </div>
+                                <div class="postcard__bar"></div>
+                                <p class="amount-course">Số lượng field: {{updateData.length}}</p>
+                                <div class="postcard__preview-txt">{{categoryDescrition}}</div>
+                            </div>
+                        </article>
+
+                    </div>
+                </section>
+
+
+                <div class="mt-3 px-5 mb-4 row mx-5">
+                    {{#each updateData}}
+                    <div class="col-sm-12 .col-md-3 col-lg-4 mt-4">
+                        <a href="#" data-id="{{this._id}}" class="text-decoration-none admin-detail">
+                            <!-- Card Dark -->
+                            <div class="card view-card-zoom">
+
+                                <!-- Card content -->
+                                <div class="card-body background-card-field text-light rounded-bottom">
+                                    <!-- Title -->
+                                    <h4 class="card-title text-uppercase">{{this.name}}</h4>
+                                    <p>{{this.amount}} khóa học</p>
+                                    <p>Ngày cập nhật: {{this.updatedAt}}</p>
+                                    <hr class="hr-light">
+                                    <!-- Text -->
+
+                                    <p class="card-text white-text mb-4 hiden-text">{{this.description}}</p>
+                                </div>
+                            </div>
+                            <!-- Card Dark -->
+                        </a>
+                    </div>
+                    {{/each}}
+
+                </div>
+            </div><!-- Main Col END -->
+
+        </div><!-- body-row END -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var cardAdminField = $('.admin-detail');
+            cardAdminField.click(function () {
+                var fieldId = $(this).data('id');
+                var pathArray = window.location.pathname;
+                var path = pathArray + "/" + fieldId;
+                cardAdminField.attr("href", path);
+            })
+        });
+
+    </script>
+
+</body>

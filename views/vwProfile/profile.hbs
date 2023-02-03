@@ -1,0 +1,320 @@
+<head>
+    <link rel="stylesheet" href="/css/profile.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+<body>
+    <div class="container bootstrap snippet" style="margin-top:100px">
+        <div class="row">
+            <div class="col-sm-10 ml-5 pl-5">
+                <h2>Trang cá nhân & Cài đặt</h2>
+                <br>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-9 mx-auto">
+                <ul class="nav nav-tabs btn-group" role="group">
+                    <li class="active">
+                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#home"> Thông tin cơ bản
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#pass">Đổi mật khẩu</a>
+                    </li>
+                    <li class="active">
+                        <a class="btn btn-info" data-mdb-color="dark" data-toggle="tab" href="#catagory">Danh mục</a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active my-2" id="home">
+                        <form method="post" action="/{{role}}/profile?_method=PUT" enctype="multipart/form-data"
+                            class="form" id="registrationForm">
+                            <div class="col-sm-3">
+                                <div class="text-center">
+                                    <div class="preview">
+                                        <img class="img-avt avatar-user rounded-circle img-thumbnail" src=""
+                                            id="img-preview" />
+                                        <label class="label-upload-file" for="file-input">Upload Image</label>
+                                        <input class="text-center center-block file-upload" name="image"
+                                            accept="image/*" type="file" id="file-input" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+
+                                <div class="col-xs-6 col-md-6">
+                                    <label for="name">
+                                        <h5 class="mb-0">Họ và Tên</h5>
+                                    </label>
+                                    <input type="text" class="form-control" name="name" id="full_name"
+                                        placeholder="Nhập họ và tên" value="{{user.name}}"
+                                        title="enter your full name if any.">
+                                </div>
+
+                                <div class="col-xs-6 col-md-6">
+                                    <label for="email">
+                                        <h5 class="mb-0">Email</h5>
+                                    </label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="you@email.com" value="{{user.email}}" title="enter your email.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">
+                                    <h5 class="mb-0">Mô tả</h5>
+                                </label>
+                                <textarea name="description" class="form-control textarea-resize" id="description"
+                                    rows="3">{{user.description}}</textarea>
+                            </div>
+
+                            <div class="form-group row mb-5">
+                                <div class="col-xs-6 col-md-3">
+                                    <label for="inputState1">
+                                        <h5 class="mb-0">Giới tính</h5>
+                                    </label>
+                                    <select id="inputState1" name="gender" class="form-control">
+                                        <option value="nam" id="maleValue">Nam</option>
+                                        <option value="nữ" id="femaleValue">Nữ</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-6 col-md-3">
+                                    <label for="inputState2">
+                                        <h5 class="mb-0">Vai trò</h5>
+                                    </label>
+                                    <select id="inputState2" name="role" class="form-control">
+                                        <option value="student" id="student">Học viên</option>
+                                        <option value="teacher" id="teacher">Giáo viên</option>
+                                        <option value="admin" id="teacher">Quản trị</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-6 col-md-6">
+                                    <label for="address">
+                                        <h5 class="mb-0">Địa chỉ</h5>
+                                    </label>
+                                    <input type="text" class="form-control" name="where" id="address"
+                                        placeholder="Nhập địa chỉ" value="{{user.where}}"
+                                        title="enter your full name if any.">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group mb-5">
+                                <button class="btn btn-warning mr-2" type="submit"><i
+                                        class="glyphicon glyphicon-ok-sign"></i>Lưu thay đổi</button>
+
+                            </div>
+
+                        </form>
+
+                    </div><!--/tab-pane-->
+
+                    <div class="tab-pane my-2" id="pass">
+                        <div class="row my-5">
+                            <div class="col-md-6 offset-md-3">
+                                <span class="anchor" id="formChangePassword"></span>
+                                <div class="card card-outline-secondary">
+                                    <div class="card-header">
+                                        <h3 class="mb-0">Thay đổi mật khẩu</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        {{log role}}
+                                        <form class="form" method="post" action="/{{role}}/profile/password?_method=PUT"
+                                            role="form" name="change-password-form" autocomplete="off">
+                                            <div class="form-group">
+                                                <label for="inputPasswordOld">Nhập mật khẩu hiện tại</label>
+                                                <input type="password" name="curPW" class="form-control"
+                                                    id="inputPasswordOld" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPasswordNew">Nhập mật khẩu mới</label>
+                                                <input type="password" name="password" class="form-control"
+                                                    id="inputPasswordNew" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPasswordNewVerify">Xác thực mật khẩu</label>
+                                                <input type="password" class="form-control" id="inputPasswordNewVerify"
+                                                    required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                    class="btn btn-success float-right btn-save-pass">Lưu mật
+                                                    khẩu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="catagory">
+                        <div class="container">
+                            <br>
+                            <div class="row">
+                                <div class="container">
+                                    <div class="grid">
+                                        <div>
+                                            <h3>Lập Trình Mobile</h3>
+                                            <div class="row my-2">
+
+                                                <div class="col mx-2 my-2">
+                                                    <figure class="effect-ravi">
+                                                        <img src="https://picsum.photos/1000/800/?random" alt="img17" />
+                                                        <figcaption>
+                                                            <h5>Lập Trình Mobile <br><span>React Native</span></h5>
+                                                            <p>
+                                                                <a href="#"><i class="fa fa-search"></i></a>
+                                                            </p>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col mx-2 my-2">
+                                                    <figure class="effect-ravi">
+                                                        <img src="https://picsum.photos/1000/801/?random" alt="img25" />
+                                                        <figcaption>
+                                                            <h5>Lập trình IOS App <br><span> Swift</span></h5>
+                                                            <p>
+                                                                <a href="#"><i class="fa fa-search"></i></a>
+                                                            </p>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col mx-2 my-2">
+                                                    <figure class="effect-ravi">
+                                                        <img src="https://picsum.photos/1000/802/?random" alt="img25" />
+                                                        <figcaption>
+                                                            <h5>Lập trình Android <br><span>Kotlin</span></h5>
+                                                            <p>
+                                                                <a href="#"><i class="fa fa-search"></i></a>
+                                                            </p>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/tab-pane-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const userJs = {{{ userJSON }}};
+        const avtDefauld = "http://ssl.gstatic.com/accounts/ui/avatar_2x.png";
+        document.addEventListener('DOMContentLoaded', function () {
+            var male = document.getElementById("maleValue");
+            var female = document.getElementById("femaleValue");
+            var otherGender = document.getElementById("otherValue");
+            var student = document.getElementById("student");
+            var teacher = document.getElementById("teacher");
+            var avatarImg = document.getElementById("img-preview");
+
+            if (userJs.gender === "male") {
+                male.setAttribute('selected', 'selected');
+            }
+            else {
+                female.setAttribute('selected', 'selected');
+            }
+
+            if (userJs.role === "student") {
+                student.setAttribute('selected', 'selected');
+            } else {
+                teacher.setAttribute('selected', 'selected');
+            }
+
+            if (userJs.image === null) {
+                avatarImg.src = avtDefauld;
+            }
+            else {
+                avatarImg.src = userJs.image;
+            }
+        });
+
+        const input = document.getElementById('file-input');
+        const image = document.getElementById('img-preview');
+
+        input.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                const src = URL.createObjectURL(e.target.files[0]);
+                image.src = src;
+            }
+        });
+
+    </script>
+</body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var passwordOld = document.getElementById('inputPasswordOld');
+        var passwordNew = document.getElementById('inputPasswordNew');
+        var verifyPassword = document.getElementById('inputPasswordNewVerify');
+        var saveBtn = $('.btn-save-pass');
+        var changePasswordForm = document.forms['change-password-form'];
+
+        saveBtn.click(function (e) {
+            e.preventDefault();
+            const passOldValue = passwordOld.value;
+            const passNewValue = passwordNew.value;
+            const passVerifyValue = verifyPassword.value;
+
+            if (passNewValue !== passVerifyValue) {
+                alert("Xác nhận mật khẩu sai")
+            }
+            else {
+                changePasswordForm.submit();
+            }
+        });
+
+        if ("{{success}}") {
+            Toastify({
+                text: "Cập nhật thành công!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #00b09b, green)",
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+        if ("{{pwWrong}}") {
+            Toastify({
+                text: "Mật khẩu cũ không đúng, vui lòng thử lại!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #00b09b, red)",
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+
+            document.getElementById('pass').classList.add('active')
+        }
+    });
+
+
+</script>
